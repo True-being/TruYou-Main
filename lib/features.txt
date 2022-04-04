@@ -1,0 +1,6 @@
+- Screens
+- Responsiveness(MediaQuery)(Disable horizontal rotation)
+- Animations
+- Routing
+- Transitions
+

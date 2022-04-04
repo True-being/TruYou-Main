@@ -1,0 +1,165 @@
+import 'package:flutter/material.dart';
+
+class Constants {
+  //Colors
+  static const Color background_color = Color(0xff0c0c21);
+  static const Color indigo = Color(0xff6f25fe);
+  static const Color blue_violet = Color(0xff852bf3);
+  static const Color purple = Color(0xffb33fea);
+  static const Color pink = Color(0xffde40df);
+  static const Color blue_jeans = Color(0xff52a9f2);
+  static const Color sky_blue = Color(0xff59d2f5);
+  static const Color neon_green = Color(0xff24FF00);
+  static const Color neon_red = Color(0xffFF3E3E);
+  static const Color neon_yellow = Color(0xffFFE500);
+
+  //Image picker
+  static const double BORDER_WIDTH = 2.0;
+  static const int IMAGE_QUALITY = 80;
+  static const double IMAGE_MAXHEIGHT = 1024.0;
+  static const double IMAGE_MAXWIDTH = 1024.0;
+
+  //Error messages - Validation
+  static const String PLEASE_ENTER_AN_EMAIL = 'Please enter an email';
+  static const String PLEASE_ENTER_A_VALID_EMAIL = 'Please enter a valid email';
+  static const String PLEASE_ENTER_A_PASSWORD = 'Please enter a password';
+  static const String PLEASE_ENTER_A_LONGER_PASSWORD =
+      'Password must be 8 characters or longer';
+  static String PLEASE_ENTER_A_LONG_TEXT(String type) =>
+      'Please type something $type';
+  static const String PLEASE_ENTER_A_LONG_TEXT_LONGER_THAN_THIRTY_CHARS =
+      'Please enter more than 30 characters';
+  static String PLEASE_ENTER_A_NAME(String nameOrLastName) =>
+      'Please enter your $nameOrLastName';
+  static String PLEASE_ENTER_NAME_WITH_ATLEAST_TWO_CHARACTERS(
+          String nameOrLastName) =>
+      '$nameOrLastName must be atleast 2 characters';
+  static String PLEASE_ENTER_NAME_NO_LONGER_THAN_THIRTY_CHARACTERS(
+          String nameOrLastName) =>
+      '$nameOrLastName must not be longer than 30 chars';
+  static String PLEASE_ENTER_A_VALID_NAME(String nameOrLastName) =>
+      'Please enter a valid $nameOrLastName';
+  static const String PLEASE_ENTER_A_PHONE_NUMBER =
+      'Please enter your phone number';
+  static const String PLEASE_ENTER_PHONE_NUMBER_WITH_TEN_DIGITS =
+      'Please enter a phone number with 10 digits';
+  static String PLEASE_ENTER_A_SHORT_TEXT(String type) =>
+      'Please enter a $type';
+  static String PLEASE_ENTER_SHORT_TEXT_WITH_LESS_THAN_FORTY_CHARS(
+          String type) =>
+      'Your $type must not be longer than 40 characters';
+  static const String PLEASE_ENTER_A_WALLET_ADDRESS =
+      'Please enter a wallet address';
+  static const String PLEASE_ENTER_ADDRESS_EQUAL_TO_SIXTY_FOUR_CHARS =
+      'Your wallet address should have 64 characters';
+  static const String PLEASE_ENTER_AN_OTP_VERIFICATION_CODE =
+      'Please enter an OTP Code';
+  static const String PLEASE_ENTER_A_FOUR_DIGIT_OTP_CODE =
+      'Please enter a 4 digit OTP code';
+
+  //Constant lists
+  static const List<String?> genders = <String?>['Female', 'Male', 'Other'];
+  static const List<String?> sexual_orientation = <String?>[
+    'Straight',
+    'Gay',
+    'Bi',
+    'Trans',
+    'Other'
+  ];
+  static const List<String> months = <String>[
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
+
+  //String(Language translation use)
+  static const String DONE = 'done';
+  static const String ATLEAST_TWO_IMAGES_REQUIRED =
+      'Atleast two images required';
+  static const String PLEASE_ADD_ATLEAST_TWO_IMAGES =
+      'Please add atleast two images to proceed';
+  static const String PLEASE_VERIFY_YOUR_WALLET =
+      'Please tap on the verify wallet button to verify your wallet';
+  static const String WALLET_NOT_VERIFIED = 'Wallet not verified';
+  static const String LOCATION_NOT_ENABLED = 'Location not enabled';
+  static const String PLEASE_ENABLE_YOUR_LOCATION =
+      'Please tap on the enable location button to enable your location';
+  static const String PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN =
+      'Please check that you confirmed your password correctly';
+  static const String PASSWORDS_DONT_MATCH = "Passwords don't match";
+  static const String YOU_NEED_TO_BE_OVER_18 =
+      'Portals aren’t safe for those under the age of 18';
+  static const String PORTALS_ARENT_SAFE = "Must be 18 to enter";
+  static const String PLEASE_ENTER_A_DATE = 'Please select a date of birth';
+  static const String DATE_NOT_ENTERED = 'No birth date selected';
+  static const String TAP_TO_ENTER_DATE = 'Tap to select a date...';
+  static const String OK = 'OK';
+  static const String PLEASE_ENTER_AN_OTP_CODE = 'Please enter an OTP code';
+  static const String NO_OTP_CODE = 'No OTP code entered';
+  static const String FIND_MATCHES = 'Find Matches';
+  static const String I_AM_A = 'I am A...';
+  static const String SEXUAL_ORIENTATION = 'Sexual orientation';
+  static const String MY_SEXUAL_ORIENTATION_IS = 'My sexual orientation is...';
+  static const String GENDER = 'Gender';
+  static const String JOB_TITLE = 'Job title';
+  static const String ENABLE_LOCATION = 'Enable location';
+  static const String JOB = 'Job';
+  static const String MY_LOCATION = 'My location';
+  static const String COMPANY = 'Company';
+  static const String COMPANY_NAME = 'Company name';
+  static const String LIFE_STYLE = 'Life Style';
+  static const String LIFE_STYLE_MESSAGE =
+      'Write something about your life style...';
+  static const String WELCOME_MESSAGE = 'Welcome to TruYou';
+  static const String CONTINUE_WITH_EMAIL = 'Continue with Email';
+  static const String SIGN_IN_WITH_PERAWALLET = 'Sign-in with PeraWallet';
+  static const String SIGN_IN_WITH_MYALGOWALLET = 'Sign-in with MyAlgoWallet';
+  static const String SIGN_IN_WITH_PHONE_NUMBER = 'Sign-in with Phone Number';
+  static const String SIGN_IN_MESSAGE = 'Sign In';
+  static const String JUMP_IN_BUTTON_TEXT = "Jump In";
+  static const String DONT_HAVE_ACCOUNT_TEXT = "Don't have an account? ";
+  static const String CLICK_ME_TEXT = 'Click me';
+  static const String BY_CLICKING_ON_ME_TEXT =
+      'By clicking login, you agree to our ';
+  static const String TERMS_OF_SERVICE_TEXT = 'Terms of Service';
+  static const String AND_OUR_TEXT = ' and our ';
+  static const String PRIVACY_POLICY_TEXT = 'Privacy Policy';
+  static const String FORGOT_PASSWORD_CLICKABLE_TEXT = 'Forgot password?';
+  static const String PASSWORD = 'Password';
+  static const String EMAIL = 'Email';
+  static const String CONTINUE_WITH_PHONE_NUMBER = 'Continue with Phone Number';
+  static const String ENTER_COUNTRY_CODE_AND_NUMBER =
+      'Please enter your country code and phone number';
+  static const String GET_MY_OTP_CODE = 'Get my OTP code';
+  static const String VERIFICATION = 'Verfication';
+  static const String CODE_WILL_BE_SENT_TO = 'Enter the code sent to you at ';
+  static const String PHONE_NUMBER = 'Phone Number';
+  static const String RESEND_CODE = 'Resend Code?';
+  static const String NEXT = 'Next';
+  static const String CREATE_AN_ACCOUNT = 'Create an account';
+  static const String FIRST_NAME = 'First name';
+  static const String LAST_NAME = 'Last name';
+  static const String DATE_OF_BIRTH = 'Date of Birth';
+  static const String DAY = 'DD';
+  static const String MONTH = 'MM';
+  static const String YEAR = 'YYYY';
+  static const String CONFIRM_PASSWORD = 'Confirm Password';
+  static const String ADD_PHOTOS = 'Add photos';
+  static const String MINIMUM_TWO_PHOTOS = 'Minimum two photos';
+  static const String ALGORAND_WALLET_ADDRESS = 'Algorand Wallet Address';
+  static const String VERIFY = 'Verify';
+  static const String ABOUT_ME = 'About me';
+  static const String ABOUT_ME_MESSAGE = 'Tell us something about yourself...';
+  static const String ENABLE_LOCATION_TO_USE_TRUYOU =
+      "You'll need to enable your location to access TruYou";
+  static const String LOCATION_NEEDED = 'Location required';
+}

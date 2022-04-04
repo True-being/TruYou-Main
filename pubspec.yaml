@@ -1,0 +1,58 @@
+name: truyou
+description: The next generation, Web3 dating app.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+  country_picker: ^2.0.11
+  flutter_glow: ^0.2.0
+  flutter_config: ^2.0.0
+  flutter_datetime_picker:
+    git:
+      url: https://github.com/Realank/flutter_datetime_picker.git
+      ref: master
+  google_maps_flutter: ^2.1.3
+  google_static_maps_controller: ^0.6.0
+  image_cropper: ^1.5.0
+  image_picker: ^0.8.4+11
+  location: ^4.3.0
+  pinput: ^2.2.4
+  permission_handler: ^9.2.0
+  swipeable_card_stack: ^0.0.5
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  mockito: ^5.1.0
+  mockingjay: ^0.2.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+
