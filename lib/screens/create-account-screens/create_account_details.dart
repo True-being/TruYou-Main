@@ -9,7 +9,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:truyou/components/components.dart';
 import 'package:location/location.dart' as location;
 import 'package:truyou/models/auth_user_model.dart';
-import 'package:truyou/screens/home_screen.dart';
+import 'package:truyou/screens/home/home_screen.dart';
+import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/services/image_picker_service.dart';
 
 //File number - Used to identify the file being changed
@@ -180,22 +181,31 @@ class _CreateAccountDetailsScreenState
 
           //Checks if atleast two images have been added
           if (_imageCount >= 2) {
-            //TODO:Give the AuthUser model equality(Freezed or Equatable)
-            // AuthUser _user = widget.user.copyWith(
-            //     photos: _images,
-            //     algoWalletAddress: _walletAddressController.text,
-            //     aboutMe: _aboutMeController.text,
-            //     lifeStyle: _lifeStyleController.text,
-            //     job: _jobTitleController.text,
-            //     companyName: _companyNameController.text,
-            //     location: LatLng(
-            //         _currentLocation.latitude, _currentLocation.longitude),
-            //     gender: _gender,
-            //     sexualOrientation: _sexual_orientation);
-            //TODO:Add user to database
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-                (route) => false);
+            //TODO:Check if user has stacked trust on backend
+            //If true, add user to database and navigate to home screen
+            //If false, navigate to matching pledge
+            bool _debugNavigationOption = false;
+            if (_debugNavigationOption) {
+              //TODO:Give the AuthUser model equality(Freezed or Equatable)
+              // AuthUser _user = widget.user.copyWith(
+              //     photos: _images,
+              //     algoWalletAddress: _walletAddressController.text,
+              //     aboutMe: _aboutMeController.text,
+              //     lifeStyle: _lifeStyleController.text,
+              //     job: _jobTitleController.text,
+              //     companyName: _companyNameController.text,
+              //     location: LatLng(
+              //         _currentLocation.latitude, _currentLocation.longitude),
+              //     gender: _gender,
+              //     sexualOrientation: _sexual_orientation);
+              //TODO:Add user to database
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  (route) => false);
+            } else {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => MatchPledging()));
+            }
           } else {
             CustomDialog.showBasicDialog(
                 context,

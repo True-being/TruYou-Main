@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/create-account-screens/create_account_general.dart';
-import 'package:truyou/screens/home_screen.dart';
+import 'package:truyou/screens/home/home_screen.dart';
 
 class SignInEmailScreen extends StatefulWidget {
   const SignInEmailScreen({Key? key}) : super(key: key);
@@ -32,10 +33,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
     if (_emailPasswordFormKey.currentState!.validate()) {
       //Sign user in
       //TODO:Navigate to home screen
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
       Navigator.of(context)
-          .pushAndRemoveUntil(HomeScreen.route(), (route) => false);
+          .pushAndRemoveUntil(AppRoot.route(), (route) => false);
     }
   }
 
@@ -45,28 +44,32 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Constants.background_color,
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Constants.background_color,
+          leading: Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: EdgeInsets.all(ResponsiveWidget.size(
+                  context, _size.width * 0.02, _size.width * 0.005)),
+              child: IconButton(
+                key: Key('back-to-welcome-screen'),
+                icon: Icon(
+                  CupertinoIcons.back,
+                  size: ResponsiveWidget.size(
+                      context, _size.width * 0.07, _size.width * 0.03),
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          ),
+        ),
         body: SingleChildScrollView(
             child: Column(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(ResponsiveWidget.size(
-                    context, _size.width * 0.02, _size.width * 0.005)),
-                child: IconButton(
-                  key: Key('back-to-welcome-screen'),
-                  icon: Icon(
-                    CupertinoIcons.back,
-                    size: ResponsiveWidget.size(
-                        context, _size.width * 0.07, _size.width * 0.03),
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-            ),
             Logo(width: _size.width * 0.6, height: _size.height * 0.3),
             Visibility(
               visible: ResponsiveWidget.isSmallScreen(context),

@@ -6,3 +6,4 @@ export 'long_text_validator.dart';
 export 'wallet_validator.dart';
 export 'short_text_validator.dart';
 export 'otp_validator.dart';
+export 'search_validator.dart';

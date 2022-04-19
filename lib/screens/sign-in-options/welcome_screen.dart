@@ -1,7 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/widgets/custom_drawer.dart';
+import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/create-account-screens/create_account_general.dart';
+import 'package:truyou/screens/home/home_screen.dart';
+import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/screens/sign-in-options/email_sign_in_screen.dart';
 import 'package:truyou/screens/sign-in-options/number-sign-in/number_sign_in.dart';
 
@@ -144,9 +148,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               decoration: TextDecoration.underline),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
+                              //TODO:Change this back to Create account general
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       CreateAccountGeneralScreen()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => MatchPledging()));
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => AppRoot()));
                             }),
                     ],
                   ),

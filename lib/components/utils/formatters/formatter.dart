@@ -4,3 +4,6 @@ export 'long_text_formatter.dart';
 export 'password_formatter.dart';
 export 'short_text_formatter.dart';
 export 'wallet_formatter.dart';
+export 'match_pledging_formatter.dart';
+export 'stake_trust_formatter.dart';
+export 'search_formatter.dart';

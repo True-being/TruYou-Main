@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/validators/trust_validator.dart';
 
 void main() async {
   group('Validators tests', () {
@@ -269,6 +270,60 @@ void main() async {
       expect(SpaceRemover.removeSpaces(_s2) == _r, isTrue, reason: _s2);
       expect(SpaceRemover.removeSpaces(_s3) == _r, isTrue, reason: _s3);
       expect(SpaceRemover.removeSpaces(_s4) == _r, isTrue, reason: _s4);
+    });
+  });
+
+  group('Trust validation', () {
+    test('Trust validator', () {
+      //Strings
+      const String _s1 = '';
+      const String _s2 = '0';
+      const String _s3 = '000000';
+      const String _s4 = '123456';
+      const String _s5 = '01';
+      const String _s6 = '999999';
+      const String _s7 = '9-3';
+      const String _s8 = '9.3';
+
+      //Results
+      expect(
+          trustValidator(_s1) == Constants.PLEASE_ENTER_A_TRUST_AMOUNT, isTrue,
+          reason: 'Empty String');
+      expect(trustValidator(_s2) == Constants.PLEASE_ENTER_AMOUNT_MORE_THAN_0,
+          isTrue,
+          reason: _s2);
+      expect(trustValidator(_s3) == Constants.PLEASE_ENTER_AMOUNT_MORE_THAN_0,
+          isTrue,
+          reason: _s3);
+      expect(trustValidator(_s4) == null, isTrue, reason: _s4);
+      expect(trustValidator(_s5) == null, isTrue, reason: _s5);
+      expect(trustValidator(_s6) == null, isTrue, reason: _s6);
+      expect(
+          trustValidator(_s7) ==
+              Constants.PLEASE_ENTER_AMOUNT_WITH_NO_ABNORMAL_CHARS,
+          isTrue,
+          reason: _s7);
+      expect(
+          trustValidator(_s8) ==
+              Constants.PLEASE_ENTER_AMOUNT_WITH_NO_ABNORMAL_CHARS,
+          isTrue,
+          reason: _s8);
+    });
+  });
+
+  group('Search validation', () {
+    test('Search textfield validation', () {
+      const String _empty = '';
+      const String _s1 = 'Michael';
+      const String _s2 = 'Michelle Barker Junior Senior';
+
+      expect(searchValidator(_empty) == Constants.PLEASE_SEARCH_FOR_SOMETHING,
+          isTrue,
+          reason: 'Empty');
+
+      expect(searchValidator(_s1) == null, isTrue, reason: _s1);
+
+      expect(searchValidator(_s2) == null, isTrue, reason: _s2);
     });
   });
 }

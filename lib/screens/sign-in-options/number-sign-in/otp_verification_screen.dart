@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:pinput/pinput.dart';
-import 'package:truyou/screens/home_screen.dart';
+import 'package:truyou/screens/app_root.dart';
+import 'package:truyou/screens/home/home_screen.dart';
 
 class OTPVerficationScreen extends StatefulWidget {
   final String countryCode;
@@ -35,7 +36,7 @@ class _OTPVerficationScreenState extends State<OTPVerficationScreen> {
     if (_formKey.currentState!.validate()) {
       //TODO:Verify OTP code
       Navigator.of(context)
-          .pushAndRemoveUntil(HomeScreen.route(), (route) => false);
+          .pushAndRemoveUntil(AppRoot.route(), (route) => false);
     }
   }
 
