@@ -5,7 +5,6 @@ import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/custom_drawer.dart';
 import 'package:truyou/screens/find-matches/find_matches.dart';
 import 'package:truyou/screens/go-social/go_social.dart';
-import 'package:truyou/screens/home/home_screen.dart';
 import 'package:truyou/screens/my-matches/my_matches.dart';
 import 'package:truyou/screens/partnerships/partnerships.dart';
 import 'package:truyou/screens/premium-features/premium_features.dart';
@@ -33,7 +32,7 @@ class AppRoot extends StatelessWidget {
 
         switch (position) {
           case 0:
-            screenCurrent = HomeScreen();
+            screenCurrent = FindMatches();
             break;
           case 1:
             screenCurrent = MyProfile();
@@ -42,18 +41,15 @@ class AppRoot extends StatelessWidget {
             screenCurrent = MyMatches();
             break;
           case 3:
-            screenCurrent = FindMatches();
-            break;
-          case 4:
             screenCurrent = GoSocial();
             break;
-          case 5:
+          case 4:
             screenCurrent = PremiumFeatures();
             break;
-          case 6:
+          case 5:
             screenCurrent = Partnerships();
             break;
-          case 7:
+          case 6:
             screenCurrent = Settings();
             break;
           default:
@@ -107,21 +103,18 @@ String titleSwapper(int position) {
   switch (position) {
     case 0:
     case 1:
-    case 5:
+    case 4:
       break;
     case 2:
       title = Constants.MY_MATCHES;
       break;
     case 3:
-      title = Constants.FIND_MATCHES;
-      break;
-    case 4:
       title = Constants.GO_SOCIAL;
       break;
-    case 6:
+    case 5:
       title = Constants.PARTNERSHIPS;
       break;
-    case 7:
+    case 6:
       title = Constants.SETTINGS;
       break;
     default:

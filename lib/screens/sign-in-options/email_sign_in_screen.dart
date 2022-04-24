@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/create-account-screens/create_account_general.dart';
-import 'package:truyou/screens/home/home_screen.dart';
 
 class SignInEmailScreen extends StatefulWidget {
   const SignInEmailScreen({Key? key}) : super(key: key);

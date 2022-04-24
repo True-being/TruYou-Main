@@ -15,35 +15,40 @@ const List<MyMatchesCard> matchCards = [
       imageURL:
           'https://i.picsum.photos/id/1005/5760/3840.jpg?hmac=2acSJCOwz9q_dKtDZdSB-OIK1HUcwBeXco_RMMTUgfY',
       matchPerc: 10,
-      nameAge: 'Michael Sharpie, 22',
+      name: 'Michael Sharpie',
+      age: '22',
       location: 'New Jersey, USA',
       aboutMe: 'I love racing cars to the max'),
   MyMatchesCard(
       imageURL:
           'https://i.picsum.photos/id/1027/2848/4272.jpg?hmac=EAR-f6uEqI1iZJjB6-NzoZTnmaX0oI0th3z8Y78UpKM',
       matchPerc: 98,
-      nameAge: 'Ishiya Hearts, 25',
+      name: 'Ishiya Hearts',
+      age: '25',
       location: 'New Jersey, USA',
       aboutMe: 'The road takes me where I must go'),
   MyMatchesCard(
       imageURL:
           'https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk',
       matchPerc: 75,
-      nameAge: 'Amber Evans, 26',
+      name: 'Amber Evans',
+      age: '26',
       location: 'Instanbul, Turkey',
       aboutMe: 'Beauty is in the eye of the beholder'),
   MyMatchesCard(
       imageURL:
           'https://i.picsum.photos/id/1035/5854/3903.jpg?hmac=DV0AS2MyjW6ddofvSIU9TVjj1kewfh7J3WEOvflY8TM',
       matchPerc: 100,
-      nameAge: 'Jared Miguel, 22',
+      name: 'Jared Miguel',
+      age: '53',
       location: 'Texas, USA',
       aboutMe: 'Be the change you want to see in the world'),
   MyMatchesCard(
       imageURL:
           'https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y',
       matchPerc: 50,
-      nameAge: 'Peggy Fines, 32',
+      name: 'Peggy Fines',
+      age: '32',
       location: 'Tampa, Florida',
       aboutMe: 'I love all dogs to bits')
 ];

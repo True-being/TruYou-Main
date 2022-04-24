@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
-import 'package:truyou/components/widgets/dialogs/match_option_dialog.dart';
 
 class MyMatchesCard extends StatelessWidget {
   final String imageURL;
   final int matchPerc;
-  final String nameAge;
+  final String name;
+  final String age;
   final String location;
   final String aboutMe;
   const MyMatchesCard(
       {Key? key,
       required this.imageURL,
       required this.matchPerc,
-      required this.nameAge,
+      required this.name,
+      required this.age,
       required this.location,
       required this.aboutMe})
       : super(key: key);
@@ -25,7 +26,7 @@ class MyMatchesCard extends StatelessWidget {
       padding: EdgeInsets.all(_size.width * 0.025),
       child: GestureDetector(
         onTap: () {
-          MatchOptionDialog.showOptionDialog(context);
+          CustomDialog.showMatchOptionDialog(context, name);
         },
         child: Container(
           decoration: BoxDecoration(
@@ -67,7 +68,7 @@ class MyMatchesCard extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: _size.width * 0.01),
                         child: Text(
-                          nameAge,
+                          name + age,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.white,

@@ -9,7 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:truyou/components/components.dart';
 import 'package:location/location.dart' as location;
 import 'package:truyou/models/auth_user_model.dart';
-import 'package:truyou/screens/home/home_screen.dart';
+import 'package:truyou/screens/find-matches/find_matches.dart';
 import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/services/image_picker_service.dart';
 
@@ -200,7 +200,7 @@ class _CreateAccountDetailsScreenState
               //     sexualOrientation: _sexual_orientation);
               //TODO:Add user to database
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  MaterialPageRoute(builder: (context) => FindMatches()),
                   (route) => false);
             } else {
               Navigator.of(context).push(

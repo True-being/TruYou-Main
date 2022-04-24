@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:pinput/pinput.dart';
 import 'package:truyou/screens/app_root.dart';
-import 'package:truyou/screens/home/home_screen.dart';
 
 class OTPVerficationScreen extends StatefulWidget {
   final String countryCode;

@@ -14,8 +14,34 @@ class Constants {
   static const Color neon_yellow = Color(0xffFFE500);
 
   //Strings(Language translation use)
+  static String TOSS_GIFT_CONFIRMATION =
+      'Are you sure you want to toss this gift?';
+  static String UNMATCH_MESSAGE(String user) =>
+      'Are you sure you want to unmatch with $user?';
+  static String GIFT_RECEIVED_MESSAGE(String sender, String gift) =>
+      '$sender sent you an $gift';
+  static String GIFT_RECEIVED_ERROR_MESSAGE =
+      'Something went wrong, please try the transaction again!';
+  static String SEND = 'Send';
+  static String SEND_ALGORAND = 'Send Algorand';
+  static String ALGO = 'Algo';
+  static String YOUR_BALANCE = 'Your Balance';
+  static String GIFT_CONFIRMATION_MESSAGE(String receipient, String giftName) =>
+      'Are you sure you want to send $giftName to $receipient?';
+  static const String NFTS = 'NFTs';
+  static const String TOKENS = 'Tokens';
+  static const String CHOOSE_A_GIFT_TO_SEND = 'Choose a Gift to send';
+  static const String YES = 'Yes';
+  static const String NO = 'No';
   static const String PLEASE_SEARCH_FOR_SOMETHING =
       'Please search for something';
+  static String SEND_AN_INVITE_DIALOG_MESSAGE(int trust) =>
+      'Are you sure you want to use $trust Trust to send this invite?';
+  static const String NEVERMIND = 'Nevermind';
+  static const String SEND_AN_INVITE = 'Send an Invite';
+  static const String ITS_A_MATCH_MESSAGE =
+      "Slip into the metaverse through a TruYou portal! By using Trust tokens to stabilize the meta-field we guarantee safe passage for you and your potential partner";
+  static const String ITS_A_MATCH = "It's a Match";
   static const String SHARE_PROFILE_NOW = 'Share profile now';
   static const String SHARED_IMAGES = 'Shared images';
   static const String COPY_WALLET_ADDRESS = 'Copy wallet address';
