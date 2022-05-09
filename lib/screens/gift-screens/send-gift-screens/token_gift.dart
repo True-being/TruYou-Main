@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/back_button.dart';
 
+///Screen to display details about the token selected
 class TokenGiftScreen extends StatelessWidget {
   final String imagePath;
   final String title;

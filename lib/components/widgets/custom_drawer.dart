@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/drawer_item.dart';
-import 'package:truyou/screens/find-matches/find_matches.dart';
-import 'package:truyou/screens/my-matches/my_matches.dart';
-import 'package:truyou/screens/profile/my_profile.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -44,6 +41,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     height: _size.height * 0.15,
                   ),
                   IconButton(
+                      key: Key(Keys.drawerCloseButton),
                       onPressed: () {
                         controller.close();
                       },
@@ -62,36 +60,42 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         controller.setSelectedMenuPosition(0);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerMyProfileButton),
                       title: Constants.MY_PROFILE,
                       icon: Icon(CupertinoIcons.profile_circled),
                       onPressed: () {
                         controller.setSelectedMenuPosition(1);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerMyMatchesButton),
                       title: Constants.MY_MATCHES,
                       icon: Icon(CupertinoIcons.person_2_fill),
                       onPressed: () {
                         controller.setSelectedMenuPosition(2);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerGoSocialButton),
                       title: Constants.GO_SOCIAL,
                       icon: Icon(CupertinoIcons.link),
                       onPressed: () {
                         controller.setSelectedMenuPosition(3);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerPremiumFeaturesButton),
                       title: Constants.PREMIUM_FEATURES,
                       icon: Icon(CupertinoIcons.graph_circle_fill),
                       onPressed: () {
                         controller.setSelectedMenuPosition(4);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerPartnershipsButton),
                       title: Constants.PARTNERSHIPS,
                       icon: Icon(Icons.handshake_rounded),
                       onPressed: () {
                         controller.setSelectedMenuPosition(5);
                       }),
                   DrawerItem(
+                      key: Key(Keys.drawerSettingsButton),
                       title: Constants.SETTINGS,
                       icon: Icon(CupertinoIcons.settings),
                       onPressed: () {

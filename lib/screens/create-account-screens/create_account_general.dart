@@ -13,7 +13,7 @@ class CreateAccountGeneralScreen extends StatefulWidget {
   static Route route() {
     return MaterialPageRoute(
       builder: (_) => CreateAccountGeneralScreen(),
-      settings: const RouteSettings(name: '/create-account-general-screen'),
+      settings: const RouteSettings(name: Routes.createAccountGeneralScreen),
     );
   }
 
@@ -92,7 +92,7 @@ class _CreateAccountGeneralScreenState
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               leading: IconButton(
-                  key: Key('create-account-general-back-button'),
+                  key: Key(Keys.createAccountGeneralBackButton),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -157,12 +157,13 @@ class _CreateAccountGeneralScreenState
                                       ),
                                     ),
                                     TextFormField(
-                                      key: Key(
-                                          'create-account-general-first-name'),
+                                      key: Key(Fields
+                                          .createAccountGeneralFirstNameKey
+                                          .key),
                                       cursorColor: Constants.sky_blue,
                                       controller: _firstNameController,
-                                      validator: (String? val) =>
-                                          nameValidator(val, 'first name'),
+                                      validator: (String? val) => nameValidator(
+                                          val, Constants.FIRST_NAME),
                                       style: TextStyle(
                                           color: Colors.white54,
                                           fontSize: ResponsiveWidget.size(
@@ -228,12 +229,12 @@ class _CreateAccountGeneralScreenState
                                       ),
                                     ),
                                     TextFormField(
-                                      key: Key(
-                                          'create-account-general-last-name'),
+                                      key: Key(Fields
+                                          .createAccountGeneralLastNameKey.key),
                                       cursorColor: Constants.sky_blue,
                                       controller: _lastNameController,
-                                      validator: (String? val) =>
-                                          nameValidator(val, 'last name'),
+                                      validator: (String? val) => nameValidator(
+                                          val, Constants.LAST_NAME),
                                       style: TextStyle(
                                           color: Colors.white54,
                                           fontSize: ResponsiveWidget.size(
@@ -271,7 +272,8 @@ class _CreateAccountGeneralScreenState
                         ),
                         //Email
                         CustomTextField(
-                            textFieldKey: Key('create-account-general-email'),
+                            textFieldKey:
+                                Key(Fields.createAccountGeneralEmailKey.key),
                             title: Constants.EMAIL,
                             hintText: Constants.EMAIL,
                             maxLines: 1,
@@ -404,8 +406,8 @@ class _CreateAccountGeneralScreenState
                             ),
                             //Password
                             CustomTextField(
-                                textFieldKey:
-                                    Key('create-account-general-password'),
+                                textFieldKey: Key(
+                                    Fields.createAccountGeneralPassword.key),
                                 title: Constants.PASSWORD,
                                 hintText: Constants.PASSWORD,
                                 maxLines: 1,
@@ -418,8 +420,8 @@ class _CreateAccountGeneralScreenState
                                     context, _size.width * 0.01, 0.0)),
                             //Confirm password
                             CustomTextField(
-                                textFieldKey: Key(
-                                    'create-account-general-confirm-password'),
+                                textFieldKey: Key(Fields
+                                    .createAccountGeneralConfirmPassword.key),
                                 title: Constants.CONFIRM_PASSWORD,
                                 hintText: Constants.CONFIRM_PASSWORD,
                                 maxLines: 1,
@@ -432,7 +434,7 @@ class _CreateAccountGeneralScreenState
                                     context, _size.width * 0.01, 0.0)),
                             //Next Button
                             OutlinedGlowButton(
-                              key: Key('create-account-general-next-button'),
+                              key: Key(Keys.createAccountGeneralNextButton),
                               horizontalPadding: ResponsiveWidget.size(context,
                                   _size.width * 0.03, _size.width * 0.1),
                               widget: Text(

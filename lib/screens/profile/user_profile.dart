@@ -13,9 +13,9 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   List<String> profilePictures = [
-    'https://i.picsum.photos/id/1027/2848/4272.jpg?hmac=EAR-f6uEqI1iZJjB6-NzoZTnmaX0oI0th3z8Y78UpKM',
-    'https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk',
-    'https://i.picsum.photos/id/1035/5854/3903.jpg?hmac=DV0AS2MyjW6ddofvSIU9TVjj1kewfh7J3WEOvflY8TM',
+    'assets/women1.jpg',
+    'assets/women2.png',
+    'assets/man1.jpg'
   ];
 
   String nameAge = 'Maria Bently, 27';
@@ -63,11 +63,13 @@ class _UserProfileState extends State<UserProfile> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          nameAge,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: _size.width * 0.07),
+                        Flexible(
+                          child: Text(
+                            nameAge,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: _size.width * 0.07),
+                          ),
                         ),
                         SizedBox(width: _size.width * 0.02),
                         Icon(
@@ -110,12 +112,14 @@ class _UserProfileState extends State<UserProfile> {
                           size: _size.width * 0.07,
                         ),
                         SizedBox(width: _size.width * 0.03),
-                        Text(
-                          location,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: _size.width * 0.045,
-                              fontWeight: FontWeight.w300),
+                        Flexible(
+                          child: Text(
+                            location,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: _size.width * 0.045,
+                                fontWeight: FontWeight.w300),
+                          ),
                         )
                       ],
                     ),
@@ -134,12 +138,14 @@ class _UserProfileState extends State<UserProfile> {
                           size: _size.width * 0.07,
                         ),
                         SizedBox(width: _size.width * 0.03),
-                        Text(
-                          'Works at $job',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: _size.width * 0.045,
-                              fontWeight: FontWeight.w300),
+                        Flexible(
+                          child: Text(
+                            'Works at $job',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: _size.width * 0.045,
+                                fontWeight: FontWeight.w300),
+                          ),
                         )
                       ],
                     ),
@@ -159,12 +165,14 @@ class _UserProfileState extends State<UserProfile> {
                           size: _size.width * 0.07,
                         ),
                         SizedBox(width: _size.width * 0.03),
-                        Text(
-                          genderSexuality,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: _size.width * 0.045,
-                              fontWeight: FontWeight.w300),
+                        Flexible(
+                          child: Text(
+                            genderSexuality,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: _size.width * 0.045,
+                                fontWeight: FontWeight.w300),
+                          ),
                         )
                       ],
                     ),
@@ -266,11 +274,13 @@ class _UserProfileState extends State<UserProfile> {
                           SizedBox(
                             width: _size.width * 0.02,
                           ),
-                          Text(
-                            Constants.SHARE_PROFILE_NOW,
-                            style: TextStyle(
-                                color: Constants.purple,
-                                fontSize: _size.width * 0.05),
+                          Flexible(
+                            child: Text(
+                              Constants.SHARE_PROFILE_NOW,
+                              style: TextStyle(
+                                  color: Constants.purple,
+                                  fontSize: _size.width * 0.05),
+                            ),
                           )
                         ],
                       ),
@@ -286,6 +296,7 @@ class _UserProfileState extends State<UserProfile> {
               Padding(
                 padding: EdgeInsets.all(_size.width * 0.01),
                 child: IconButton(
+                    key: Key(Keys.userProfileBackButton),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },

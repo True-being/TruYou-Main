@@ -32,7 +32,7 @@ class MyMatchesCard extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               image: DecorationImage(
-                  image: new NetworkImage(imageURL), fit: BoxFit.cover)),
+                  image: new AssetImage(imageURL), fit: BoxFit.cover)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -68,7 +68,7 @@ class MyMatchesCard extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(vertical: _size.width * 0.01),
                         child: Text(
-                          name + age,
+                          name + ', ' + age,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.white,
@@ -81,21 +81,27 @@ class MyMatchesCard extends StatelessWidget {
                               vertical: _size.width * 0.01),
                           child: Row(
                             children: [
-                              Icon(
-                                Icons.location_on,
-                                color: Colors.white,
-                                size: _size.width * 0.035,
+                              Expanded(
+                                flex: 1,
+                                child: Icon(
+                                  Icons.location_on,
+                                  color: Colors.white,
+                                  size: _size.width * 0.035,
+                                ),
                               ),
                               SizedBox(
                                 width: _size.width * 0.005,
                               ),
-                              Text(
-                                location,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: _size.width * 0.03,
-                                    fontWeight: FontWeight.w300),
+                              Expanded(
+                                flex: 6,
+                                child: Text(
+                                  location,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: _size.width * 0.03,
+                                      fontWeight: FontWeight.w300),
+                                ),
                               ),
                             ],
                           )),

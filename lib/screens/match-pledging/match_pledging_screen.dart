@@ -8,6 +8,7 @@ import 'package:truyou/screens/app_root.dart';
 import '../../components/components.dart';
 
 class MatchPledging extends StatelessWidget {
+  //TODO: Add route
   MatchPledging({Key? key}) : super(key: key);
 
   //Builds 3 cards
@@ -150,7 +151,7 @@ Widget _pledgeTrust(BuildContext context) {
             padding: EdgeInsets.symmetric(
                 vertical: size.width * 0.01, horizontal: size.width * 0.04),
             child: TextFormField(
-              key: Key('pledge-trust-textfield'),
+              key: Key(Fields.matchPledgingPledgeTrustField.key),
               keyboardType: TextInputType.number,
               controller: _matchPledgingController,
               textAlign: TextAlign.center,
@@ -179,7 +180,7 @@ Widget _pledgeTrust(BuildContext context) {
                   fontWeight: FontWeight.w400)),
           SizedBox(height: size.height * 0.01),
           GestureDetector(
-            key: Key('pledge-trust-button'),
+            key: Key(Keys.matchPledgingPledgeTrustButton),
             onTap: () {
               if (_matchPledgingFormKey.currentState!.validate()) {
                 //todo: PLEDGE TRUST
@@ -360,9 +361,12 @@ Widget _goSocial(BuildContext context) {
         ),
         SizedBox(height: size.height * 0.05),
         GestureDetector(
+          key: Key(Keys.matchPledgingGoSocialButton),
           onTap: () {
             //TODO: Only allow user to Go social room
             //TODO: Lock all drawer items
+            Navigator.of(context)
+                .pushAndRemoveUntil(AppRoot.route(), (route) => false);
           },
           child: Container(
             width: size.width * 0.6,

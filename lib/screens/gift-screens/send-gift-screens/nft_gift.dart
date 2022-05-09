@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/back_button.dart';
 
+///Screen to display details about the NFT selected
 class NFTGiftScreen extends StatelessWidget {
   final String imagePath;
   final String title;

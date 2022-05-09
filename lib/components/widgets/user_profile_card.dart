@@ -1,4 +1,3 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileCard extends StatelessWidget {
@@ -12,7 +11,7 @@ class UserProfileCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: NetworkImage(
+              image: AssetImage(
                 imageURL,
               ),
               fit: BoxFit.cover)),

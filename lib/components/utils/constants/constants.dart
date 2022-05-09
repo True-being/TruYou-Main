@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class Constants {
   //Colors
   static const Color background_color = Color(0xff0c0c21);
+  static const Color dark_blue = Color(0xff14142f);
+  static const Color navy_blue = Color(0xff181843);
   static const Color indigo = Color(0xff6f25fe);
   static const Color blue_violet = Color(0xff852bf3);
   static const Color purple = Color(0xffb33fea);
@@ -14,6 +16,15 @@ class Constants {
   static const Color neon_yellow = Color(0xffFFE500);
 
   //Strings(Language translation use)
+  static String GIFT_NOTIFICATION =
+      'Someone wants to send you a gift! Click "open" to accept it and "toss" to send it back.';
+  static String SAY_HELLO = 'Say Hi to';
+  static String TYPE_A_MESSAGE = 'Type a message...';
+  static String YOU_ARE_A_MATCHED_WITH = 'You are a match with';
+  static String CHATS = 'Chats';
+  static String NOTIFICATIONS = 'Notifications';
+  static String COMING_SOON = 'Coming soon';
+  static String REQUEST_A_VR_DATE = 'Request a VR Date';
   static String TOSS_GIFT_CONFIRMATION =
       'Are you sure you want to toss this gift?';
   static String UNMATCH_MESSAGE(String user) =>
@@ -209,6 +220,8 @@ class Constants {
       'Please enter an OTP Code';
   static const String PLEASE_ENTER_A_FOUR_DIGIT_OTP_CODE =
       'Please enter a 4 digit OTP code';
+  static const String ABOUT_YOURSELF = 'about yourself';
+  static const String ABOUT_YOUR_LIFESTYLE = 'about your lifestyle';
 
   //Constant lists
   static const List<String?> genders = <String?>['Female', 'Male', 'Other'];

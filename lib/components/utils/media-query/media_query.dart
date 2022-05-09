@@ -5,6 +5,16 @@ const double magicHeightConstant = 0.004;
 const double magicFontConstant = 0.0025;
 const double magicPaddingConstant = 0.0024;
 
+///Returns the screen width
+double sWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width;
+}
+
+///Returns the screen height
+double sHeight(BuildContext context) {
+  return MediaQuery.of(context).size.height;
+}
+
 ///Width media query function
 ///Uses context to query screen size
 ///ss -> Standard size ; This is the standard size flutter measurements

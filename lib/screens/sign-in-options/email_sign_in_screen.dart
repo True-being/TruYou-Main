@@ -11,7 +11,7 @@ class SignInEmailScreen extends StatefulWidget {
   static Route route() {
     return MaterialPageRoute(
       builder: (_) => const SignInEmailScreen(),
-      settings: const RouteSettings(name: '/email-sign-in'),
+      settings: const RouteSettings(name: Routes.signInEmailScreen),
     );
   }
 
@@ -52,7 +52,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
               padding: EdgeInsets.all(ResponsiveWidget.size(
                   context, _size.width * 0.02, _size.width * 0.005)),
               child: IconButton(
-                key: Key('back-to-welcome-screen'),
+                key: Key(Keys.signInWithEmailbackToWelcomeScreen),
                 icon: Icon(
                   CupertinoIcons.back,
                   size: ResponsiveWidget.size(
@@ -99,7 +99,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                   children: [
                     //Email field
                     CustomTextField(
-                        textFieldKey: Key('email-sign-in-email-field'),
+                        textFieldKey:
+                            Key(Fields.emailPasswordSignInEmailKey.key),
                         title: Constants.EMAIL,
                         hintText: Constants.EMAIL,
                         maxLines: 1,
@@ -108,7 +109,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                         controller: _emailController),
                     //Password field
                     CustomTextField(
-                      textFieldKey: Key('email-sign-in-password-field'),
+                      textFieldKey:
+                          Key(Fields.emailPasswordSignInPasswordKey.key),
                       title: Constants.PASSWORD,
                       hintText: Constants.PASSWORD,
                       maxLines: 1,
@@ -152,7 +154,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
                         )),
                     //Login button
                     GlowButton(
-                        key: Key('jump-in-button'),
+                        key: Key(Keys.signInWithEmailJumpInButton),
                         text: Constants.JUMP_IN_BUTTON_TEXT,
                         buttonWidth: ResponsiveWidget.size(
                             context, _size.width, _size.width * 0.35),

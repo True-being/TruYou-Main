@@ -14,10 +14,9 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   //Dummy data
   List<String> profilePictures = [
-    'https://i.picsum.photos/id/1005/5760/3840.jpg?hmac=2acSJCOwz9q_dKtDZdSB-OIK1HUcwBeXco_RMMTUgfY',
-    'https://i.picsum.photos/id/1027/2848/4272.jpg?hmac=EAR-f6uEqI1iZJjB6-NzoZTnmaX0oI0th3z8Y78UpKM',
-    'https://i.picsum.photos/id/1011/5472/3648.jpg?hmac=Koo9845x2akkVzVFX3xxAc9BCkeGYA9VRVfLE4f0Zzk',
-    'https://i.picsum.photos/id/1035/5854/3903.jpg?hmac=DV0AS2MyjW6ddofvSIU9TVjj1kewfh7J3WEOvflY8TM',
+    'assets/man1.jpg',
+    'assets/women1.jpg',
+    'assets/women2.png'
   ];
 
   String nameAge = 'Tony Stark, 24';
@@ -65,10 +64,12 @@ class _MyProfileState extends State<MyProfile> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      nameAge,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: _size.width * 0.07),
+                    Flexible(
+                      child: Text(
+                        nameAge,
+                        style: TextStyle(
+                            color: Colors.white, fontSize: _size.width * 0.07),
+                      ),
                     ),
                     SizedBox(width: _size.width * 0.02),
                     Icon(
@@ -109,12 +110,14 @@ class _MyProfileState extends State<MyProfile> {
                       size: _size.width * 0.07,
                     ),
                     SizedBox(width: _size.width * 0.03),
-                    Text(
-                      location,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _size.width * 0.045,
-                          fontWeight: FontWeight.w300),
+                    Flexible(
+                      child: Text(
+                        location,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: _size.width * 0.045,
+                            fontWeight: FontWeight.w300),
+                      ),
                     )
                   ],
                 ),
@@ -132,12 +135,14 @@ class _MyProfileState extends State<MyProfile> {
                       size: _size.width * 0.07,
                     ),
                     SizedBox(width: _size.width * 0.03),
-                    Text(
-                      'Works at $job',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _size.width * 0.045,
-                          fontWeight: FontWeight.w300),
+                    Flexible(
+                      child: Text(
+                        'Works at $job',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: _size.width * 0.045,
+                            fontWeight: FontWeight.w300),
+                      ),
                     )
                   ],
                 ),
@@ -156,12 +161,14 @@ class _MyProfileState extends State<MyProfile> {
                       size: _size.width * 0.07,
                     ),
                     SizedBox(width: _size.width * 0.03),
-                    Text(
-                      genderSexuality,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _size.width * 0.045,
-                          fontWeight: FontWeight.w300),
+                    Flexible(
+                      child: Text(
+                        genderSexuality,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: _size.width * 0.045,
+                            fontWeight: FontWeight.w300),
+                      ),
                     )
                   ],
                 ),
@@ -220,11 +227,13 @@ class _MyProfileState extends State<MyProfile> {
                             SizedBox(
                               width: _size.width * 0.02,
                             ),
-                            Text(
-                              Constants.COPY_WALLET_ADDRESS,
-                              style: TextStyle(
-                                  color: Colors.blue[400],
-                                  fontSize: _size.width * 0.05),
+                            Flexible(
+                              child: Text(
+                                Constants.COPY_WALLET_ADDRESS,
+                                style: TextStyle(
+                                    color: Colors.blue[400],
+                                    fontSize: _size.width * 0.05),
+                              ),
                             )
                           ],
                         ),
@@ -329,11 +338,13 @@ class _MyProfileState extends State<MyProfile> {
                       SizedBox(
                         width: _size.width * 0.02,
                       ),
-                      Text(
-                        Constants.SHARE_PROFILE_NOW,
-                        style: TextStyle(
-                            color: Constants.purple,
-                            fontSize: _size.width * 0.05),
+                      Flexible(
+                        child: Text(
+                          Constants.SHARE_PROFILE_NOW,
+                          style: TextStyle(
+                              color: Constants.purple,
+                              fontSize: _size.width * 0.05),
+                        ),
                       )
                     ],
                   ),

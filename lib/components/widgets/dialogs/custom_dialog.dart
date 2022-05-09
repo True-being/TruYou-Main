@@ -4,6 +4,7 @@ import 'package:foil/foil.dart';
 import 'dart:io' show Platform;
 
 import 'package:truyou/components/components.dart';
+import 'package:truyou/screens/chats/chat_viewer.dart';
 import 'package:truyou/screens/gift-screens/choose_gift_screen.dart';
 import 'package:truyou/screens/profile/user_profile.dart';
 
@@ -162,24 +163,25 @@ class CustomDialog {
   static void showMatchOptionDialog(BuildContext context, String receipient) {
     Size size = MediaQuery.of(context).size;
     showDialog(
-      routeSettings: RouteSettings(name: '/match-option-dialog'),
+      routeSettings: RouteSettings(name: Routes.matchOptionDialog),
       context: context,
-      useRootNavigator: false,
+      // useRootNavigator: false,
       builder: (context) {
         //TODO: Add stateful builder when dealing with actions
         return AlertDialog(
             backgroundColor: Constants.background_color,
             content: Container(
-              width: size.width * 0.4,
-              height: size.height * 0.4,
+              width: size.width * 0.5,
+              height: size.height * 0.5,
               child: Column(
                 children: [
                   //View profile
                   OutlinedGlowButton(
+                      key: Key(Keys.matchOptionsViewProfileButton),
                       widget: Text(
                         Constants.VIEW_PROFILE,
                         style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.05),
+                            color: Colors.white, fontSize: size.width * 0.045),
                       ),
                       buttonWidth: size.width * 0.6,
                       buttonHeight: size.height * 0.07,
@@ -193,23 +195,27 @@ class CustomDialog {
                       }),
                   //Start conversation
                   OutlinedGlowButton(
+                      key: Key(Keys.matchOptionStartConversationButton),
                       widget: Text(
                         Constants.START_CONVERSATION,
                         style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.05),
+                            color: Colors.white, fontSize: size.width * 0.045),
                       ),
                       buttonWidth: size.width * 0.6,
                       buttonHeight: size.height * 0.07,
                       onPress: () {
                         //TODO:Get users profile
                         //TODO:Navigate to chat
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(ChatViewer.route());
                       }),
                   //Send a gift
                   OutlinedGlowButton(
+                      key: Key(Keys.matchOptionSendUserAGiftButton),
                       widget: Text(
                         Constants.SEND_USER_A_GIFT,
                         style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.05),
+                            color: Colors.white, fontSize: size.width * 0.045),
                       ),
                       buttonWidth: size.width * 0.6,
                       buttonHeight: size.height * 0.07,
@@ -222,12 +228,51 @@ class CustomDialog {
                                   receipient: receipient,
                                 )));
                       }),
+                  Stack(
+                    children: [
+                      //Request a VR Date
+                      OutlinedGlowButton(
+                          gradient:
+                              LinearGradient(colors: [Colors.red, Colors.red]),
+                          widget: Text(
+                            Constants.REQUEST_A_VR_DATE,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: size.width * 0.045),
+                          ),
+                          buttonWidth: size.width * 0.6,
+                          buttonHeight: size.height * 0.07,
+                          onPress: () {
+                            //TODO:Coming soon
+                          }),
+                      //Coming soon
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(p(context, 8)),
+                            child: Text(
+                              Constants.COMING_SOON,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: size.width * 0.02),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   //Unmatch
                   OutlinedGlowButton(
+                      key: Key(Keys.matchOptionsUnmatchButton),
                       widget: Text(
                         Constants.UNMATCH,
                         style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.05),
+                            color: Colors.white, fontSize: size.width * 0.045),
                       ),
                       buttonWidth: size.width * 0.6,
                       buttonHeight: size.height * 0.07,
@@ -235,7 +280,7 @@ class CustomDialog {
                         //TODO:Get users profile
                         //TODO:Unmatch with user and pop
                         Navigator.of(context).pop();
-                        CustomDialog.showConfirmTossDialog(context);
+                        CustomDialog.showUnmatchDialog(context, 'Michael');
                       }),
                 ],
               ),
@@ -341,7 +386,7 @@ class CustomDialog {
   static void showUnmatchDialog(BuildContext context, String user) {
     Size size = MediaQuery.of(context).size;
     showDialog(
-      routeSettings: RouteSettings(name: '/match-unmatch-dialog'),
+      routeSettings: RouteSettings(name: Routes.unmatchUserDialog),
       context: context,
       useRootNavigator: false,
       builder: (context) {
@@ -352,56 +397,61 @@ class CustomDialog {
             ),
             backgroundColor: Constants.background_color,
             content: Container(
-              width: size.width * 0.4,
-              height: size.height * 0.23,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: size.width * 0.04,
-                        horizontal: size.width * 0.02),
-                    child: Text(
-                      Constants.UNMATCH_MESSAGE(user),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white, fontSize: size.width * 0.05),
+              width: size.width * 0.5,
+              height: size.height * 0.3,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: size.width * 0.04,
+                          horizontal: size.width * 0.02),
+                      child: Text(
+                        Constants.UNMATCH_MESSAGE(user),
+                        key: Key(Keys.confirmUnmatchDialogMessage),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white, fontSize: size.width * 0.05),
+                      ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //No
-                      OutlinedGlowButton(
-                          widget: Text(
-                            Constants.NO,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: size.width * 0.05),
-                          ),
-                          buttonWidth: size.width * 0.23,
-                          buttonHeight: size.height * 0.07,
-                          onPress: () {
-                            Navigator.of(context).pop();
-                          }),
-                      //Yes
-                      OutlinedGlowButton(
-                          widget: Text(
-                            Constants.YES,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: size.width * 0.05),
-                          ),
-                          buttonWidth: size.width * 0.23,
-                          buttonHeight: size.height * 0.07,
-                          onPress: () {
-                            //TODO:UNMATCH users
-                          }),
-                    ],
-                  )
-                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        //NoconfirmUnmatchDialogMessage
+                        Flexible(
+                          child: OutlinedGlowButton(
+                              widget: Text(
+                                Constants.NO,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: size.width * 0.05),
+                              ),
+                              buttonWidth: size.width * 0.23,
+                              buttonHeight: size.height * 0.07,
+                              onPress: () {
+                                Navigator.of(context).pop();
+                              }),
+                        ),
+                        //Yes
+                        OutlinedGlowButton(
+                            widget: Text(
+                              Constants.YES,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: size.width * 0.05),
+                            ),
+                            buttonWidth: size.width * 0.23,
+                            buttonHeight: size.height * 0.07,
+                            onPress: () {
+                              //TODO:UNMATCH users
+                            }),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ));
       },
@@ -411,7 +461,7 @@ class CustomDialog {
   static void showConfirmTossDialog(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     showDialog(
-      routeSettings: RouteSettings(name: '/confirm-toss-dialog'),
+      routeSettings: RouteSettings(name: Routes.confirmTossDialog),
       context: context,
       useRootNavigator: false,
       builder: (context) {

@@ -32,13 +32,14 @@ dependencies:
   location: ^4.3.0
   pinput: ^2.2.4
   permission_handler: ^9.2.0
+  reflectable: any
   swipeable_card_stack: ^0.0.5
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
+  build_runner: ^2.1.10
   mockito: ^5.1.0
   mockingjay: ^0.2.0
 

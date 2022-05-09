@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/custom_drawer.dart';
+import 'package:truyou/screens/chats/messages/tab_view.dart';
 import 'package:truyou/screens/find-matches/find_matches.dart';
 import 'package:truyou/screens/go-social/go_social.dart';
 import 'package:truyou/screens/my-matches/my_matches.dart';
@@ -12,12 +13,13 @@ import 'package:truyou/screens/profile/my_profile.dart';
 import 'package:truyou/screens/settings/settings.dart';
 
 class AppRoot extends StatelessWidget {
+  //TODO: Check if user has staked, if not lock all screen accept Go social and find matches
   const AppRoot({Key? key}) : super(key: key);
 
   static MaterialPageRoute route() {
     return MaterialPageRoute(
         builder: (context) => AppRoot(),
-        settings: const RouteSettings(name: '/app-root'));
+        settings: const RouteSettings(name: Routes.home));
   }
 
   @override
@@ -65,6 +67,7 @@ class AppRoot extends StatelessWidget {
                 position == 1 ? Colors.transparent : Constants.background_color,
             elevation: 0.0,
             leading: IconButton(
+                key: Key(Keys.findMatchesMenuButton),
                 icon: Icon(Icons.menu),
                 onPressed: () {
                   controller.toggle();
@@ -79,7 +82,10 @@ class AppRoot extends StatelessWidget {
               //Displays chat bubble on home screen
               position == 0
                   ? IconButton(
-                      onPressed: () {},
+                      key: Key(Keys.findMatchesChatBubbleButton),
+                      onPressed: () {
+                        Navigator.push(context, ChatsTabView.route());
+                      },
                       icon: Icon(
                         CupertinoIcons.chat_bubble_fill,
                         color: Colors.white,

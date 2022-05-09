@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:pinput/pinput.dart';
 import 'package:truyou/screens/app_root.dart';
+import 'package:truyou/screens/create-account-screens/create_account_general.dart';
 
 class OTPVerficationScreen extends StatefulWidget {
   final String countryCode;
@@ -12,7 +13,7 @@ class OTPVerficationScreen extends StatefulWidget {
     return MaterialPageRoute(
         builder: (context) => OTPVerficationScreen(
             countryCode: countryCode, phoneNumber: phoneNumber),
-        settings: const RouteSettings(name: '/otp-verification'));
+        settings: const RouteSettings(name: Routes.otpVerificationScreen));
   }
 
   const OTPVerficationScreen(
@@ -34,8 +35,8 @@ class _OTPVerficationScreenState extends State<OTPVerficationScreen> {
     //Validates form fields
     if (_formKey.currentState!.validate()) {
       //TODO:Verify OTP code
-      Navigator.of(context)
-          .pushAndRemoveUntil(AppRoot.route(), (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          CreateAccountGeneralScreen.route(), (route) => false);
     }
   }
 
@@ -93,7 +94,7 @@ class _OTPVerficationScreenState extends State<OTPVerficationScreen> {
                   //Pin entry - 4 digits
                   Container(
                     child: Pinput(
-                      key: Key('otp-verification-pin-input'),
+                      key: Key(Fields.otpVerificationPinInput.key),
                       validator: otpValidator,
                       defaultPinTheme: PinTheme(
                           width: ResponsiveWidget.size(context,
@@ -149,7 +150,7 @@ class _OTPVerficationScreenState extends State<OTPVerficationScreen> {
                   Expanded(
                     flex: 1,
                     child: OutlinedGlowButton(
-                      key: Key('otp-verification-back-button'),
+                      key: Key(Keys.otpVerificationBackButton),
                       buttonHeight: _size.height * 0.07,
                       buttonWidth: ResponsiveWidget.size(
                           context, _size.width, _size.width * 0.1),
@@ -176,7 +177,7 @@ class _OTPVerficationScreenState extends State<OTPVerficationScreen> {
                   Expanded(
                     flex: 3,
                     child: OutlinedGlowButton(
-                      key: Key('otp-verification-next-button'),
+                      key: Key(Keys.otpVerificationNextButton),
                       buttonHeight: _size.height * 0.07,
                       buttonWidth: _size.width,
                       widget: Text(

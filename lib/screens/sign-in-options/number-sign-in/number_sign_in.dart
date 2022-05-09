@@ -10,7 +10,7 @@ class SignInPhoneNumber extends StatefulWidget {
   static Route route() {
     return MaterialPageRoute(
       builder: (_) => const SignInPhoneNumber(),
-      settings: const RouteSettings(name: '/phone-number-sign-in'),
+      settings: const RouteSettings(name: Routes.signInPhoneNumberScreen),
     );
   }
 
@@ -52,7 +52,7 @@ class _SignInPhoneNumberState extends State<SignInPhoneNumber> {
                 padding: EdgeInsets.all(ResponsiveWidget.size(
                     context, _size.width * 0.02, _size.width * 0.005)),
                 child: IconButton(
-                  key: Key('sign-in-with-phone-number-back-button'),
+                  key: Key(Keys.signInWithPhoneNumberbackToWelcomeScreen),
                   icon: Icon(
                     CupertinoIcons.back,
                     size: ResponsiveWidget.size(
@@ -164,7 +164,7 @@ class _SignInPhoneNumberState extends State<SignInPhoneNumber> {
                                   vertical: _size.height * 0.01,
                                   horizontal: _size.width * 0.01),
                               child: TextFormField(
-                                key: Key('phone-number-text-field'),
+                                key: Key(Fields.phoneNumberSignInNumberKey.key),
                                 keyboardType: TextInputType.numberWithOptions(),
                                 controller: _phoneNumberController,
                                 validator: phoneNumberValidator,
@@ -211,7 +211,7 @@ class _SignInPhoneNumberState extends State<SignInPhoneNumber> {
         Align(
           alignment: Alignment.bottomCenter,
           child: GlowButton(
-              key: Key('get-my-otp-code-button'),
+              key: Key(Keys.getMyOTPCodeButton),
               text: Constants.GET_MY_OTP_CODE,
               buttonWidth: ResponsiveWidget.size(
                   context, _size.width, _size.width * 0.4),

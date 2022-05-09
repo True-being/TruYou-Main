@@ -86,6 +86,7 @@ class _ChooseGiftScreenState extends State<ChooseGiftScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
+                key: Key(Keys.sendTheUserAGiftBackButton),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

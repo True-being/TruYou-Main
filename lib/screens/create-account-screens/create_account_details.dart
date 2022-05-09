@@ -22,7 +22,7 @@ class CreateAccountDetailsScreen extends StatefulWidget {
   static Route route(AuthUser authUser) {
     return MaterialPageRoute(
       builder: (_) => CreateAccountDetailsScreen(user: authUser),
-      settings: const RouteSettings(name: '/create-account-details-screen'),
+      settings: const RouteSettings(name: Routes.createAccountDetailsScreen),
     );
   }
 
@@ -249,7 +249,7 @@ class _CreateAccountDetailsScreenState
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leading: IconButton(
-            key: Key('create-account-details-back-button'),
+            key: Key(Keys.createAccountDetailsBackButton),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -360,7 +360,8 @@ class _CreateAccountDetailsScreenState
                 ),
                 //Algorand wallet address
                 CustomTextField(
-                    textFieldKey: Key('create-account-details-wallet-address'),
+                    textFieldKey:
+                        Key(Fields.createAccountDetailsWalletAddress.key),
                     title: Constants.ALGORAND_WALLET_ADDRESS,
                     hintText: Constants.ALGORAND_WALLET_ADDRESS,
                     maxLines: 1,
@@ -385,12 +386,12 @@ class _CreateAccountDetailsScreenState
                         context, _size.width * 0.03, _size.width * 0.01)),
                 //About me
                 CustomTextField(
-                  textFieldKey: Key('create-account-details-about-me-field'),
+                  textFieldKey: Key(Fields.createAccountDetailsAboutMe.key),
                   title: Constants.ABOUT_ME,
                   hintText: Constants.ABOUT_ME_MESSAGE,
                   maxLines: 8,
                   validator: (String? text) =>
-                      longTextValidator(text, 'about yourself'),
+                      longTextValidator(text, Constants.ABOUT_YOURSELF),
                   formatter: longTextFormatter(),
                   controller: _aboutMeController,
                   horizontalPadding:
@@ -398,12 +399,12 @@ class _CreateAccountDetailsScreenState
                 ),
                 //Life Style
                 CustomTextField(
-                  textFieldKey: Key('create-account-details-life-style-field'),
+                  textFieldKey: Key(Fields.createAccountDetailsLifeStyle.key),
                   title: Constants.LIFE_STYLE,
                   hintText: Constants.LIFE_STYLE_MESSAGE,
                   maxLines: 8,
                   validator: (String? text) =>
-                      longTextValidator(text, 'about your lifestyle'),
+                      longTextValidator(text, Constants.ABOUT_YOUR_LIFESTYLE),
                   formatter: longTextFormatter(),
                   controller: _lifeStyleController,
                   horizontalPadding:
@@ -411,12 +412,12 @@ class _CreateAccountDetailsScreenState
                 ),
                 //Job title
                 CustomTextField(
-                  textFieldKey: Key('create-account-details-job-title-field'),
+                  textFieldKey: Key(Fields.createAccountDetailsJobTitle.key),
                   title: Constants.JOB,
                   hintText: Constants.JOB_TITLE,
                   maxLines: 1,
                   validator: (String? val) =>
-                      shortTextValidator(val, 'job title'),
+                      shortTextValidator(val, Constants.JOB_TITLE),
                   formatter: shortTextFormatter(),
                   controller: _jobTitleController,
                   horizontalPadding:
@@ -424,13 +425,12 @@ class _CreateAccountDetailsScreenState
                 ),
                 //Company name
                 CustomTextField(
-                  textFieldKey:
-                      Key('create-account-details-company-name-field'),
+                  textFieldKey: Key(Fields.createAccountDetailsCompany.key),
                   title: Constants.COMPANY,
                   hintText: Constants.COMPANY_NAME,
                   maxLines: 1,
                   validator: (String? val) =>
-                      shortTextValidator(val, 'company name'),
+                      shortTextValidator(val, Constants.COMPANY_NAME),
                   formatter: shortTextFormatter(),
                   controller: _companyNameController,
                   horizontalPadding:
@@ -539,7 +539,7 @@ class _CreateAccountDetailsScreenState
                   ),
                 ),
                 GlowButton(
-                    key: Key('create-account-details-find-matches'),
+                    key: Key(Keys.createAccountDetailsFindMatchesButton),
                     text: Constants.FIND_MATCHES,
                     buttonWidth: _size.width,
                     buttonHeight: _size.height * 0.07,

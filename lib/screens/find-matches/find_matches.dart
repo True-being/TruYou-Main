@@ -61,6 +61,17 @@ class _FindMatchesState extends State<FindMatches> {
                     image: 'assets/women2.png',
                     title: 'Shriya Williams,28',
                     description: 'Team Manager'));
+                if (dir == Direction.right) {
+                  Random random = Random();
+                  int number = random.nextInt(20);
+                  if (number >= 10) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ItsAMatchScreen()));
+                    _cardSectionController.triggerSwipeRight();
+                  } else {
+                    _cardSectionController.triggerSwipeRight();
+                  }
+                }
 
                 //Take action on the swiped widget based on the direction of swipe
               },
