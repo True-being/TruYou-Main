@@ -5,6 +5,13 @@ import 'package:truyou/components/components.dart';
 class ItsAMatchScreen extends StatefulWidget {
   const ItsAMatchScreen({Key? key}) : super(key: key);
 
+  static Route route() {
+    return MaterialPageRoute(
+      builder: (_) => const ItsAMatchScreen(),
+      settings: const RouteSettings(name: Routes.itsAMatchScreen),
+    );
+  }
+
   @override
   State<ItsAMatchScreen> createState() => _ItsAMatchScreenState();
 }

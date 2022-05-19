@@ -6,6 +6,10 @@ import 'package:truyou/models/auth_user_model.dart';
 import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/chats/messages/tab_view.dart';
 import 'package:truyou/screens/gift-screens/choose_gift_screen.dart';
+import 'package:truyou/screens/gift-screens/send-gift-screens/nft_gift.dart';
+import 'package:truyou/screens/go-social/go_social.dart';
+import 'package:truyou/screens/go-social/roles/purchase_role.dart';
+import 'package:truyou/screens/go-social/roles/social_swag.dart';
 import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/screens/screens.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -72,6 +76,13 @@ class Keys {
   static const sendTheUserAGiftBackButton = 'send-the-user-a-gift-back-button';
   //*Unmatch dialog
   static const confirmUnmatchDialogMessage = 'confirm-unmatch-dialog-message';
+  //*Social swag
+  static const socialSwagBackButton = 'social-swag-back-button';
+  static const getPerksButton = 'get-perks-button';
+  //*NFT gift
+  static const nftGiftBackButton = 'nft-gift-back-button';
+  //*Purchase Role
+  static const purchaseRoleBackButton = 'purchase-role-back-button';
 }
 
 ///Fields contains all the apps textfields and validates them
@@ -356,6 +367,10 @@ class Routes {
   static const chatViewer = '/chat-viewer';
   static const confirmTossDialog = '/confirm-toss-dialog';
   static const unmatchUserDialog = '/match-unmatch-dialog';
+  static const itsAMatchScreen = '/its-a-match-screen';
+  static const socialSwag = '/social-swag';
+  static const purchaseRole = '/purchase-role';
+  static const confirmPurchaseRoleDialog = '/confirm-purchase-role-dialog';
 
   static void testAll() {
     //!Welcome screen routing
@@ -492,6 +507,49 @@ class Routes {
         activatorKey: Keys.sendTheUserAGiftBackButton,
         destination: home,
         navType: NavType.pop)
+      ..test();
+
+    //*Pop from social swag
+    AutoRoute(
+        screen: SocialSwag(),
+        process: [],
+        activatorKey: Keys.socialSwagBackButton,
+        destination: home,
+        navType: NavType.pop)
+      ..test();
+
+    //*Pop from purchase role
+    AutoRoute(
+        screen: PurchaseRole(title: 'title', imageURL: 'assets/women1.jpg'),
+        process: [],
+        activatorKey: Keys.purchaseRoleBackButton,
+        destination: home,
+        navType: NavType.pop)
+      ..test();
+
+    //*Pop from NFT Gift screen
+    AutoRoute(
+        screen: NFTGiftScreen(
+          title: 'title',
+          receipient: 'receipient',
+          imagePath: 'assets/women1.jpg',
+        ),
+        process: [],
+        activatorKey: Keys.nftGiftBackButton,
+        destination: home,
+        navType: NavType.pop)
+      ..test();
+
+    //*Navigate to purchase role
+    //TODO: Change auto route to cater for find.byType(Card).first
+
+    //*Navigate to social swag
+    AutoRoute(
+        screen: const GoSocial(),
+        process: [],
+        activatorKey: Keys.getPerksButton,
+        destination: socialSwag,
+        navType: NavType.push)
       ..test();
   }
 }

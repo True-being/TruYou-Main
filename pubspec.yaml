@@ -32,7 +32,7 @@ dependencies:
   location: ^4.3.0
   pinput: ^2.2.4
   permission_handler: ^9.2.0
-  reflectable: any
+  percent_indicator: any
   swipeable_card_stack: ^0.0.5
   
 

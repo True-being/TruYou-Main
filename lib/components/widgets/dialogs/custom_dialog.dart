@@ -4,6 +4,7 @@ import 'package:foil/foil.dart';
 import 'dart:io' show Platform;
 
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/validators/trust_validator.dart';
 import 'package:truyou/screens/chats/chat_viewer.dart';
 import 'package:truyou/screens/gift-screens/choose_gift_screen.dart';
 import 'package:truyou/screens/profile/user_profile.dart';
@@ -524,6 +525,284 @@ class CustomDialog {
                 ],
               ),
             ));
+      },
+    );
+  }
+
+  //TODO: Perhaps have a callback to purchase role screen? Instead of direct execution here?
+  static void showConfirmPurchaseRole(BuildContext context, String roleTitle) {
+    Size size = MediaQuery.of(context).size;
+    showDialog(
+      routeSettings: RouteSettings(name: Routes.confirmPurchaseRoleDialog),
+      context: context,
+      useRootNavigator: false,
+      builder: (context) {
+        //TODO: Add stateful builder when dealing with actions
+        return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            backgroundColor: Constants.background_color,
+            content: Container(
+              width: size.width * 0.4,
+              height: size.height * 0.23,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: size.width * 0.04,
+                        horizontal: size.width * 0.02),
+                    child: Text(
+                      Constants.PURCHASE_ROLE_CONFIRMATION_MESSAGE(roleTitle),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.05),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      //No
+                      OutlinedGlowButton(
+                          widget: Text(
+                            Constants.NO,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: size.width * 0.05),
+                          ),
+                          buttonWidth: size.width * 0.23,
+                          buttonHeight: size.height * 0.07,
+                          onPress: () {
+                            Navigator.of(context).pop();
+                          }),
+                      //Yes
+                      OutlinedGlowButton(
+                          widget: Text(
+                            Constants.YES,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: size.width * 0.05),
+                          ),
+                          buttonWidth: size.width * 0.23,
+                          buttonHeight: size.height * 0.07,
+                          onPress: () {
+                            //TODO:Initiate smart contract
+                          }),
+                    ],
+                  )
+                ],
+              ),
+            ));
+      },
+    );
+  }
+
+  static void showPremiumFeatures(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    var theme = Theme.of(context);
+    var _stakeTrustController = TextEditingController(text: '01');
+    showDialog(
+      routeSettings: RouteSettings(name: Routes.confirmPurchaseRoleDialog),
+      context: context,
+      useRootNavigator: false,
+      builder: (context) {
+        return SimpleDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          backgroundColor: Constants.blue_jeans,
+          children: [
+            //Exit button
+            Padding(
+              padding: EdgeInsets.only(right: p(context, 8.0)),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: w(context, 25),
+                    )),
+              ),
+            ),
+            //Premium features title
+            Padding(
+              padding: EdgeInsets.only(top: p(context, 4.0)),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(Constants.PREMIUM_FEATURES,
+                    style: theme.textTheme.headline2?.copyWith(
+                        color: Colors.white,
+                        fontSize: f(context, 26),
+                        fontWeight: FontWeight.w500)),
+              ),
+            ),
+            //APR of trust token
+            Padding(
+              padding: EdgeInsets.only(top: p(context, 8.0)),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(Constants.APR_OF_TRUST_TOKEN + '45%',
+                    style: theme.textTheme.headline2?.copyWith(
+                        color: Colors.white,
+                        fontSize: f(context, 18),
+                        fontWeight: FontWeight.w400)),
+              ),
+            ),
+            SpacerV.m(context),
+            //Get Trust
+            Padding(
+              padding: EdgeInsets.only(left: p(context, 32.0)),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: w(context, 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(Constants.GET_TRUST,
+                      style: theme.textTheme.headline2?.copyWith(
+                          color: Colors.white,
+                          fontSize: f(context, 19),
+                          fontWeight: FontWeight.w400))
+                ],
+              ),
+            ),
+            SpacerV.c(context, 2.0),
+            //Pledge Trust
+            Padding(
+              padding: EdgeInsets.only(left: p(context, 32.0)),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: w(context, 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(Constants.PLEDGE_TRUST,
+                      style: theme.textTheme.headline2?.copyWith(
+                          color: Colors.white,
+                          fontSize: f(context, 19),
+                          fontWeight: FontWeight.w400))
+                ],
+              ),
+            ),
+            SpacerV.c(context, 2.0),
+            //Pledge Trust
+            Padding(
+              padding: EdgeInsets.only(left: p(context, 32.0)),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: w(context, 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(Constants.GO_SOCIAL,
+                      style: theme.textTheme.headline2?.copyWith(
+                          color: Colors.white,
+                          fontSize: f(context, 19),
+                          fontWeight: FontWeight.w400))
+                ],
+              ),
+            ),
+            SpacerV.m(context),
+            //Amount of trust token to pledge
+            Padding(
+              padding: EdgeInsets.only(top: p(context, 8.0)),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(Constants.AMOUNT_OF_TRUST_TO_PLEDGE,
+                    style: theme.textTheme.headline2?.copyWith(
+                        color: Colors.white,
+                        fontSize: f(context, 16),
+                        fontWeight: FontWeight.w500)),
+              ),
+            ),
+            //Textfield
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: p(context, 16.0), horizontal: p(context, 16.0)),
+              child: TextFormField(
+                keyboardType: TextInputType.number,
+                controller: _stakeTrustController,
+                textAlign: TextAlign.center,
+                inputFormatters: stakeTrustFormatter(),
+                validator: trustValidator,
+                onFieldSubmitted: (String value) {
+                  _stakeTrustController.text = value;
+                },
+                style: TextStyle(
+                    color: Constants.background_color,
+                    fontSize: size.width * 0.05,
+                    fontWeight: FontWeight.w700),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide.none),
+                    filled: true,
+                    fillColor: Colors.white),
+              ),
+            ),
+            //Amount of trust token to pledge
+            Align(
+              alignment: Alignment.center,
+              child: Text(Constants.PLEDGE_RATIO,
+                  style: theme.textTheme.headline2?.copyWith(
+                      color: Colors.white,
+                      fontSize: f(context, 16),
+                      fontWeight: FontWeight.w500)),
+            ),
+            SpacerV.s(context),
+            //Buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedGlowButton(
+                    widget: Text(
+                      Constants.NO_THANKS,
+                      style: theme.textTheme.headline2?.copyWith(
+                          color: Colors.white,
+                          fontSize: f(context, 17),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    buttonWidth: w(context, 125),
+                    buttonHeight: w(context, 45),
+                    onPress: () {
+                      //TODO: Navigate to current screen
+                      //Navigator.pop(context)
+                      Navigator.pop(context);
+                    }),
+                OutlinedGlowButton(
+                    widget: Text(
+                      Constants.LET_ME_IN,
+                      style: theme.textTheme.headline2?.copyWith(
+                          color: Colors.white,
+                          fontSize: f(context, 17),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    buttonWidth: w(context, 125),
+                    buttonHeight: w(context, 45),
+                    onPress: () {})
+              ],
+            )
+          ],
+        );
       },
     );
   }

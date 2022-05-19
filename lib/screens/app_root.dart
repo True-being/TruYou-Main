@@ -109,13 +109,15 @@ String titleSwapper(int position) {
   switch (position) {
     case 0:
     case 1:
-    case 4:
       break;
     case 2:
       title = Constants.MY_MATCHES;
       break;
     case 3:
       title = Constants.GO_SOCIAL;
+      break;
+    case 4:
+      title = Constants.PREMIUM_FEATURES;
       break;
     case 5:
       title = Constants.PARTNERSHIPS;

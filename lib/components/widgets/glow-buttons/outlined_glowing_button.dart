@@ -12,6 +12,7 @@ class OutlinedGlowButton extends StatelessWidget {
   final double? horizontalPadding;
   final LinearGradient? gradient;
   final Color? glowColor;
+  final BorderRadius? borderRadius;
   final Function() onPress;
 
   const OutlinedGlowButton(
@@ -20,6 +21,7 @@ class OutlinedGlowButton extends StatelessWidget {
       required this.buttonWidth,
       required this.buttonHeight,
       required this.onPress,
+      this.borderRadius,
       this.verticalPadding,
       this.horizontalPadding,
       this.gradient,
@@ -39,7 +41,7 @@ class OutlinedGlowButton extends StatelessWidget {
             width: buttonWidth,
             height: buttonHeight,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: borderRadius ?? BorderRadius.circular(5.0),
               boxShadow: [
                 BoxShadow(
                   color:
@@ -59,7 +61,7 @@ class OutlinedGlowButton extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
+                  borderRadius: borderRadius ?? BorderRadius.circular(5.0),
                   color: Constants.background_color),
               margin: EdgeInsets.all(2.0),
               child: OutlinedButton(

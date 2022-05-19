@@ -16,6 +16,28 @@ class Constants {
   static const Color neon_yellow = Color(0xffFFE500);
 
   //Strings(Language translation use)
+  static String NO_THANKS = 'No Thanks';
+  static String LET_ME_IN = 'Let me in';
+  static String AMOUNT_OF_TRUST_TO_PLEDGE = 'Amount of Trust token to pledge';
+  static String GET_TRUST = 'Get Trust';
+  static String APR_OF_TRUST_TOKEN = 'APR of trust token is ';
+  static String STAKE = 'Stake';
+  static String UNSTAKE = 'Unstake';
+  static String ENTER_AMOUNT_OF_TRUST = 'Enter amount of trust';
+  static String TOKEN_STATS = 'Token Stats';
+  static String PLATFORM_STATS = 'Platform Stats';
+  static String YOUR_STATS = 'Your Stats';
+  static String PURCHASE_ROLE_CONFIRMATION_MESSAGE(String roleTitle) =>
+      'Are you sure that you want to purchase $roleTitle?';
+  static String MY_ROLES = 'My Roles';
+  static String PURCHASE_ROLE = 'Purchase Role';
+  static String PURCHASE_ROLES = 'Purchase Roles';
+  static String NONE = 'None';
+  static String CURRENT_ROLE = 'Current Role';
+  static String SOCIAL_SWAG = 'Social Swag';
+  static String USERS = 'users';
+  static String CHATTING_AS = 'Chatting as: ';
+  static String GET_PERKS = 'Get Perks';
   static String GIFT_NOTIFICATION =
       'Someone wants to send you a gift! Click "open" to accept it and "toss" to send it back.';
   static String SAY_HELLO = 'Say Hi to';

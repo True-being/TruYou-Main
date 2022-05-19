@@ -494,6 +494,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  percent_indicator:
+    dependency: "direct main"
+    description:
+      name: percent_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.1"
   permission_handler:
     dependency: "direct main"
     description:
@@ -564,13 +571,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  reflectable:
-    dependency: "direct main"
-    description:
-      name: reflectable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.4"
   sensors_plus:
     dependency: transitive
     description:

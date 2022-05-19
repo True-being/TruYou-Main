@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:truyou/components/components.dart';
 
 ThemeData buildAppTheme(BuildContext context) {
   final defaultTheme = Theme.of(context);

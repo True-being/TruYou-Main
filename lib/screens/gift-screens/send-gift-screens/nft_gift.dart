@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
-import 'package:truyou/components/widgets/back_button.dart';
+import 'package:truyou/components/widgets/custom_app_bar.dart';
 
 ///Screen to display details about the NFT selected
 class NFTGiftScreen extends StatelessWidget {
@@ -15,15 +14,10 @@ class NFTGiftScreen extends StatelessWidget {
       required this.receipient})
       : super(key: key);
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   double _algoBalance = 52.3;
 
   void _onPressedSendNFTs(BuildContext context) {
-    //TODO: Validate textfield
-    if (_formKey.currentState!.validate()) {
-      CustomDialog.showGiftConfirmationDialog(context, receipient, title);
-    }
+    CustomDialog.showGiftConfirmationDialog(context, receipient, title);
   }
 
   double price = 28.23;
@@ -33,18 +27,8 @@ class NFTGiftScreen extends StatelessWidget {
     Size _size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Constants.background_color,
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        leading: CustomBackButton(),
-        title: Text(
-          title,
-          style: TextStyle(color: Colors.white, fontSize: _size.width * 0.06),
-        ),
-      ),
-      body: Form(
-        key: _formKey,
+      appBar: customAppBar(context, Keys.nftGiftBackButton, title),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SpacerV.m(context),

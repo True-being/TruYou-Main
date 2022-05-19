@@ -65,8 +65,7 @@ class _FindMatchesState extends State<FindMatches> {
                   Random random = Random();
                   int number = random.nextInt(20);
                   if (number >= 10) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ItsAMatchScreen()));
+                    // Navigator.of(context).push(ItsAMatchScreen.route());
                     _cardSectionController.triggerSwipeRight();
                   } else {
                     _cardSectionController.triggerSwipeRight();
@@ -109,8 +108,7 @@ class _FindMatchesState extends State<FindMatches> {
                     Random random = Random();
                     int number = random.nextInt(20);
                     if (number >= 10) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ItsAMatchScreen()));
+                      // Navigator.of(context).push(ItsAMatchScreen.route());
                       _cardSectionController.triggerSwipeRight();
                     } else {
                       _cardSectionController.triggerSwipeRight();
