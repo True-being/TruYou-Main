@@ -103,6 +103,7 @@ class _GoSocialState extends State<GoSocial> {
     return Padding(
       padding: EdgeInsets.all(p(context, 8.0)),
       child: TextFormField(
+        style: theme.textTheme.headline6?.copyWith(color: Colors.grey[300]),
         decoration: InputDecoration(
             hintText: Constants.TYPE_A_MESSAGE,
             hintStyle:

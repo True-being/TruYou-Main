@@ -24,6 +24,8 @@ class _FindMatchesState extends State<FindMatches> {
   SwipeableCardSectionController _cardSectionController =
       SwipeableCardSectionController();
 
+  Random random = Random();
+
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
@@ -57,10 +59,6 @@ class _FindMatchesState extends State<FindMatches> {
                     description: 'Team Manager')
               ],
               onCardSwiped: (dir, index, widget) {
-                _cardSectionController.addItem(SwipeCard(
-                    image: 'assets/women2.png',
-                    title: 'Shriya Williams,28',
-                    description: 'Team Manager'));
                 if (dir == Direction.right) {
                   Random random = Random();
                   int number = random.nextInt(20);
@@ -72,7 +70,10 @@ class _FindMatchesState extends State<FindMatches> {
                   }
                 }
 
-                //Take action on the swiped widget based on the direction of swipe
+                _cardSectionController.addItem(SwipeCard(
+                    image: 'assets/women2.png',
+                    title: 'Shriya Williams,28',
+                    description: 'Team Manager'));
               },
               enableSwipeUp: false,
               enableSwipeDown: false,
@@ -84,11 +85,11 @@ class _FindMatchesState extends State<FindMatches> {
                 //TODO: Switch Red and green button; switch direction of arrow
                 CircularGlowButton(
                   width: ResponsiveWidget.size(
-                      context, _size.width * 0.12, _size.width * 0.08),
+                      context, _size.width * 0.16, _size.width * 0.10),
                   height: ResponsiveWidget.size(
-                      context, _size.width * 0.1, _size.width * 0.06),
+                      context, _size.width * 0.16, _size.width * 0.10),
                   iconSize: ResponsiveWidget.size(
-                      context, _size.width * 0.07, _size.width * 0.035),
+                      context, _size.width * 0.09, _size.width * 0.045),
                   iconColor: Constants.neon_red,
                   icon: Icon(CupertinoIcons.clear),
                   onPress: () {
@@ -105,7 +106,6 @@ class _FindMatchesState extends State<FindMatches> {
                   iconColor: Constants.neon_green,
                   icon: Icon(CupertinoIcons.heart),
                   onPress: () {
-                    Random random = Random();
                     int number = random.nextInt(20);
                     if (number >= 10) {
                       // Navigator.of(context).push(ItsAMatchScreen.route());
@@ -113,20 +113,6 @@ class _FindMatchesState extends State<FindMatches> {
                     } else {
                       _cardSectionController.triggerSwipeRight();
                     }
-                  },
-                ),
-                CircularGlowButton(
-                  width: ResponsiveWidget.size(
-                      context, _size.width * 0.12, _size.width * 0.08),
-                  height: ResponsiveWidget.size(
-                      context, _size.width * 0.1, _size.width * 0.06),
-                  iconSize: ResponsiveWidget.size(
-                      context, _size.width * 0.07, _size.width * 0.035),
-                  iconColor: Constants.neon_yellow,
-                  icon: Icon(CupertinoIcons.arrow_right),
-                  onPress: () {
-                    //Load cached previous profile
-                    // CustomDialog.showMatchOptionDialog(context, widget.);
                   },
                 ),
               ],

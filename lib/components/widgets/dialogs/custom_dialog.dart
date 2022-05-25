@@ -392,69 +392,56 @@ class CustomDialog {
       useRootNavigator: false,
       builder: (context) {
         //TODO: Add stateful builder when dealing with actions
-        return AlertDialog(
+        return SimpleDialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
             backgroundColor: Constants.background_color,
-            content: Container(
-              width: size.width * 0.5,
-              height: size.height * 0.3,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: size.width * 0.04,
-                          horizontal: size.width * 0.02),
-                      child: Text(
-                        Constants.UNMATCH_MESSAGE(user),
-                        key: Key(Keys.confirmUnmatchDialogMessage),
-                        textAlign: TextAlign.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: size.width * 0.04, horizontal: size.width * 0.02),
+                child: Text(
+                  Constants.UNMATCH_MESSAGE(user),
+                  key: Key(Keys.confirmUnmatchDialogMessage),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white, fontSize: size.width * 0.05),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  //NoconfirmUnmatchDialogMessage
+                  Flexible(
+                    child: OutlinedGlowButton(
+                        widget: Text(
+                          Constants.NO,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: size.width * 0.05),
+                        ),
+                        buttonWidth: size.width * 0.23,
+                        buttonHeight: size.height * 0.07,
+                        onPress: () {
+                          Navigator.of(context).pop();
+                        }),
+                  ),
+                  //Yes
+                  OutlinedGlowButton(
+                      widget: Text(
+                        Constants.YES,
                         style: TextStyle(
                             color: Colors.white, fontSize: size.width * 0.05),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        //NoconfirmUnmatchDialogMessage
-                        Flexible(
-                          child: OutlinedGlowButton(
-                              widget: Text(
-                                Constants.NO,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: size.width * 0.05),
-                              ),
-                              buttonWidth: size.width * 0.23,
-                              buttonHeight: size.height * 0.07,
-                              onPress: () {
-                                Navigator.of(context).pop();
-                              }),
-                        ),
-                        //Yes
-                        OutlinedGlowButton(
-                            widget: Text(
-                              Constants.YES,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: size.width * 0.05),
-                            ),
-                            buttonWidth: size.width * 0.23,
-                            buttonHeight: size.height * 0.07,
-                            onPress: () {
-                              //TODO:UNMATCH users
-                            }),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ));
+                      buttonWidth: size.width * 0.23,
+                      buttonHeight: size.height * 0.07,
+                      onPress: () {
+                        //TODO:UNMATCH users
+                      }),
+                ],
+              )
+            ]);
       },
     );
   }

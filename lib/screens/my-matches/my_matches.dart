@@ -89,12 +89,12 @@ class _MyMatchesState extends State<MyMatches> {
                                   borderRadius: BorderRadius.circular(30.0),
                                   borderSide: BorderSide(
                                       color: Colors.white,
-                                      width: _size.width * 0.002)),
+                                      width: w(context, 1.5))),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(30.0),
                                   borderSide: BorderSide(
                                       color: Colors.white,
-                                      width: _size.width * 0.002)),
+                                      width: w(context, 1.5))),
                               hintText: Constants.SEARCH,
                               hintStyle: TextStyle(
                                   color: Colors.grey[200],

@@ -93,6 +93,10 @@ class _ChatViewerState extends State<ChatViewer> {
     return Padding(
       padding: EdgeInsets.all(p(context, 8.0)),
       child: TextFormField(
+        style: TextStyle(
+          color: Colors.grey[400],
+          fontSize: f(context, 16),
+        ),
         decoration: InputDecoration(
             hintText: Constants.TYPE_A_MESSAGE,
             hintStyle: TextStyle(

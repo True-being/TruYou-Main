@@ -246,48 +246,49 @@ class _UserProfileState extends State<UserProfile> {
               SizedBox(
                 height: _size.height * 0.03,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: _size.width * 0.02,
-                    horizontal: _size.width * 0.03),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color.fromARGB(255, 17, 17, 36),
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-                      //TODO:Copy wallet address
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: _size.width * 0.04,
-                          horizontal: _size.width * 0.04),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.share,
-                            color: Constants.purple,
-                            size: _size.width * 0.06,
-                          ),
-                          SizedBox(
-                            width: _size.width * 0.02,
-                          ),
-                          Flexible(
-                            child: Text(
-                              Constants.SHARE_PROFILE_NOW,
-                              style: TextStyle(
-                                  color: Constants.purple,
-                                  fontSize: _size.width * 0.05),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              //TODO: Add share profile functionality in future
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       vertical: _size.width * 0.02,
+              //       horizontal: _size.width * 0.03),
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(15.0),
+              //       color: Color.fromARGB(255, 17, 17, 36),
+              //     ),
+              //     child: GestureDetector(
+              //       onTap: () {
+              //         Share profile
+              //       },
+              //       child: Padding(
+              //         padding: EdgeInsets.symmetric(
+              //             vertical: _size.width * 0.04,
+              //             horizontal: _size.width * 0.04),
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.center,
+              //           children: [
+              //             Icon(
+              //               Icons.share,
+              //               color: Constants.purple,
+              //               size: _size.width * 0.06,
+              //             ),
+              //             SizedBox(
+              //               width: _size.width * 0.02,
+              //             ),
+              //             Flexible(
+              //               child: Text(
+              //                 Constants.SHARE_PROFILE_NOW,
+              //                 style: TextStyle(
+              //                     color: Constants.purple,
+              //                     fontSize: _size.width * 0.05),
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           Row(

@@ -82,7 +82,7 @@ class Constants {
   static const String SEARCH = 'Search';
   static const String VIEW_PROFILE = 'View Profile';
   static const String START_CONVERSATION = 'Start Conversation';
-  static const String SEND_USER_A_GIFT = 'Send the user a gift';
+  static const String SEND_USER_A_GIFT = 'Send a Gift';
   static const String UNMATCH = 'Unmatch';
   static const String HOME = 'Home';
   static const String MY_PROFILE = 'My Profile';
