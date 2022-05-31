@@ -13,6 +13,11 @@ import 'package:truyou/screens/go-social/roles/social_swag.dart';
 import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/screens/screens.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:truyou/screens/settings/connected_accounts.dart';
+import 'package:truyou/screens/settings/location_settings.dart';
+import 'package:truyou/screens/settings/notifications.dart';
+import 'package:truyou/screens/settings/search_of.dart';
+import 'package:truyou/screens/settings/settings.dart';
 
 //TODO: Create dialog router tester
 //TODO: Create dialog error tester
@@ -83,6 +88,20 @@ class Keys {
   static const nftGiftBackButton = 'nft-gift-back-button';
   //*Purchase Role
   static const purchaseRoleBackButton = 'purchase-role-back-button';
+  //*Connected accounts
+  static const connectedAccountsBackButton = 'connected-accounts-back-button';
+  static const connectedAccountsSettingsButton =
+      'connected-accounts-settings-button';
+  //*Location Settings
+  static const locationSettingsBackButton = 'location-settings-back-button';
+  static const locationSettingsSettingButton =
+      'location-settings-settings-button';
+  //*In search of Settings
+  static const inSearchOfBackButton = 'in-search-of-back-button';
+  static const inSearchOfSettingsButton = 'in-search-of-settings-button';
+  //*Notifications back button
+  static const notificationsBackButton = 'notifications-back-button';
+  static const notificationsSettingsButton = 'notifications-settings-button';
 }
 
 ///Fields contains all the apps textfields and validates them
@@ -371,6 +390,11 @@ class Routes {
   static const socialSwag = '/social-swag';
   static const purchaseRole = '/purchase-role';
   static const confirmPurchaseRoleDialog = '/confirm-purchase-role-dialog';
+  //TODO: Test
+  static const connectedAccounts = '/connected-accounts';
+  static const locationSettings = '/location-settings';
+  static const inSearchOf = '/in-search-of';
+  static const notifications = '/notifications';
 
   static void testAll() {
     //!Welcome screen routing
@@ -550,6 +574,62 @@ class Routes {
         activatorKey: Keys.getPerksButton,
         destination: socialSwag,
         navType: NavType.push)
+      ..test();
+
+    //!Settings routes
+
+    //*Navigate to connected accounts
+    AutoRoute(
+        screen: const Settings(),
+        process: [],
+        activatorKey: Keys.connectedAccountsSettingsButton,
+        destination: connectedAccounts,
+        navType: NavType.push)
+      ..test();
+
+    //*Pop from connected accounts
+    AutoRoute(
+        screen: const ConnectedAccounts(),
+        process: [],
+        activatorKey: Keys.connectedAccountsBackButton,
+        destination: home,
+        navType: NavType.pop)
+      ..test();
+
+    //*Navigate to In Search Of
+    AutoRoute(
+        screen: const Settings(),
+        process: [],
+        activatorKey: Keys.inSearchOfSettingsButton,
+        destination: inSearchOf,
+        navType: NavType.push)
+      ..test();
+
+    //*Pop from In Search of
+    AutoRoute(
+        screen: const SearchOf(),
+        process: [],
+        activatorKey: Keys.inSearchOfBackButton,
+        destination: home,
+        navType: NavType.pop)
+      ..test();
+
+    //*Navigate to notifications
+    AutoRoute(
+        screen: const Settings(),
+        process: [],
+        activatorKey: Keys.notificationsSettingsButton,
+        destination: notifications,
+        navType: NavType.push)
+      ..test();
+
+    //*Pop from notifications
+    AutoRoute(
+        screen: Notifications(),
+        process: [],
+        activatorKey: Keys.notificationsBackButton,
+        destination: home,
+        navType: NavType.pop)
       ..test();
   }
 }

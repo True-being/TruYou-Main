@@ -17,7 +17,8 @@ AppBar customAppBar(
     centerTitle: true,
     title: Text(
       title,
-      style: theme.textTheme.headline6?.copyWith(fontSize: 20),
+      style: theme.textTheme.headline6
+          ?.copyWith(fontSize: 20, fontWeight: FontWeight.w500),
     ),
   );
 }

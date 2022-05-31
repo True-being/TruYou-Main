@@ -74,8 +74,10 @@ class AppRoot extends StatelessWidget {
                 }),
             title: Text(
               titleSwapper(position),
-              style:
-                  TextStyle(color: Colors.white, fontSize: _size.width * 0.055),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: _size.width * 0.055,
+                  fontWeight: FontWeight.w500),
             ),
             centerTitle: true,
             actions: [

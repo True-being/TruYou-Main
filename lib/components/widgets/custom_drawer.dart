@@ -25,11 +25,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
     Size _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Constants.blue_violet,
+        backgroundColor: Constants.dark_blue,
         body: Container(
           height: _size.height,
           width: _size.width,
-          color: Constants.blue_violet,
+          color: Constants.dark_blue,
           child: Padding(
             padding: EdgeInsets.only(left: _size.width * 0.02),
             child: SingleChildScrollView(
@@ -47,7 +47,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       },
                       icon: Icon(
                         Icons.close,
-                        color: Constants.background_color,
+                        color: Colors.white,
                         size: _size.width * 0.07,
                       )),
                   SizedBox(

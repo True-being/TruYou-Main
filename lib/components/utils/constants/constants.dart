@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Constants {
   //Colors
   static const Color background_color = Color(0xff0c0c21);
+  static const Color medium_blue = Color(0xff31314A);
   static const Color dark_blue = Color(0xff14142f);
   static const Color navy_blue = Color(0xff181843);
   static const Color indigo = Color(0xff6f25fe);
@@ -14,8 +15,40 @@ class Constants {
   static const Color neon_green = Color(0xff24FF00);
   static const Color neon_red = Color(0xffFF3E3E);
   static const Color neon_yellow = Color(0xffFFE500);
+  static const Color thumb_color = Color(0xff494992);
+  static const Color track_color = Color(0xff272763);
 
   //Strings(Language translation use)
+  static String NEW_USER_IN_AREA = 'New users in your area';
+  static String IN_APP_VIBRATIONS = 'In App Vibrations';
+  static String IN_APP_SOUNDS = 'In App Sounds';
+  static String NEW_MESSAGES = 'New Messages';
+  static String NEW_MATCHES = 'New Matches';
+  static String ONLY_SHOW_PEOPLE_IN_THIS_RANGE =
+      'Only show people in this range';
+  static String CHANGE = 'Change';
+  static String SAVE = 'Save';
+  static String AGE_SPAN = 'Age Span';
+  static String SELECT_ONLY_ONE = 'Select only one';
+  static String I_AM_LOOKING_FOR = 'I am looking for';
+  static String CHANGE_LOCATION = 'Change Your Location';
+  static String MATCHING_DISTANCE = 'Matching Distance';
+  static String DISTANCE_IN_MILES = 'Distance in Miles';
+  static String LOCATION_SETTINGS = 'Location Settings';
+  static String SIGN_IN_WITH = 'Sign In With';
+  static String PERA = 'Pera';
+  static String MORE = 'More';
+  static String CONNECTED_ACCOUNTS = 'Connected Accounts';
+  static String LOCATION = 'Location';
+  static String IN_SEARCH_OF = 'In Search Of';
+  static String PUSH_NOTIFICATIONS = 'Push Notifications';
+  static String CONTACT_US = 'Contact Us';
+  static String COMMUNITY_RULES = 'Community Rules';
+  static String PRIVACY_POLICY = 'Privacy Policy';
+  static String TERMS_OF_SERVICES = 'Terms of Services';
+  static String LOG_OUT = 'Log Out';
+  static String ADVANCED = 'Advanced';
+  static String GENERAL_INFO = 'General Info';
   static String NO_THANKS = 'No Thanks';
   static String LET_ME_IN = 'Let me in';
   static String AMOUNT_OF_TRUST_TO_PLEDGE = 'Amount of Trust token to pledge';
@@ -149,7 +182,7 @@ class Constants {
   static const String JOB_TITLE = 'Job title';
   static const String ENABLE_LOCATION = 'Enable location';
   static const String JOB = 'Job';
-  static const String MY_LOCATION = 'My location';
+  static const String MY_LOCATION = 'My Location';
   static const String COMPANY = 'Company';
   static const String COMPANY_NAME = 'Company name';
   static const String LIFE_STYLE = 'Life Style';
