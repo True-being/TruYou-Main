@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/screens/create-account-screens/create_account_details.dart';
 
 //TODO: Make route to create account details -> PushAndRemoveUntil
@@ -32,52 +34,60 @@ class _CreateAccountGeneralScreenState
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
+  final _userRepository = getit<UserRepository>();
+
   //Form key - Validation
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   //Birth Date
   DateTime? _birthDate;
 
-  void _onPressedNextButton() {
+  void _onPressedNextButton() async {
     //Validates textfields
     if (_formKey.currentState!.validate()) {
       // Checks if a date has been selected
-      if (_birthDate != null) {
-        //Checks if the users age is over 18
-        if (DateHelper.getAge(_birthDate!) >= 18) {
-          //Checks if password and confirm password match
-          if (_passwordController.text == _confirmPasswordController.text) {
-            Navigator.of(context).push(CreateAccountDetailsScreen.route(
-              AuthUser(
-                  firstName: _firstNameController.text,
-                  lastName: _lastNameController.text,
-                  email: _emailController.text,
-                  birthDate: _birthDate!,
-                  password: _passwordController.text,
-                  photos: null,
-                  algoWalletAddress: null,
-                  aboutMe: null,
-                  lifeStyle: null,
-                  job: null,
-                  companyName: null,
-                  location: null,
-                  gender: null,
-                  sexualOrientation: null),
-            ));
+      if (!(await _userRepository
+          .doesEmailAlreadyExist(_emailController.text))) {
+        if (_birthDate != null) {
+          //Checks if the users age is over 18
+          if (DateHelper.getAge(_birthDate!) >= 18) {
+            //Checks if password and confirm password match
+            if (_passwordController.text == _confirmPasswordController.text) {
+              Navigator.of(context).push(CreateAccountDetailsScreen.route(
+                AuthUser(
+                    firstName: _firstNameController.text,
+                    lastName: _lastNameController.text,
+                    email: _emailController.text,
+                    birthDate: _birthDate!,
+                    isWalletVerified: null,
+                    algoWalletAddress: null,
+                    aboutMe: null,
+                    lifeStyle: null,
+                    job: null,
+                    companyName: null,
+                    location: null,
+                    gender: null,
+                    sexualOrientation: null),
+                _passwordController.text,
+              ));
+            } else {
+              CustomDialog.showBasicDialog(
+                  context,
+                  Constants.PASSWORDS_DONT_MATCH,
+                  Constants.PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN,
+                  '/confirm-password');
+            }
           } else {
-            CustomDialog.showBasicDialog(
-                context,
-                Constants.PASSWORDS_DONT_MATCH,
-                Constants.PLEASE_CONFIRM_YOUR_PASSWORD_AGAIN,
-                '/confirm-password');
+            CustomDialog.showBasicDialog(context, Constants.PORTALS_ARENT_SAFE,
+                Constants.YOU_NEED_TO_BE_OVER_18, '/over-eighteen');
           }
         } else {
-          CustomDialog.showBasicDialog(context, Constants.PORTALS_ARENT_SAFE,
-              Constants.YOU_NEED_TO_BE_OVER_18, '/over-eighteen');
+          CustomDialog.showBasicDialog(context, Constants.DATE_NOT_ENTERED,
+              Constants.PLEASE_ENTER_A_DATE, '/enter-date');
         }
       } else {
-        CustomDialog.showBasicDialog(context, Constants.DATE_NOT_ENTERED,
-            Constants.PLEASE_ENTER_A_DATE, '/enter-date');
+        CustomDialog.showBasicDialog(context, Constants.EMAIL_ALREADY_EXISTS,
+            Constants.PLEASE_ENTER_ANOTHER_EMAIL, '/email-already-exists');
       }
     }
   }

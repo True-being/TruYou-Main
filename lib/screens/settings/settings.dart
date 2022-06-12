@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
+import 'package:truyou/screens/screens.dart';
 import 'package:truyou/screens/settings/connected_accounts.dart';
 import 'package:truyou/screens/settings/location_settings.dart';
 import 'package:truyou/screens/settings/notifications.dart';
@@ -14,32 +18,53 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  final _authBloc = getit<AuthBloc>();
+
+  @override
+  void dispose() {
+    _authBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       backgroundColor: Constants.background_color,
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        child: Padding(
-          padding: EdgeInsets.all(p(context, 28.0)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildGeneralInfoTitle(theme),
-              SpacerV.s(context),
-              _buildGeneralInfoCard(
-                  theme, 'joesoap@gmail.com', '(+1) 904-423-2334'),
-              SpacerV.m(context),
-              _buildAdvancedInfoTitle(theme),
-              SpacerV.s(context),
-              _buildAdvancedInfoCards(theme, context),
-              SpacerV.m(context),
-              _buildMoreInfoTitle(theme),
-              SpacerV.s(context),
-              _buildMoreCards(theme)
-            ],
+      body: BlocListener<AuthBloc, AuthState>(
+        bloc: _authBloc,
+        listener: (context, state) {
+          state.maybeWhen(
+            unAuthenticatedAuthentication: () {
+              Navigator.pushAndRemoveUntil(
+                  context, WelcomeScreen.route(), (route) => false);
+            },
+            orElse: () {},
+          );
+        },
+        child: SingleChildScrollView(
+          physics:
+              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          child: Padding(
+            padding: EdgeInsets.all(p(context, 28.0)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildGeneralInfoTitle(theme),
+                SpacerV.s(context),
+                _buildGeneralInfoCard(
+                    theme, 'joesoap@gmail.com', '(+1) 904-423-2334'),
+                SpacerV.m(context),
+                _buildAdvancedInfoTitle(theme),
+                SpacerV.s(context),
+                _buildAdvancedInfoCards(theme, context),
+                SpacerV.m(context),
+                _buildMoreInfoTitle(theme),
+                SpacerV.s(context),
+                _buildMoreCards(theme, _authBloc)
+              ],
+            ),
           ),
         ),
       ),
@@ -136,7 +161,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget _buildMoreCards(ThemeData theme) {
+  Widget _buildMoreCards(ThemeData theme, AuthBloc authBloc) {
     return Column(
       children: [
         _buildSettingCard(theme, null, Constants.CONTACT_US, () {}, false),
@@ -145,8 +170,9 @@ class _SettingsState extends State<Settings> {
         _buildSettingCard(
             theme, null, Constants.TERMS_OF_SERVICES, () {}, false),
         SpacerV.m(context),
-        _buildSettingCard(theme, null, Constants.LOG_OUT, () {}, false,
-            centerAlign: true),
+        _buildSettingCard(theme, null, Constants.LOG_OUT, () {
+          authBloc.add(const AuthEvent.userLogOut());
+        }, false, centerAlign: true),
       ],
     );
   }

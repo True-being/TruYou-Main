@@ -1,38 +1,41 @@
-//This is a temporary class used for validation and the flow process
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'dart:io';
+part 'auth_user_model.freezed.dart';
+part 'auth_user_model.g.dart';
 
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+@freezed
+abstract class AuthUser with _$AuthUser {
+  const AuthUser._();
 
-class AuthUser {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final DateTime birthDate;
-  final String password;
-  final List<File?>? photos;
-  final String? algoWalletAddress;
-  final String? aboutMe;
-  final String? lifeStyle;
-  final String? job;
-  final String? companyName;
-  final LatLng? location;
-  final String? gender;
-  final String? sexualOrientation;
+  const factory AuthUser({
+    required String firstName,
+    required String lastName,
+    required String email,
+    required bool? isWalletVerified,
+    required DateTime birthDate,
+    required String? algoWalletAddress,
+    required String? aboutMe,
+    required String? lifeStyle,
+    required String? job,
+    required String? companyName,
+    @GeoPointConverter() required GeoPoint? location,
+    required String? gender,
+    required String? sexualOrientation,
+  }) = _AuthUser;
 
-  AuthUser(
-      {required this.firstName,
-      required this.lastName,
-      required this.email,
-      required this.birthDate,
-      required this.password,
-      required this.photos,
-      required this.algoWalletAddress,
-      required this.aboutMe,
-      required this.lifeStyle,
-      required this.job,
-      required this.companyName,
-      required this.location,
-      required this.gender,
-      required this.sexualOrientation});
+  factory AuthUser.fromJson(Map<String, Object?> json) =>
+      _$AuthUserFromJson(json);
+}
+
+class GeoPointConverter implements JsonConverter<GeoPoint?, GeoPoint?> {
+  const GeoPointConverter();
+
+  @override
+  GeoPoint? fromJson(GeoPoint? geoPoint) {
+    return geoPoint;
+  }
+
+  @override
+  GeoPoint? toJson(GeoPoint? geoPoint) => geoPoint;
 }

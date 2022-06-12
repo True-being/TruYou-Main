@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
   final String? char;
   final double? horizontalPadding;
   final double? verticalPadding;
+  final bool? showLabel;
 
   const CustomTextField({
     Key? key,
@@ -27,6 +28,7 @@ class CustomTextField extends StatelessWidget {
     required this.validator,
     required this.formatter,
     required this.controller,
+    this.showLabel,
     this.horizontalPadding,
     this.verticalPadding,
     this.obsecure,
@@ -48,22 +50,25 @@ class CustomTextField extends StatelessWidget {
       child: Column(
         children: [
           //Textfield title
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  ResponsiveWidget.size(
-                      context, _size.width * 0.02, _size.width * 0.015),
-                  ResponsiveWidget.size(
-                      context, _size.width * 0.02, _size.width * 0.005),
-                  ResponsiveWidget.size(context, _size.width * 0.02, 0.0),
-                  ResponsiveWidget.size(context, _size.width * 0.02, 0.0)),
-              child: Text(title,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ResponsiveWidget.size(
-                          context, _size.width * 0.05, _size.width * 0.02),
-                      fontWeight: FontWeight.w500)),
+          Visibility(
+            visible: showLabel != null ? showLabel! : true,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                    ResponsiveWidget.size(
+                        context, _size.width * 0.02, _size.width * 0.015),
+                    ResponsiveWidget.size(
+                        context, _size.width * 0.02, _size.width * 0.005),
+                    ResponsiveWidget.size(context, _size.width * 0.02, 0.0),
+                    ResponsiveWidget.size(context, _size.width * 0.02, 0.0)),
+                child: Text(title,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: ResponsiveWidget.size(
+                            context, _size.width * 0.05, _size.width * 0.02),
+                        fontWeight: FontWeight.w500)),
+              ),
             ),
           ),
           //Textfield

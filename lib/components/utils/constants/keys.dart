@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart' as firestore;
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/my_matches_card.dart';
 import 'package:truyou/models/auth_user_model.dart';
@@ -395,6 +395,8 @@ class Routes {
   static const locationSettings = '/location-settings';
   static const inSearchOf = '/in-search-of';
   static const notifications = '/notifications';
+  static const resetPassword = '/reset-password';
+  static const resetPasswordDialog = '/reset-password-dialog';
 
   static void testAll() {
     //!Welcome screen routing
@@ -734,17 +736,16 @@ class TextFieldKey {
 }
 
 final _mockUser = AuthUser(
+    isWalletVerified: true,
     firstName: 'Mark',
     lastName: 'Zuckerburg',
     email: 'ZuckMuck@gmail.com',
     companyName: 'Feta',
-    photos: [],
     aboutMe: 'wjghkjwehgkwhjkeghwegjwkle wjhegwhejlghwehjglwk helj',
     algoWalletAddress: 'hewghH3UIHG2G942GHU249GH2849G22948GH',
     birthDate: DateTime(1000, 01, 01),
     gender: 'Other',
     job: 'Stealing data',
     lifeStyle: 'wjgkhwrglwlrjg lwrjlgkjwkrljgkljwlrjglwlkrgj',
-    location: LatLng(23.045, 34.234),
-    password: 'secure12345',
+    location: firestore.GeoPoint(29, 30),
     sexualOrientation: 'ROBOTS');

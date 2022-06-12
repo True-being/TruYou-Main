@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "490865030490",
+    "project_id": "truyou-50ae9",
+    "storage_bucket": "truyou-50ae9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490865030490:android:ff1a069b4f0696d519ef63",
+        "android_client_info": {
+          "package_name": "com.example.truyou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490865030490-mke2eho6vrnjtbahevcahcc9a45u8t01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWKTJSezHFCzWOy7xlgunfXBXGNEJPif0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490865030490-mke2eho6vrnjtbahevcahcc9a45u8t01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -291,7 +291,7 @@ class CustomDialog {
   }
 
   ///Displays Gift Recieved Error Dialog
-  static void showReceivedGiftErrorDialog(BuildContext context) {
+  static void showErrorDialog(BuildContext context, String errorMessage) {
     Size size = MediaQuery.of(context).size;
     showDialog(
         routeSettings: RouteSettings(name: '/gift-received-error-dialog'),
@@ -309,7 +309,7 @@ class CustomDialog {
               size: size.width * 0.2,
             ),
             content: Text(
-              Constants.GIFT_RECEIVED_ERROR_MESSAGE,
+              errorMessage,
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.grey[400],

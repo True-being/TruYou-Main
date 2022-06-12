@@ -7,7 +7,7 @@ ThemeData buildAppTheme(BuildContext context) {
 }
 
 TextTheme _buildTextTheme(BuildContext context, TextTheme theme) {
-  var t = TextStyle();
+  var t = TextStyle(fontFamily: 'GothamRounded');
   return TextTheme(
       headline1: (theme.headline1 ?? t).copyWith(
         fontSize: 25,

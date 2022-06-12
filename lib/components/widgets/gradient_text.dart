@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:truyou/components/utils/constants/constants.dart';
 
 ///Displays gradient text with a defined gradient
 class GradientText extends StatelessWidget {
@@ -16,16 +17,20 @@ class GradientText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(
-        text,
-        style: style,
-        textAlign: textAlign,
-      ),
+    return Text(
+      text,
+      style: style?.copyWith(
+          foreground: Paint()
+            ..shader = LinearGradient(
+              colors: <Color>[
+                Constants.sky_blue,
+                Constants.pink,
+                //add more color here.
+              ],
+            ).createShader(
+              Rect.fromLTWH(0.0, 0.0, 300.0, 70.0),
+            )),
+      textAlign: textAlign,
     );
   }
 }

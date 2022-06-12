@@ -64,7 +64,7 @@ class GlowButton extends StatelessWidget {
               fontSize: fontSize ??
                   ResponsiveWidget.size(
                       context, _size.width * 0.055, _size.width * 0.022),
-              fontWeight: FontWeight.w400),
+              fontWeight: FontWeight.w500),
         ),
       ),
     );

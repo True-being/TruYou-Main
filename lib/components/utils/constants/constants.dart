@@ -9,7 +9,7 @@ class Constants {
   static const Color indigo = Color(0xff6f25fe);
   static const Color blue_violet = Color(0xff852bf3);
   static const Color purple = Color(0xffb33fea);
-  static const Color pink = Color(0xffde40df);
+  static const Color pink = Color(0xffff00ff);
   static const Color blue_jeans = Color(0xff52a9f2);
   static const Color sky_blue = Color(0xff59d2f5);
   static const Color neon_green = Color(0xff24FF00);
@@ -19,6 +19,19 @@ class Constants {
   static const Color track_color = Color(0xff272763);
 
   //Strings(Language translation use)
+  static String RESET_PASSWORD = 'Reset Password';
+  static String PASSWORD_RESET = 'Email sent';
+  static String CHECK_YOUR_EMAIL =
+      'Please check your email to reset your password.';
+  static String EMAIL_ALREADY_EXISTS = 'Email already in use';
+  static String PLEASE_ENTER_ANOTHER_EMAIL =
+      'Please enter another email and try again.';
+  static String NO_MATCHING_ADDRESSES =
+      'The address you entered does not match the address in your wallet. Please try again.';
+  static String ALGO_ADDRESS_ALREADY_EXISTS =
+      'This Algo Address is already used. Please try another one or sign in.';
+  static String SIGN_UP = 'Sign Up';
+  static String SIGN_IN = 'Sign In';
   static String NEW_USER_IN_AREA = 'New users in your area';
   static String IN_APP_VIBRATIONS = 'In App Vibrations';
   static String IN_APP_SOUNDS = 'In App Sounds';
