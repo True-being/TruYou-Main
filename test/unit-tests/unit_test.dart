@@ -217,7 +217,7 @@ void main() async {
           reason: 'Empty');
       expect(
           walletValidator(_w2) ==
-              Constants.PLEASE_ENTER_ADDRESS_EQUAL_TO_SIXTY_FOUR_CHARS,
+              Constants.PLEASE_ENTER_ADDRESS_EQUAL_TO_FIFTY_EIGHT_CHARS,
           true,
           reason: _w2);
       expect(walletValidator(_w3) == null, true, reason: _w3);

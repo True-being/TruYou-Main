@@ -211,7 +211,7 @@ class Fields {
       enter: 'ENF2IFN238UYGH23YGH84HG7849HG284NG2H48G908824HG79240WERGFN2Y83D3',
       validators: [
         {'': Constants.PLEASE_ENTER_A_WALLET_ADDRESS},
-        {'XYZ': Constants.PLEASE_ENTER_ADDRESS_EQUAL_TO_SIXTY_FOUR_CHARS},
+        {'XYZ': Constants.PLEASE_ENTER_ADDRESS_EQUAL_TO_FIFTY_EIGHT_CHARS},
       ]);
 
   static var createAccountDetailsAboutMe = TextFieldKey(
