@@ -10,8 +10,10 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
 import 'package:truyou/components/components.dart';
 import 'package:location/location.dart' as location;
+import 'package:truyou/components/utils/exceptions/exception_handler.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/repository/cloud_function_repository.dart';
 import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/repository/wallet_repository.dart';
 import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
@@ -63,7 +65,7 @@ class _CreateAccountDetailsScreenState
 
   //Blocs
   final _signUpBloc = getit<AuthBloc>();
-  final _userRepository = getit<UserRepository>();
+  final _cloudFunctionRepository = getit<CloudFunctionRepository>();
 
   //Gender of user
   String? _gender = Constants.genders[0];
@@ -164,7 +166,7 @@ class _CreateAccountDetailsScreenState
 
   void _verifyAddress(BuildContext context) async {
     if (_walletAddressController.text.isNotEmpty) {
-      if (!(await _userRepository
+      if (!(await _cloudFunctionRepository
           .doesAddressAlreadyExist(_walletAddressController.text))) {
         String? _queriedAddress =
             await WalletRepository.connectToWallet(context);
@@ -295,6 +297,9 @@ class _CreateAccountDetailsScreenState
         bloc: _signUpBloc,
         listener: (context, state) {
           state.maybeWhen(
+              failed: (exception) {
+                ExceptionHandler.showErrorDialog(context, exception);
+              },
               authenticatedAuthentication: () => Navigator.of(context)
                   .pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) => MatchPledging()),

@@ -86,6 +86,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       _ResetPassword event, Emitter<AuthState> emit) async {
     try {
       await userRepository.resetPassword(event.email);
+      emit(const AuthState.unAuthenticatedAuthentication());
     } on FirebaseAuthException catch (_e) {
       emit(AuthState.failed(ExceptionHandler.catchFirebaseAuthExceptions(_e)));
     } catch (_e) {
@@ -94,6 +95,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<void> _userLogOut(_UserLogOut event, Emitter<AuthState> emit) async {
+    emit(const AuthState.loading());
     try {
       await userRepository.signOut();
       emit(const AuthState.unAuthenticatedAuthentication());

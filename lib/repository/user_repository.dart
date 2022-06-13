@@ -38,7 +38,7 @@ class UserRepository {
   }
 
   ///Sign up user with email and password
-  Future<User?> signUpUserEmailAndPassword(
+  Future<User?>? signUpUserEmailAndPassword(
       AuthUser user, List<File> images, String password) async {
     //Registers the user
     final authResult = await _authInstance.createUserWithEmailAndPassword(
@@ -57,25 +57,6 @@ class UserRepository {
     }
 
     return authResult.user;
-  }
-
-  ///Checks if Alg address already exists
-  Future<bool> doesAddressAlreadyExist(String address) async {
-    final users = await _firestoreInstance
-        .collection('users')
-        .where('algoWalletAddress', isEqualTo: address)
-        .get();
-    print(users.docs.length);
-    return users.docs.length >= 1;
-  }
-
-  ///Checks if email address already exists
-  Future<bool> doesEmailAlreadyExist(String email) async {
-    final users = await _firestoreInstance
-        .collection('users')
-        .where('email', isEqualTo: email)
-        .get();
-    return users.docs.length >= 1;
   }
 
   //Uploads all files to Firebase storage and returns their URLS

@@ -19,6 +19,36 @@ class Constants {
   static const Color track_color = Color(0xff272763);
 
   //Strings(Language translation use)
+  static const String UNKNOWN_ERROR = 'Unknown error';
+  static const String UNKNOWN_ERROR_MESSAGE =
+      'Please keep note of how you got this error and contact support.';
+  static const String EMAIL_ALREADY_IN_USE = 'Email address already used';
+  static const String EMAIL_ALREADY_IN_USE_MESSAGE =
+      'Please navigate back and enter another email address';
+  static const String INVALID_EMAIL_ADDRESS = 'Invalid email address';
+  static const String INVALID_EMAIL_ADDRESS_MESSAGE =
+      'Please make sure you entered your email correctly and there are no spaces.';
+  static const String OPERATION_NOT_ALLOWED = 'Operation Invalid';
+  static const String OPERATION_NOT_ALLOWED_MESSAGE =
+      'Operation Invalid. Please try again later.';
+  static const String REQUIRES_RECENT_LOGIN = 'User not logged in';
+  static const String REQUIRES_RECENT_LOGIN_MESSAGE =
+      'Please restart the app and login again';
+  static const String TOO_MANY_REQUESTS = 'Too many failed attempts';
+  static const String TOO_MANY_REQUESTS_MESSAGE =
+      'Please wait a minute and try again.';
+  static const String USER_DISABLED = 'Account disabled';
+  static const String USER_DISABLED_MESSAGE =
+      'This account has been disabled. Please contact support to enable it.';
+  static const String USER_NOT_FOUND_EXCEPTION = 'User not found';
+  static const String USER_NOT_FOUND_EXCEPTION_MESSAGE =
+      'Please use different details and try again.';
+  static const String WEAK_PASSWORD = 'Password is too weak';
+  static const String WEAK_PASSWORD_MESSAGE =
+      'Please enter another password that is more secure.';
+  static const String WRONG_PASSWORD = 'Incorrect Email or Password';
+  static const String WRONG_PASSWORD_MESSAGE =
+      'Please enter the correct email or password, and try again.';
   static String RESET_PASSWORD = 'Reset Password';
   static String PASSWORD_RESET = 'Email sent';
   static String CHECK_YOUR_EMAIL =

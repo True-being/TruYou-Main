@@ -398,6 +398,18 @@ class Routes {
   static const resetPassword = '/reset-password';
   static const resetPasswordDialog = '/reset-password-dialog';
 
+  //!Error Dialogs
+  static const invalidEmailDialog = '/invalid-email-dialog';
+  static const operationNotAllowedDialog = '/operation-not-allowed-dialog';
+  static const requiresRecentLoginDialog = '/requires-recent-login-dialog';
+  static const tooManyRequestDialog = '/too-many-requests-dialog';
+  static const userDisabledDialog = '/user-disabled-dialog';
+  static const userNotFoundDialog = '/user-not-found-dialog';
+  static const weakPasswordException = '/weak-password-exception';
+  static const wrongEmailOrPasswordException =
+      '/wrong-email-or-password-exception';
+  static const unknownException = '/unknown-exception';
+
   static void testAll() {
     //!Welcome screen routing
     //*Navigate to sign in with email and password

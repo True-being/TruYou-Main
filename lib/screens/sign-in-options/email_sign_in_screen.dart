@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/exceptions/exception_handler.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/sign-in-options/forgot_password.dart';
@@ -50,7 +51,7 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
       listener: (context, state) {
         state.maybeWhen(
           failed: (exception) {
-            //TODO: Display dialog
+            ExceptionHandler.showErrorDialog(context, exception);
           },
           authenticatedAuthentication: () {
             Navigator.of(context)

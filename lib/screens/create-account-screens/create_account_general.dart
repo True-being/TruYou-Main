@@ -4,6 +4,7 @@ import 'package:truyou/components/components.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/repository/cloud_function_repository.dart';
 import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/screens/create-account-screens/create_account_details.dart';
 
@@ -33,8 +34,8 @@ class _CreateAccountGeneralScreenState
   TextEditingController _birthDateController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
-
-  final _userRepository = getit<UserRepository>();
+  
+  final _cloudFunctionRepository = getit<CloudFunctionRepository>();
 
   //Form key - Validation
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -46,7 +47,7 @@ class _CreateAccountGeneralScreenState
     //Validates textfields
     if (_formKey.currentState!.validate()) {
       // Checks if a date has been selected
-      if (!(await _userRepository
+      if (!(await _cloudFunctionRepository
           .doesEmailAlreadyExist(_emailController.text))) {
         if (_birthDate != null) {
           //Checks if the users age is over 18
