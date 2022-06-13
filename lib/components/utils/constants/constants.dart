@@ -312,7 +312,7 @@ class Constants {
       'Your $type must not be longer than 40 characters';
   static const String PLEASE_ENTER_A_WALLET_ADDRESS =
       'Please enter a wallet address';
-  static const String PLEASE_ENTER_ADDRESS_EQUAL_TO_SIXTY_FOUR_CHARS =
+  static const String PLEASE_ENTER_ADDRESS_EQUAL_TO_FIFTY_EIGHT_CHARS =
       'Your wallet address should have 64 characters';
   static const String PLEASE_ENTER_AN_OTP_VERIFICATION_CODE =
       'Please enter an OTP Code';
