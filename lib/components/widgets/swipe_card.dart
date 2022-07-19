@@ -18,14 +18,14 @@ class SwipeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
+    final _size = MediaQuery.of(context).size;
     return Container(
-      width: _size.width,
-      height: _size.height * 0.4,
+      width: _size.width * 0.8,
+      height: _size.height * 0.8,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           image: DecorationImage(
-            image: AssetImage(image),
+            image: NetworkImage(image),
             fit: BoxFit.cover,
           )),
       child: Stack(

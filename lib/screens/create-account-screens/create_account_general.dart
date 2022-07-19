@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/components/widgets/loader.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/cloud_function_repository.dart';
-import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/screens/create-account-screens/create_account_details.dart';
 
 //TODO: Make route to create account details -> PushAndRemoveUntil
@@ -34,11 +34,12 @@ class _CreateAccountGeneralScreenState
   TextEditingController _birthDateController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
-  
+
   final _cloudFunctionRepository = getit<CloudFunctionRepository>();
 
   //Form key - Validation
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _loadingKey = GlobalKey<State>();
 
   //Birth Date
   DateTime? _birthDate;
@@ -46,6 +47,7 @@ class _CreateAccountGeneralScreenState
   void _onPressedNextButton() async {
     //Validates textfields
     if (_formKey.currentState!.validate()) {
+      OverlayLoader.showLoadingDialog(context, _loadingKey);
       // Checks if a date has been selected
       if (!(await _cloudFunctionRepository
           .doesEmailAlreadyExist(_emailController.text))) {
@@ -54,13 +56,19 @@ class _CreateAccountGeneralScreenState
           if (DateHelper.getAge(_birthDate!) >= 18) {
             //Checks if password and confirm password match
             if (_passwordController.text == _confirmPasswordController.text) {
+              OverlayLoader.pop(_loadingKey);
               Navigator.of(context).push(CreateAccountDetailsScreen.route(
-                AuthUser(
+                TruYouUser(
+                    documentSnapshot: null,
+                    images: [],
                     firstName: _firstNameController.text,
                     lastName: _lastNameController.text,
                     email: _emailController.text,
+                    createdAt: DateTime.now(),
+                    lastDate: null,
                     birthDate: _birthDate!,
                     isWalletVerified: null,
+                    hasCompletedUsers: false,
                     algoWalletAddress: null,
                     aboutMe: null,
                     lifeStyle: null,
@@ -68,10 +76,17 @@ class _CreateAccountGeneralScreenState
                     companyName: null,
                     location: null,
                     gender: null,
-                    sexualOrientation: null),
+                    sexualOrientation: null,
+                    genderPreference: null,
+                    sexualityPreference: null,
+                    upperAgePreference: null,
+                    lowerAgePreference: null,
+                    isRadiusDistanceSelected: null,
+                    radiusDistance: null),
                 _passwordController.text,
               ));
             } else {
+              OverlayLoader.pop(_loadingKey);
               CustomDialog.showBasicDialog(
                   context,
                   Constants.PASSWORDS_DONT_MATCH,
@@ -79,14 +94,17 @@ class _CreateAccountGeneralScreenState
                   '/confirm-password');
             }
           } else {
+            OverlayLoader.pop(_loadingKey);
             CustomDialog.showBasicDialog(context, Constants.PORTALS_ARENT_SAFE,
                 Constants.YOU_NEED_TO_BE_OVER_18, '/over-eighteen');
           }
         } else {
+          OverlayLoader.pop(_loadingKey);
           CustomDialog.showBasicDialog(context, Constants.DATE_NOT_ENTERED,
               Constants.PLEASE_ENTER_A_DATE, '/enter-date');
         }
       } else {
+        OverlayLoader.pop(_loadingKey);
         CustomDialog.showBasicDialog(context, Constants.EMAIL_ALREADY_EXISTS,
             Constants.PLEASE_ENTER_ANOTHER_EMAIL, '/email-already-exists');
       }

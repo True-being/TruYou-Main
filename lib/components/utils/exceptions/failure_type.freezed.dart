@@ -70,6 +70,10 @@ class _$FailureTypeTearOff {
   _InvalidEmailException invalidEmailException() {
     return const _InvalidEmailException();
   }
+
+  _NoMoreUserAvailable noMoreUserAvailable() {
+    return const _NoMoreUserAvailable();
+  }
 }
 
 /// @nodoc
@@ -92,6 +96,7 @@ mixin _$FailureType {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -109,6 +114,7 @@ mixin _$FailureType {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,6 +132,7 @@ mixin _$FailureType {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,6 +162,7 @@ mixin _$FailureType {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -177,6 +185,7 @@ mixin _$FailureType {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -199,6 +208,7 @@ mixin _$FailureType {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -298,6 +308,7 @@ class _$_UnknownException implements _UnknownException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return unknownException(error);
   }
@@ -318,6 +329,7 @@ class _$_UnknownException implements _UnknownException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return unknownException?.call(error);
   }
@@ -338,6 +350,7 @@ class _$_UnknownException implements _UnknownException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (unknownException != null) {
@@ -373,6 +386,7 @@ class _$_UnknownException implements _UnknownException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return unknownException(this);
   }
@@ -398,6 +412,7 @@ class _$_UnknownException implements _UnknownException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return unknownException?.call(this);
   }
@@ -423,6 +438,7 @@ class _$_UnknownException implements _UnknownException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (unknownException != null) {
@@ -500,6 +516,7 @@ class _$_AlreadyHasAccountNullException
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return alreadyHasAccountException();
   }
@@ -520,6 +537,7 @@ class _$_AlreadyHasAccountNullException
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return alreadyHasAccountException?.call();
   }
@@ -540,6 +558,7 @@ class _$_AlreadyHasAccountNullException
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (alreadyHasAccountException != null) {
@@ -575,6 +594,7 @@ class _$_AlreadyHasAccountNullException
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return alreadyHasAccountException(this);
   }
@@ -600,6 +620,7 @@ class _$_AlreadyHasAccountNullException
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return alreadyHasAccountException?.call(this);
   }
@@ -625,6 +646,7 @@ class _$_AlreadyHasAccountNullException
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (alreadyHasAccountException != null) {
@@ -697,6 +719,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return userAlreadySignedInException();
   }
@@ -717,6 +740,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return userAlreadySignedInException?.call();
   }
@@ -737,6 +761,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userAlreadySignedInException != null) {
@@ -772,6 +797,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return userAlreadySignedInException(this);
   }
@@ -797,6 +823,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return userAlreadySignedInException?.call(this);
   }
@@ -822,6 +849,7 @@ class _$_UserAlreadySignedInException implements _UserAlreadySignedInException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userAlreadySignedInException != null) {
@@ -890,6 +918,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return wrongPasswordException();
   }
@@ -910,6 +939,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return wrongPasswordException?.call();
   }
@@ -930,6 +960,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (wrongPasswordException != null) {
@@ -965,6 +996,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return wrongPasswordException(this);
   }
@@ -990,6 +1022,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return wrongPasswordException?.call(this);
   }
@@ -1015,6 +1048,7 @@ class _$_WrongPasswordException implements _WrongPasswordException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (wrongPasswordException != null) {
@@ -1082,6 +1116,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return userNotFoundException();
   }
@@ -1102,6 +1137,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return userNotFoundException?.call();
   }
@@ -1122,6 +1158,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userNotFoundException != null) {
@@ -1157,6 +1194,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return userNotFoundException(this);
   }
@@ -1182,6 +1220,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return userNotFoundException?.call(this);
   }
@@ -1207,6 +1246,7 @@ class _$_UserNotFoundException implements _UserNotFoundException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userNotFoundException != null) {
@@ -1276,6 +1316,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return tooManyRequestsException();
   }
@@ -1296,6 +1337,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return tooManyRequestsException?.call();
   }
@@ -1316,6 +1358,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (tooManyRequestsException != null) {
@@ -1351,6 +1394,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return tooManyRequestsException(this);
   }
@@ -1376,6 +1420,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return tooManyRequestsException?.call(this);
   }
@@ -1401,6 +1446,7 @@ class _$_TooManyRequestsException implements _TooManyRequestsException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (tooManyRequestsException != null) {
@@ -1471,6 +1517,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return emailAlreadyInUseException();
   }
@@ -1491,6 +1538,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return emailAlreadyInUseException?.call();
   }
@@ -1511,6 +1559,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUseException != null) {
@@ -1546,6 +1595,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return emailAlreadyInUseException(this);
   }
@@ -1571,6 +1621,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return emailAlreadyInUseException?.call(this);
   }
@@ -1596,6 +1647,7 @@ class _$_EmailAlreadyInUseException implements _EmailAlreadyInUseException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUseException != null) {
@@ -1663,6 +1715,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return weakPasswordException();
   }
@@ -1683,6 +1736,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return weakPasswordException?.call();
   }
@@ -1703,6 +1757,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (weakPasswordException != null) {
@@ -1738,6 +1793,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return weakPasswordException(this);
   }
@@ -1763,6 +1819,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return weakPasswordException?.call(this);
   }
@@ -1788,6 +1845,7 @@ class _$_WeakPasswordException implements _WeakPasswordException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (weakPasswordException != null) {
@@ -1855,6 +1913,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return invalidEmailAdress();
   }
@@ -1875,6 +1934,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return invalidEmailAdress?.call();
   }
@@ -1895,6 +1955,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (invalidEmailAdress != null) {
@@ -1930,6 +1991,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return invalidEmailAdress(this);
   }
@@ -1955,6 +2017,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return invalidEmailAdress?.call(this);
   }
@@ -1980,6 +2043,7 @@ class _$_InvalidEmailAdresss implements _InvalidEmailAdresss {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (invalidEmailAdress != null) {
@@ -2051,6 +2115,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return requiresRecentLoginException();
   }
@@ -2071,6 +2136,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return requiresRecentLoginException?.call();
   }
@@ -2091,6 +2157,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (requiresRecentLoginException != null) {
@@ -2126,6 +2193,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return requiresRecentLoginException(this);
   }
@@ -2151,6 +2219,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return requiresRecentLoginException?.call(this);
   }
@@ -2176,6 +2245,7 @@ class _$_RequiresRecentLoginException implements _RequiresRecentLoginException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (requiresRecentLoginException != null) {
@@ -2244,6 +2314,7 @@ class _$_UserDisabledException implements _UserDisabledException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return userDisabledException();
   }
@@ -2264,6 +2335,7 @@ class _$_UserDisabledException implements _UserDisabledException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return userDisabledException?.call();
   }
@@ -2284,6 +2356,7 @@ class _$_UserDisabledException implements _UserDisabledException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userDisabledException != null) {
@@ -2319,6 +2392,7 @@ class _$_UserDisabledException implements _UserDisabledException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return userDisabledException(this);
   }
@@ -2344,6 +2418,7 @@ class _$_UserDisabledException implements _UserDisabledException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return userDisabledException?.call(this);
   }
@@ -2369,6 +2444,7 @@ class _$_UserDisabledException implements _UserDisabledException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (userDisabledException != null) {
@@ -2440,6 +2516,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return operationNotAllowedException();
   }
@@ -2460,6 +2537,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return operationNotAllowedException?.call();
   }
@@ -2480,6 +2558,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (operationNotAllowedException != null) {
@@ -2515,6 +2594,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return operationNotAllowedException(this);
   }
@@ -2540,6 +2620,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return operationNotAllowedException?.call(this);
   }
@@ -2565,6 +2646,7 @@ class _$_OperationNotAllowedException implements _OperationNotAllowedException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (operationNotAllowedException != null) {
@@ -2633,6 +2715,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
     required TResult Function() userDisabledException,
     required TResult Function() operationNotAllowedException,
     required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
   }) {
     return invalidEmailException();
   }
@@ -2653,6 +2736,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
   }) {
     return invalidEmailException?.call();
   }
@@ -2673,6 +2757,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
     TResult Function()? userDisabledException,
     TResult Function()? operationNotAllowedException,
     TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (invalidEmailException != null) {
@@ -2708,6 +2793,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
         operationNotAllowedException,
     required TResult Function(_InvalidEmailException value)
         invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
   }) {
     return invalidEmailException(this);
   }
@@ -2733,6 +2819,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
   }) {
     return invalidEmailException?.call(this);
   }
@@ -2758,6 +2845,7 @@ class _$_InvalidEmailException implements _InvalidEmailException {
     TResult Function(_OperationNotAllowedException value)?
         operationNotAllowedException,
     TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
     required TResult orElse(),
   }) {
     if (invalidEmailException != null) {
@@ -2769,4 +2857,202 @@ class _$_InvalidEmailException implements _InvalidEmailException {
 
 abstract class _InvalidEmailException implements FailureType {
   const factory _InvalidEmailException() = _$_InvalidEmailException;
+}
+
+/// @nodoc
+abstract class _$NoMoreUserAvailableCopyWith<$Res> {
+  factory _$NoMoreUserAvailableCopyWith(_NoMoreUserAvailable value,
+          $Res Function(_NoMoreUserAvailable) then) =
+      __$NoMoreUserAvailableCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NoMoreUserAvailableCopyWithImpl<$Res>
+    extends _$FailureTypeCopyWithImpl<$Res>
+    implements _$NoMoreUserAvailableCopyWith<$Res> {
+  __$NoMoreUserAvailableCopyWithImpl(
+      _NoMoreUserAvailable _value, $Res Function(_NoMoreUserAvailable) _then)
+      : super(_value, (v) => _then(v as _NoMoreUserAvailable));
+
+  @override
+  _NoMoreUserAvailable get _value => super._value as _NoMoreUserAvailable;
+}
+
+/// @nodoc
+
+class _$_NoMoreUserAvailable implements _NoMoreUserAvailable {
+  const _$_NoMoreUserAvailable();
+
+  @override
+  String toString() {
+    return 'FailureType.noMoreUserAvailable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NoMoreUserAvailable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Object error) unknownException,
+    required TResult Function() alreadyHasAccountException,
+    required TResult Function() userAlreadySignedInException,
+    required TResult Function() wrongPasswordException,
+    required TResult Function() userNotFoundException,
+    required TResult Function() tooManyRequestsException,
+    required TResult Function() emailAlreadyInUseException,
+    required TResult Function() weakPasswordException,
+    required TResult Function() invalidEmailAdress,
+    required TResult Function() requiresRecentLoginException,
+    required TResult Function() userDisabledException,
+    required TResult Function() operationNotAllowedException,
+    required TResult Function() invalidEmailException,
+    required TResult Function() noMoreUserAvailable,
+  }) {
+    return noMoreUserAvailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Object error)? unknownException,
+    TResult Function()? alreadyHasAccountException,
+    TResult Function()? userAlreadySignedInException,
+    TResult Function()? wrongPasswordException,
+    TResult Function()? userNotFoundException,
+    TResult Function()? tooManyRequestsException,
+    TResult Function()? emailAlreadyInUseException,
+    TResult Function()? weakPasswordException,
+    TResult Function()? invalidEmailAdress,
+    TResult Function()? requiresRecentLoginException,
+    TResult Function()? userDisabledException,
+    TResult Function()? operationNotAllowedException,
+    TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
+  }) {
+    return noMoreUserAvailable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Object error)? unknownException,
+    TResult Function()? alreadyHasAccountException,
+    TResult Function()? userAlreadySignedInException,
+    TResult Function()? wrongPasswordException,
+    TResult Function()? userNotFoundException,
+    TResult Function()? tooManyRequestsException,
+    TResult Function()? emailAlreadyInUseException,
+    TResult Function()? weakPasswordException,
+    TResult Function()? invalidEmailAdress,
+    TResult Function()? requiresRecentLoginException,
+    TResult Function()? userDisabledException,
+    TResult Function()? operationNotAllowedException,
+    TResult Function()? invalidEmailException,
+    TResult Function()? noMoreUserAvailable,
+    required TResult orElse(),
+  }) {
+    if (noMoreUserAvailable != null) {
+      return noMoreUserAvailable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnknownException value) unknownException,
+    required TResult Function(_AlreadyHasAccountNullException value)
+        alreadyHasAccountException,
+    required TResult Function(_UserAlreadySignedInException value)
+        userAlreadySignedInException,
+    required TResult Function(_WrongPasswordException value)
+        wrongPasswordException,
+    required TResult Function(_UserNotFoundException value)
+        userNotFoundException,
+    required TResult Function(_TooManyRequestsException value)
+        tooManyRequestsException,
+    required TResult Function(_EmailAlreadyInUseException value)
+        emailAlreadyInUseException,
+    required TResult Function(_WeakPasswordException value)
+        weakPasswordException,
+    required TResult Function(_InvalidEmailAdresss value) invalidEmailAdress,
+    required TResult Function(_RequiresRecentLoginException value)
+        requiresRecentLoginException,
+    required TResult Function(_UserDisabledException value)
+        userDisabledException,
+    required TResult Function(_OperationNotAllowedException value)
+        operationNotAllowedException,
+    required TResult Function(_InvalidEmailException value)
+        invalidEmailException,
+    required TResult Function(_NoMoreUserAvailable value) noMoreUserAvailable,
+  }) {
+    return noMoreUserAvailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_UnknownException value)? unknownException,
+    TResult Function(_AlreadyHasAccountNullException value)?
+        alreadyHasAccountException,
+    TResult Function(_UserAlreadySignedInException value)?
+        userAlreadySignedInException,
+    TResult Function(_WrongPasswordException value)? wrongPasswordException,
+    TResult Function(_UserNotFoundException value)? userNotFoundException,
+    TResult Function(_TooManyRequestsException value)? tooManyRequestsException,
+    TResult Function(_EmailAlreadyInUseException value)?
+        emailAlreadyInUseException,
+    TResult Function(_WeakPasswordException value)? weakPasswordException,
+    TResult Function(_InvalidEmailAdresss value)? invalidEmailAdress,
+    TResult Function(_RequiresRecentLoginException value)?
+        requiresRecentLoginException,
+    TResult Function(_UserDisabledException value)? userDisabledException,
+    TResult Function(_OperationNotAllowedException value)?
+        operationNotAllowedException,
+    TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
+  }) {
+    return noMoreUserAvailable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnknownException value)? unknownException,
+    TResult Function(_AlreadyHasAccountNullException value)?
+        alreadyHasAccountException,
+    TResult Function(_UserAlreadySignedInException value)?
+        userAlreadySignedInException,
+    TResult Function(_WrongPasswordException value)? wrongPasswordException,
+    TResult Function(_UserNotFoundException value)? userNotFoundException,
+    TResult Function(_TooManyRequestsException value)? tooManyRequestsException,
+    TResult Function(_EmailAlreadyInUseException value)?
+        emailAlreadyInUseException,
+    TResult Function(_WeakPasswordException value)? weakPasswordException,
+    TResult Function(_InvalidEmailAdresss value)? invalidEmailAdress,
+    TResult Function(_RequiresRecentLoginException value)?
+        requiresRecentLoginException,
+    TResult Function(_UserDisabledException value)? userDisabledException,
+    TResult Function(_OperationNotAllowedException value)?
+        operationNotAllowedException,
+    TResult Function(_InvalidEmailException value)? invalidEmailException,
+    TResult Function(_NoMoreUserAvailable value)? noMoreUserAvailable,
+    required TResult orElse(),
+  }) {
+    if (noMoreUserAvailable != null) {
+      return noMoreUserAvailable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NoMoreUserAvailable implements FailureType {
+  const factory _NoMoreUserAvailable() = _$_NoMoreUserAvailable;
 }

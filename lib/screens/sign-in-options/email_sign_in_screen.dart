@@ -6,6 +6,7 @@ import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/utils/exceptions/exception_handler.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
+import 'package:truyou/components/widgets/loader.dart';
 import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/sign-in-options/forgot_password.dart';
 
@@ -27,6 +28,8 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
   //Email and password controllers
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final _loadingKey = GlobalKey<State>();
 
   //Sign In bloc
   final _authBloc = getit<AuthBloc>();
@@ -50,10 +53,14 @@ class _SignInEmailScreenState extends State<SignInEmailScreen> {
       bloc: _authBloc,
       listener: (context, state) {
         state.maybeWhen(
+          loading: () =>
+              OverlayLoader.showLoadingDialog(context, _loadingKey),
           failed: (exception) {
+            OverlayLoader.pop(_loadingKey);
             ExceptionHandler.showErrorDialog(context, exception);
           },
           authenticatedAuthentication: () {
+            OverlayLoader.pop(_loadingKey);
             Navigator.of(context)
                 .pushAndRemoveUntil(AppRoot.route(), (route) => false);
           },

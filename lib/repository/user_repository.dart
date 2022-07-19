@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 
 //Firebase Firestore rules
 // if isSignedIn() && isUserData(userId)
@@ -39,7 +39,7 @@ class UserRepository {
 
   ///Sign up user with email and password
   Future<User?>? signUpUserEmailAndPassword(
-      AuthUser user, List<File> images, String password) async {
+      TruYouUser user, List<File> images, String password) async {
     //Registers the user
     final authResult = await _authInstance.createUserWithEmailAndPassword(
         email: user.email, password: password);
@@ -77,6 +77,15 @@ class UserRepository {
     final taskSnapshot = await uploadTask;
 
     return await taskSnapshot.ref.getDownloadURL();
+  }
+
+  ///Gets users info
+  Future<TruYouUser> getUserInfo()async{
+    final user = getCurrentUser();
+
+    final document = await _firestoreInstance.collection('users').doc(user?.uid).get();
+
+    return TruYouUser.fromJson(document, document.data()!);
   }
 
   ///Gets the current user

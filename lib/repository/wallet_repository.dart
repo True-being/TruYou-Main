@@ -32,4 +32,6 @@ class WalletRepository {
 
     return null;
   }
+
+  static Future<void>disconnectWallet()async{}
 }

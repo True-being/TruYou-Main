@@ -3,14 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/models/auth_user/truyou_user_model.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/user_repository.dart';
 
 //TODO: Add Failure blocs to with: .thenThrow(FirebaseAuthException(code:'invalid-login'))
 
 class UserRepositoryMock extends Mock implements UserRepository {}
 
-final mockAuthUser = AuthUser(
+final mockAuthUser =TruYouUser(
   firstName: 'James',
   lastName: 'Bekket',
   email: 'jamesbekket@gmail.com',
@@ -24,6 +25,7 @@ final mockAuthUser = AuthUser(
   location: GeoPoint(27.0, 32.0),
   gender: 'Male',
   sexualOrientation: 'Straight',
+  images: []
 );
 
 void main() {

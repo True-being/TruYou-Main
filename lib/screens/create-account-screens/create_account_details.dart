@@ -12,9 +12,9 @@ import 'package:truyou/components/components.dart';
 import 'package:location/location.dart' as location;
 import 'package:truyou/components/utils/exceptions/exception_handler.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/components/widgets/loader.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/cloud_function_repository.dart';
-import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/repository/wallet_repository.dart';
 import 'package:truyou/screens/match-pledging/match_pledging_screen.dart';
 import 'package:truyou/services/image_picker_service.dart';
@@ -23,10 +23,10 @@ import 'package:truyou/services/image_picker_service.dart';
 enum FNum { FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH }
 
 class CreateAccountDetailsScreen extends StatefulWidget {
-  final AuthUser user;
+  final TruYouUser user;
   final String password;
 
-  static Route route(AuthUser authUser, String password) {
+  static Route route(TruYouUser authUser, String password) {
     return MaterialPageRoute(
       builder: (_) =>
           CreateAccountDetailsScreen(user: authUser, password: password),
@@ -67,10 +67,20 @@ class _CreateAccountDetailsScreenState
   final _signUpBloc = getit<AuthBloc>();
   final _cloudFunctionRepository = getit<CloudFunctionRepository>();
 
-  //Gender of user
+  //Gender
   String? _gender = Constants.genders[0];
-  //Sexual Orientation of user
-  String? _sexual_orientation = Constants.sexual_orientation[0];
+  String? _genderPreference = Constants.genders[1];
+  //Sexual Orientation
+  String? _sexualOrientation = Constants.sexual_orientation[0];
+  String? _sexualOrientationPreference = Constants.sexual_orientation[0];
+
+  //Age Range
+  final _lowerAgePreference = DateTime.now()..subtract(Duration(days: 6570));
+  final _upperAgePreference = DateTime.now()..subtract(Duration(days: 12775));
+
+  final _radiusDistance = 0;
+
+  final _loadingKey = GlobalKey<State>();
 
   //Form key - Validation
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -82,7 +92,7 @@ class _CreateAccountDetailsScreenState
   bool _hasRequested = false;
 
   //Checks if wallet has been verified - Checks if wallet exists in the Database
-  bool _hasVerifiedWallet = false;
+  bool _hasVerifiedWallet = true;
 
   //The current location of the user
   Location? _currentLocation;
@@ -220,6 +230,7 @@ class _CreateAccountDetailsScreenState
             //If true, add user to database and navigate to home screen
             //If false, navigate to matching pledge
             final _user = widget.user.copyWith(
+                documentSnapshot: null,
                 algoWalletAddress: _walletAddressController.text,
                 aboutMe: _aboutMeController.text,
                 lifeStyle: _lifeStyleController.text,
@@ -229,7 +240,13 @@ class _CreateAccountDetailsScreenState
                 location: GeoPoint(
                     _currentLocation!.latitude, _currentLocation!.longitude),
                 gender: _gender,
-                sexualOrientation: _sexual_orientation);
+                sexualOrientation: _sexualOrientation,
+                genderPreference: _genderPreference,
+                sexualityPreference: _sexualOrientationPreference,
+                lowerAgePreference: _lowerAgePreference,
+                upperAgePreference: _upperAgePreference,
+                radiusDistance: _radiusDistance,
+                isRadiusDistanceSelected: false);
 
             _signUpBloc.add(
                 AuthEvent.signUpButtonPressed(_user, _images, widget.password));
@@ -297,13 +314,18 @@ class _CreateAccountDetailsScreenState
         bloc: _signUpBloc,
         listener: (context, state) {
           state.maybeWhen(
+              loading: () =>
+                  OverlayLoader.showLoadingDialog(context, _loadingKey),
               failed: (exception) {
+                OverlayLoader.pop(_loadingKey);
                 ExceptionHandler.showErrorDialog(context, exception);
               },
-              authenticatedAuthentication: () => Navigator.of(context)
-                  .pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => MatchPledging()),
-                      (route) => false),
+              authenticatedAuthentication: () {
+                OverlayLoader.pop(_loadingKey);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => MatchPledging()),
+                    (route) => false);
+              },
               orElse: () {});
         },
         child: SingleChildScrollView(
@@ -436,7 +458,9 @@ class _CreateAccountDetailsScreenState
                                 : Constants.VERIFY,
                             buttonWidth: _size.width,
                             buttonHeight: _size.height * 0.07,
-                            onPress: () => _verifyAddress(context),
+                            onPress: () {
+                              // _verifyAddress(context);
+                            },
                             horizontalPadding: ResponsiveWidget.size(context,
                                 _size.width * 0.03, _size.width * 0.01)),
                       ),
@@ -598,12 +622,32 @@ class _CreateAccountDetailsScreenState
                             },
                             items: Constants.genders),
                         CustomDropDown(
+                            defaultValue: Constants.genders[0],
+                            title: Constants.I_AM_LOOKING_FOR,
+                            hintText: Constants.GENDER,
+                            onValueChanged: (String? val) {
+                              setState(() {
+                                _genderPreference = val;
+                              });
+                            },
+                            items: Constants.genders),
+                        CustomDropDown(
                             defaultValue: Constants.sexual_orientation[0],
                             title: Constants.MY_SEXUAL_ORIENTATION_IS,
                             hintText: Constants.SEXUAL_ORIENTATION,
                             onValueChanged: (String? val) {
                               setState(() {
-                                _sexual_orientation = val;
+                                _sexualOrientation = val;
+                              });
+                            },
+                            items: Constants.sexual_orientation),
+                        CustomDropDown(
+                            defaultValue: Constants.sexual_orientation[0],
+                            title: Constants.I_PREFER,
+                            hintText: Constants.SEXUAL_ORIENTATION,
+                            onValueChanged: (String? val) {
+                              setState(() {
+                                _sexualOrientationPreference = val;
                               });
                             },
                             items: Constants.sexual_orientation),

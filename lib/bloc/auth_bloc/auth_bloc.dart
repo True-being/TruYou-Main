@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:truyou/components/utils/exceptions/exception_handler.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> _signInButtonPressed(
       _SignInButtonPressed event, Emitter<AuthState> emit) async {
     emit(AuthState.loading());
+    await Future.delayed(Duration(seconds: 2));
     try {
       final User? user = await userRepository.signInUserEmailAndPassword(
         event.email,
@@ -38,8 +39,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthState.unAuthenticatedAuthentication());
       }
     } on FirebaseAuthException catch (_e) {
+      print(_e);
+
       emit(AuthState.failed(ExceptionHandler.catchFirebaseAuthExceptions(_e)));
     } catch (_e) {
+      print(_e);
       emit(AuthState.failed(ExceptionHandler.catchErrors(_e)));
     }
   }

@@ -19,6 +19,10 @@ class Constants {
   static const Color track_color = Color(0xff272763);
 
   //Strings(Language translation use)
+  static const String NO_MORE_USERS_MESSAGE =
+      'No users left under your filter parameters';
+  static const String I_AM_LOOKING_FOR = 'I am looking for...';
+  static const String I_PREFER = 'I prefer';
   static const String UNKNOWN_ERROR = 'Unknown error';
   static const String UNKNOWN_ERROR_MESSAGE =
       'Please keep note of how you got this error and contact support.';
@@ -73,7 +77,6 @@ class Constants {
   static String SAVE = 'Save';
   static String AGE_SPAN = 'Age Span';
   static String SELECT_ONLY_ONE = 'Select only one';
-  static String I_AM_LOOKING_FOR = 'I am looking for';
   static String CHANGE_LOCATION = 'Change Your Location';
   static String MATCHING_DISTANCE = 'Matching Distance';
   static String DISTANCE_IN_MILES = 'Distance in Miles';

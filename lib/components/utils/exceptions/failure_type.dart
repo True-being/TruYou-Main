@@ -23,4 +23,5 @@ abstract class FailureType with _$FailureType {
   const factory FailureType.operationNotAllowedException() =
       _OperationNotAllowedException;
   const factory FailureType.invalidEmailException() = _InvalidEmailException;
+  const factory FailureType.noMoreUserAvailable() = _NoMoreUserAvailable;
 }

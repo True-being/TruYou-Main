@@ -11,7 +11,7 @@ class UserProfileCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(
+              image: NetworkImage(
                 imageURL,
               ),
               fit: BoxFit.cover)),

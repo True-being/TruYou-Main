@@ -1,0 +1,132 @@
+# Diff Details
+
+Date : 2022-07-10 20:21:18
+
+Directory c:\\Flutter Projects\\truyou
+
+Total : 117 files,  19397 codes, 536 comments, 1166 blanks, all 21099 lines
+
+[Summary](results.md) / [Details](details.md) / [Diff Summary](diff.md) / Diff Details
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [android/app/build.gradle](/android/app/build.gradle) | Groovy | 1 | 0 | 0 | 1 |
+| [android/app/google-services.json](/android/app/google-services.json) | JSON | 39 | 0 | 0 | 39 |
+| [android/app/src/main/AndroidManifest.xml](/android/app/src/main/AndroidManifest.xml) | XML | 1 | 0 | 0 | 1 |
+| [firebase.json](/firebase.json) | JSON | 6 | 0 | 0 | 6 |
+| [functions/.eslintrc.cjs](/functions/.eslintrc.cjs) | JavaScript | 14 | 0 | 1 | 15 |
+| [functions/index.js](/functions/index.js) | JavaScript | 48 | 0 | 19 | 67 |
+| [functions/package-lock.json](/functions/package-lock.json) | JSON | 4,573 | 0 | 1 | 4,574 |
+| [functions/package.json](/functions/package.json) | JSON | 26 | 0 | 0 | 26 |
+| [ios/firebase_app_id_file.json](/ios/firebase_app_id_file.json) | JSON | 7 | 0 | 0 | 7 |
+| [lib/bloc/auth_bloc/auth_bloc.dart](/lib/bloc/auth_bloc/auth_bloc.dart) | Dart | 98 | 2 | 13 | 113 |
+| [lib/bloc/auth_bloc/auth_bloc.freezed.dart](/lib/bloc/auth_bloc/auth_bloc.freezed.dart) | Dart | 1,452 | 48 | 197 | 1,697 |
+| [lib/bloc/auth_bloc/auth_event.dart](/lib/bloc/auth_bloc/auth_event.dart) | Dart | 4 | 8 | 1 | 13 |
+| [lib/bloc/auth_bloc/auth_state.dart](/lib/bloc/auth_bloc/auth_state.dart) | Dart | 11 | 0 | 2 | 13 |
+| [lib/bloc/find_matches_bloc/find_matches_bloc.dart](/lib/bloc/find_matches_bloc/find_matches_bloc.dart) | Dart | 32 | 0 | 5 | 37 |
+| [lib/bloc/find_matches_bloc/find_matches_bloc.freezed.dart](/lib/bloc/find_matches_bloc/find_matches_bloc.freezed.dart) | Dart | 762 | 33 | 114 | 909 |
+| [lib/bloc/find_matches_bloc/find_matches_event.dart](/lib/bloc/find_matches_bloc/find_matches_event.dart) | Dart | 7 | 0 | 2 | 9 |
+| [lib/bloc/find_matches_bloc/find_matches_state.dart](/lib/bloc/find_matches_bloc/find_matches_state.dart) | Dart | 8 | 0 | 2 | 10 |
+| [lib/bloc/swipe_bloc/swipe_bloc.dart](/lib/bloc/swipe_bloc/swipe_bloc.dart) | Dart | 38 | 0 | 6 | 44 |
+| [lib/bloc/swipe_bloc/swipe_bloc.freezed.dart](/lib/bloc/swipe_bloc/swipe_bloc.freezed.dart) | Dart | 1,044 | 39 | 154 | 1,237 |
+| [lib/bloc/swipe_bloc/swipe_event.dart](/lib/bloc/swipe_bloc/swipe_event.dart) | Dart | 8 | 0 | 2 | 10 |
+| [lib/bloc/swipe_bloc/swipe_state.dart](/lib/bloc/swipe_bloc/swipe_state.dart) | Dart | 9 | 0 | 1 | 10 |
+| [lib/bloc/user_profile_bloc/user_profile_bloc.dart](/lib/bloc/user_profile_bloc/user_profile_bloc.dart) | Dart | 26 | 5 | 7 | 38 |
+| [lib/bloc/user_profile_bloc/user_profile_bloc.freezed.dart](/lib/bloc/user_profile_bloc/user_profile_bloc.freezed.dart) | Dart | 679 | 33 | 109 | 821 |
+| [lib/bloc/user_profile_bloc/user_profile_event.dart](/lib/bloc/user_profile_bloc/user_profile_event.dart) | Dart | 5 | 0 | 1 | 6 |
+| [lib/bloc/user_profile_bloc/user_profile_state.dart](/lib/bloc/user_profile_bloc/user_profile_state.dart) | Dart | 8 | 0 | 1 | 9 |
+| [lib/components/utils/auto-route-tester/auto_drawer_route_tester.dart](/lib/components/utils/auto-route-tester/auto_drawer_route_tester.dart) | Dart | 49 | 3 | 19 | 71 |
+| [lib/components/utils/auto-route-tester/auto_route_tester.dart](/lib/components/utils/auto-route-tester/auto_route_tester.dart) | Dart | 83 | 9 | 12 | 104 |
+| [lib/components/utils/auto-validate-tester/auto_validate_tester.dart](/lib/components/utils/auto-validate-tester/auto_validate_tester.dart) | Dart | 45 | 10 | 7 | 62 |
+| [lib/components/utils/constants/constants.dart](/lib/components/utils/constants/constants.dart) | Dart | 157 | 0 | 0 | 157 |
+| [lib/components/utils/constants/constants_export.dart](/lib/components/utils/constants/constants_export.dart) | Dart | 2 | 0 | 1 | 3 |
+| [lib/components/utils/constants/keys.dart](/lib/components/utils/constants/keys.dart) | Dart | 543 | 150 | 73 | 766 |
+| [lib/components/utils/exceptions/exception_handler.dart](/lib/components/utils/exceptions/exception_handler.dart) | Dart | 102 | 1 | 4 | 107 |
+| [lib/components/utils/exceptions/failure_type.dart](/lib/components/utils/exceptions/failure_type.dart) | Dart | 24 | 0 | 3 | 27 |
+| [lib/components/utils/exceptions/failure_type.freezed.dart](/lib/components/utils/exceptions/failure_type.freezed.dart) | Dart | 2,499 | 51 | 223 | 2,773 |
+| [lib/components/utils/formatters/formatter.dart](/lib/components/utils/formatters/formatter.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/components/utils/formatters/search_formatter.dart](/lib/components/utils/formatters/search_formatter.dart) | Dart | 4 | 0 | 2 | 6 |
+| [lib/components/utils/formatters/stake_trust_formatter.dart](/lib/components/utils/formatters/stake_trust_formatter.dart) | Dart | 4 | 0 | 1 | 5 |
+| [lib/components/utils/injector/injection_container.dart](/lib/components/utils/injector/injection_container.dart) | Dart | 23 | 3 | 3 | 29 |
+| [lib/components/utils/media-query/media_query.dart](/lib/components/utils/media-query/media_query.dart) | Dart | 35 | 19 | 13 | 67 |
+| [lib/components/utils/styles/app_theme.dart](/lib/components/utils/styles/app_theme.dart) | Dart | 25 | 0 | 4 | 29 |
+| [lib/components/utils/utils.dart](/lib/components/utils/utils.dart) | Dart | 5 | 0 | 0 | 5 |
+| [lib/components/utils/validators/match_pledging_validator.dart](/lib/components/utils/validators/match_pledging_validator.dart) | Dart | 0 | 0 | -1 | -1 |
+| [lib/components/utils/validators/search_validator.dart](/lib/components/utils/validators/search_validator.dart) | Dart | 8 | 0 | 2 | 10 |
+| [lib/components/utils/validators/stake_trust_validator.dart](/lib/components/utils/validators/stake_trust_validator.dart) | Dart | 0 | 0 | -1 | -1 |
+| [lib/components/utils/validators/trust_validator.dart](/lib/components/utils/validators/trust_validator.dart) | Dart | 12 | 0 | 2 | 14 |
+| [lib/components/utils/validators/validator.dart](/lib/components/utils/validators/validator.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/components/widgets/back_button.dart](/lib/components/widgets/back_button.dart) | Dart | 18 | 0 | 3 | 21 |
+| [lib/components/widgets/chat_item.dart](/lib/components/widgets/chat_item.dart) | Dart | 107 | 7 | 9 | 123 |
+| [lib/components/widgets/color_chip.dart](/lib/components/widgets/color_chip.dart) | Dart | 15 | 0 | 3 | 18 |
+| [lib/components/widgets/custom_app_bar.dart](/lib/components/widgets/custom_app_bar.dart) | Dart | 22 | 1 | 2 | 25 |
+| [lib/components/widgets/custom_drawer.dart](/lib/components/widgets/custom_drawer.dart) | Dart | 3 | -1 | 0 | 2 |
+| [lib/components/widgets/custom_switch.dart](/lib/components/widgets/custom_switch.dart) | Dart | 28 | 0 | 5 | 33 |
+| [lib/components/widgets/custom_textfield.dart](/lib/components/widgets/custom_textfield.dart) | Dart | 5 | 0 | 0 | 5 |
+| [lib/components/widgets/dialogs/custom_dialog.dart](/lib/components/widgets/dialogs/custom_dialog.dart) | Dart | 705 | 65 | 9 | 779 |
+| [lib/components/widgets/divider.dart](/lib/components/widgets/divider.dart) | Dart | 14 | 1 | 4 | 19 |
+| [lib/components/widgets/gift_card.dart](/lib/components/widgets/gift_card.dart) | Dart | 62 | 0 | 4 | 66 |
+| [lib/components/widgets/glow-buttons/glowing_button.dart](/lib/components/widgets/glow-buttons/glowing_button.dart) | Dart | 14 | 0 | 3 | 17 |
+| [lib/components/widgets/glow-buttons/outlined_glowing_button.dart](/lib/components/widgets/glow-buttons/outlined_glowing_button.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/components/widgets/gradient_chat_profile_picture.dart](/lib/components/widgets/gradient_chat_profile_picture.dart) | Dart | 43 | 4 | 6 | 53 |
+| [lib/components/widgets/gradient_text.dart](/lib/components/widgets/gradient_text.dart) | Dart | 4 | 1 | 0 | 5 |
+| [lib/components/widgets/loader.dart](/lib/components/widgets/loader.dart) | Dart | 37 | 0 | 5 | 42 |
+| [lib/components/widgets/my_matches_card.dart](/lib/components/widgets/my_matches_card.dart) | Dart | 130 | 0 | 3 | 133 |
+| [lib/components/widgets/notification_card.dart](/lib/components/widgets/notification_card.dart) | Dart | 73 | 1 | 3 | 77 |
+| [lib/components/widgets/role_card.dart](/lib/components/widgets/role_card.dart) | Dart | 54 | 0 | 4 | 58 |
+| [lib/components/widgets/save_button.dart](/lib/components/widgets/save_button.dart) | Dart | 29 | 0 | 4 | 33 |
+| [lib/components/widgets/user_profile_card.dart](/lib/components/widgets/user_profile_card.dart) | Dart | 33 | 0 | 4 | 37 |
+| [lib/components/widgets/widgets.dart](/lib/components/widgets/widgets.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/firebase_options.dart](/lib/firebase_options.dart) | Dart | 60 | 12 | 5 | 77 |
+| [lib/main.dart](/lib/main.dart) | Dart | 3 | 3 | -1 | 5 |
+| [lib/models/auth_user_model.dart](/lib/models/auth_user_model.dart) | Dart | -33 | -1 | -5 | -39 |
+| [lib/models/truyou_user/truyou_user_model.dart](/lib/models/truyou_user/truyou_user_model.dart) | Dart | 105 | 0 | 7 | 112 |
+| [lib/models/truyou_user/truyou_user_model.freezed.dart](/lib/models/truyou_user/truyou_user_model.freezed.dart) | Dart | 626 | 15 | 27 | 668 |
+| [lib/repository/cloud_function_repository.dart](/lib/repository/cloud_function_repository.dart) | Dart | 27 | 4 | 6 | 37 |
+| [lib/repository/firebase_repository.dart](/lib/repository/firebase_repository.dart) | Dart | 158 | 28 | 22 | 208 |
+| [lib/repository/user_repository.dart](/lib/repository/user_repository.dart) | Dart | 59 | 26 | 21 | 106 |
+| [lib/repository/wallet_repository.dart](/lib/repository/wallet_repository.dart) | Dart | 30 | 2 | 6 | 38 |
+| [lib/screens/app_root.dart](/lib/screens/app_root.dart) | Dart | 58 | 5 | 2 | 65 |
+| [lib/screens/chats/chat_viewer.dart](/lib/screens/chats/chat_viewer.dart) | Dart | 114 | 3 | 13 | 130 |
+| [lib/screens/chats/messages/chats.dart](/lib/screens/chats/messages/chats.dart) | Dart | 51 | 1 | 5 | 57 |
+| [lib/screens/chats/messages/notifications.dart](/lib/screens/chats/messages/notifications.dart) | Dart | 23 | 1 | 4 | 28 |
+| [lib/screens/chats/messages/tab_view.dart](/lib/screens/chats/messages/tab_view.dart) | Dart | 71 | 2 | 5 | 78 |
+| [lib/screens/create-account-screens/create_account_details.dart](/lib/screens/create-account-screens/create_account_details.dart) | Dart | 122 | -11 | 6 | 117 |
+| [lib/screens/create-account-screens/create_account_general.dart](/lib/screens/create-account-screens/create_account_general.dart) | Dart | 29 | 0 | 1 | 30 |
+| [lib/screens/find-matches/find_matches.dart](/lib/screens/find-matches/find_matches.dart) | Dart | 170 | 11 | 9 | 190 |
+| [lib/screens/find-matches/its_a_match_screen.dart](/lib/screens/find-matches/its_a_match_screen.dart) | Dart | 129 | 3 | 6 | 138 |
+| [lib/screens/gift-screens/choose_gift_screen.dart](/lib/screens/gift-screens/choose_gift_screen.dart) | Dart | 144 | 0 | 7 | 151 |
+| [lib/screens/gift-screens/send-gift-screens/nft_gift.dart](/lib/screens/gift-screens/send-gift-screens/nft_gift.dart) | Dart | 119 | 1 | 6 | 126 |
+| [lib/screens/gift-screens/send-gift-screens/token_gift.dart](/lib/screens/gift-screens/send-gift-screens/token_gift.dart) | Dart | 121 | 2 | 6 | 129 |
+| [lib/screens/go-social/go_social.dart](/lib/screens/go-social/go_social.dart) | Dart | 126 | 1 | 8 | 135 |
+| [lib/screens/go-social/roles/purchase_role.dart](/lib/screens/go-social/roles/purchase_role.dart) | Dart | 141 | 1 | 10 | 152 |
+| [lib/screens/go-social/roles/social_swag.dart](/lib/screens/go-social/roles/social_swag.dart) | Dart | 205 | 0 | 11 | 216 |
+| [lib/screens/home_screen.dart](/lib/screens/home_screen.dart) | Dart | -107 | -4 | -7 | -118 |
+| [lib/screens/loading-screens/loading_screen.dart](/lib/screens/loading-screens/loading_screen.dart) | Dart | 38 | -1 | 3 | 40 |
+| [lib/screens/match-pledging/match_pledging_screen.dart](/lib/screens/match-pledging/match_pledging_screen.dart) | Dart | 361 | 16 | 12 | 389 |
+| [lib/screens/match_pledging_screen.dart](/lib/screens/match_pledging_screen.dart) | Dart | -325 | -10 | -11 | -346 |
+| [lib/screens/my-matches/my_matches.dart](/lib/screens/my-matches/my_matches.dart) | Dart | 113 | 5 | 2 | 120 |
+| [lib/screens/partnerships/partnerships.dart](/lib/screens/partnerships/partnerships.dart) | Dart | 17 | 0 | 3 | 20 |
+| [lib/screens/premium-features/premium_features.dart](/lib/screens/premium-features/premium_features.dart) | Dart | 411 | 2 | 19 | 432 |
+| [lib/screens/profile/my_profile.dart](/lib/screens/profile/my_profile.dart) | Dart | 305 | 53 | 5 | 363 |
+| [lib/screens/profile/user_profile.dart](/lib/screens/profile/user_profile.dart) | Dart | 269 | 51 | 6 | 326 |
+| [lib/screens/screens.dart](/lib/screens/screens.dart) | Dart | -1 | 0 | 0 | -1 |
+| [lib/screens/settings/connected_accounts.dart](/lib/screens/settings/connected_accounts.dart) | Dart | 87 | 2 | 7 | 96 |
+| [lib/screens/settings/location_settings.dart](/lib/screens/settings/location_settings.dart) | Dart | 230 | 10 | 17 | 257 |
+| [lib/screens/settings/notifications.dart](/lib/screens/settings/notifications.dart) | Dart | 100 | 3 | 7 | 110 |
+| [lib/screens/settings/search_of.dart](/lib/screens/settings/search_of.dart) | Dart | 166 | 1 | 15 | 182 |
+| [lib/screens/settings/settings.dart](/lib/screens/settings/settings.dart) | Dart | 243 | 0 | 14 | 257 |
+| [lib/screens/sign-in-options/email_sign_in_screen.dart](/lib/screens/sign-in-options/email_sign_in_screen.dart) | Dart | 3 | -5 | 2 | 0 |
+| [lib/screens/sign-in-options/forgot_password.dart](/lib/screens/sign-in-options/forgot_password.dart) | Dart | 140 | 5 | 9 | 154 |
+| [lib/screens/sign-in-options/number-sign-in/otp_verification_screen.dart](/lib/screens/sign-in-options/number-sign-in/otp_verification_screen.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/screens/sign-in-options/welcome_screen.dart](/lib/screens/sign-in-options/welcome_screen.dart) | Dart | -51 | -8 | 1 | -58 |
+| [lib/services/provider_service.dart](/lib/services/provider_service.dart) | Dart | 13 | 0 | 5 | 18 |
+| [package-lock.json](/package-lock.json) | JSON | 1,801 | 0 | 1 | 1,802 |
+| [pubspec.yaml](/pubspec.yaml) | YAML | 30 | -11 | -2 | 17 |
+| [test/bloc-tests/auth_bloc_test.dart](/test/bloc-tests/auth_bloc_test.dart) | Dart | 112 | 1 | 29 | 142 |
+| [test/unit-tests/unit_test.dart](/test/unit-tests/unit_test.dart) | Dart | 47 | 2 | 6 | 55 |
+| [test/widget-tests/auto_test.dart](/test/widget-tests/auto_test.dart) | Dart | 12 | 1 | 6 | 19 |
+| [test/widget-tests/widget_test.dart](/test/widget-tests/widget_test.dart) | Dart | -1,205 | -179 | -246 | -1,630 |
+
+[Summary](results.md) / [Details](details.md) / [Diff Summary](diff.md) / Diff Details

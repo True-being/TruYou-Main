@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' as firestore;
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/widgets/my_matches_card.dart';
-import 'package:truyou/models/auth_user_model.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/screens/app_root.dart';
 import 'package:truyou/screens/chats/messages/tab_view.dart';
 import 'package:truyou/screens/gift-screens/choose_gift_screen.dart';
@@ -747,17 +747,19 @@ class TextFieldKey {
       {required this.key, required this.enter, required this.validators});
 }
 
-final _mockUser = AuthUser(
-    isWalletVerified: true,
-    firstName: 'Mark',
-    lastName: 'Zuckerburg',
-    email: 'ZuckMuck@gmail.com',
-    companyName: 'Feta',
-    aboutMe: 'wjghkjwehgkwhjkeghwegjwkle wjhegwhejlghwehjglwk helj',
-    algoWalletAddress: 'hewghH3UIHG2G942GHU249GH2849G22948GH',
-    birthDate: DateTime(1000, 01, 01),
-    gender: 'Other',
-    job: 'Stealing data',
-    lifeStyle: 'wjgkhwrglwlrjg lwrjlgkjwkrljgkljwlrjglwlkrgj',
-    location: firestore.GeoPoint(29, 30),
-    sexualOrientation: 'ROBOTS');
+// final _mockUser = TruYouUser(
+//     images: [],
+//     documentSnapshot: null,
+//     isWalletVerified: true,
+//     firstName: 'Mark',
+//     lastName: 'Zuckerburg',
+//     email: 'ZuckMuck@gmail.com',
+//     companyName: 'Feta',
+//     aboutMe: 'wjghkjwehgkwhjkeghwegjwkle wjhegwhejlghwehjglwk helj',
+//     algoWalletAddress: 'hewghH3UIHG2G942GHU249GH2849G22948GH',
+//     birthDate: DateTime(1000, 01, 01),
+//     gender: 'Other',
+//     job: 'Stealing data',
+//     lifeStyle: 'wjgkhwrglwlrjg lwrjlgkjwkrljgkljwlrjglwlkrgj',
+//     location: firestore.GeoPoint(29, 30),
+//     sexualOrientation: 'ROBOTS');

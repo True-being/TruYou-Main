@@ -8,18 +8,64 @@ admin.initializeApp();
 
 const db = admin.firestore();
 
-exports.doesEmailAlreadyExist = functions.https.onCall(async(data, context) => {
+exports.doesEmailAlreadyExist = functions.https.onCall(async(data, _context) => {
     const email = data.email;
 
-    var querySnapshot = await db.collection('users').where('email', '==', email).get();
+    let querySnapshot = await db.collection('users').where('email', '==', email).get();
 
     return (querySnapshot.docs.length >= 1);
 });
 
-exports.doesAddressAlreadyExist = functions.https.onCall(async(data, context) => {
+exports.doesAddressAlreadyExist = functions.https.onCall(async(data, _context) => {
     const address = data.algoWalletAddress;
 
-    var querySnapshot = await db.collection('users').where('algoWalletAddress', '==', address).get();
+    let querySnapshot = await db.collection('users').where('algoWalletAddress', '==', address).get();
 
     return (querySnapshot.docs.length >= 1);
+});
+
+exports.confirmedMatch = functions.https.onCall(async(data, _context) => {
+    const userUID = data.userUID;
+    const swipedUserUID = data.swipedUserUID;
+
+    let uidQuery = db.collection('users').doc(swipedUserUID).collection('swipes').where('uid', '==', userUID).where('type', '==', 'match');
+
+    uidQuery.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            doc.ref.delete();
+        });
+    });
+
+    await db.collection('users').doc(userUID).collection('swipes').add({
+        uid: swipedUserUID,
+        'type': 'confirmedMatch'
+    });
+
+    await db.collection('users').doc(swipedUserUID).collection('swipes').add({
+        uid: userUID,
+        'type': 'confirmedMatch'
+    });
+});
+
+exports.confirmedMiss = functions.https.onCall(async(data, _context) => {
+    const userUID = data.userUID;
+    const swipedUserUID = data.swipedUserUID;
+
+    let uidQuery = db.collection('users').doc(swipedUserUID).collection('swipes').where('uid', '==', userUID).where('type', '==', 'miss');
+
+    uidQuery.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            doc.ref.delete();
+        });
+    });
+
+    await db.collection('users').doc(userUID).collection('swipes').add({
+        uid: swipedUserUID,
+        'type': 'confirmedMiss'
+    });
+
+    await db.collection('users').doc(swipedUserUID).collection('swipes').add({
+        uid: userUID,
+        'type': 'confirmedMiss'
+    });
 });

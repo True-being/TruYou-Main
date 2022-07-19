@@ -19,4 +19,18 @@ class CloudFunctionRepository {
         await callable.call(<String, dynamic>{'algoWalletAddress': address});
     return (response.data as bool);
   }
+
+  ///Add users to each others confirmed matches
+  Future<void> confirmedMatch(String? userUID, String? swipedUserUID)async{
+    final callable = functions.httpsCallable('confirmedMatch');
+    await callable.call(<String,dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
+    return;
+  }
+
+  ///Add users to each other confirmed misses
+  Future<void> confirmedMiss(String? userUID, String? swipedUserUID)async{
+    final callable = functions.httpsCallable('confirmedMiss');
+    await callable.call(<String,dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
+    return;
+  }
 }

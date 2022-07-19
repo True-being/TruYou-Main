@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:truyou/components/utils/constants/constants.dart';
 import 'package:truyou/components/utils/constants/keys.dart';
+import 'package:truyou/components/utils/exceptions/exceptions.dart';
 import 'package:truyou/components/utils/exceptions/failure_type.dart';
 import 'package:truyou/components/widgets/dialogs/custom_dialog.dart';
 
@@ -75,7 +76,6 @@ class ExceptionHandler {
   }
 
   static FailureType catchErrors(dynamic _exception) {
-    //TODO: Add custom errors here
     return FailureType.unknownException(_exception);
   }
 

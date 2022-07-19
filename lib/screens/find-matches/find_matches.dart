@@ -1,10 +1,17 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tcard/tcard.dart';
+import 'package:truyou/bloc/find_matches_bloc/find_matches_bloc.dart';
+import 'package:truyou/bloc/swipe_bloc/swipe_bloc.dart';
 import 'package:truyou/components/components.dart';
-import 'package:swipeable_card_stack/swipeable_card_stack.dart';
-import 'package:truyou/screens/find-matches/its_a_match_screen.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
+import 'package:truyou/components/widgets/loader.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
+import 'package:truyou/repository/user_repository.dart';
+import 'package:truyou/screens/find-matches/error_screens/no_more_users.dart';
+
+enum Cursor { startAt, startAfter }
 
 class FindMatches extends StatefulWidget {
   const FindMatches({Key? key}) : super(key: key);
@@ -21,105 +28,210 @@ class FindMatches extends StatefulWidget {
 }
 
 class _FindMatchesState extends State<FindMatches> {
-  SwipeableCardSectionController _cardSectionController =
-      SwipeableCardSectionController();
+  final _findMatchesBloc = getit<FindMatchesBloc>();
+  final _userRepository = getit<UserRepository>();
+  final _swipeBloc = getit<SwipeBloc>();
+  TCardController _controller = new TCardController();
+  int? _leftDirection;
+  int? _rightDirection;
+  int _current = 0;
 
-  Random random = Random();
+  @override
+  void initState() {
+    _loadMatches();
+    super.initState();
+  }
+
+  _loadMatches() async {
+    final user = await _userRepository.getUserInfo();
+    _findMatchesBloc
+        .add(FindMatchesEvent.loadMoreMatches(user.lastDate, Cursor.startAt));
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size _size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Constants.background_color,
-        body: Column(
-          children: [
-            //Swipeable stack
-            SwipeableCardsSection(
-              cardWidthTopMul: ResponsiveWidget.size(context, 0.9, 0.4),
-              cardWidthMiddleMul: ResponsiveWidget.size(context, 0.8, 0.3),
-              cardWidthBottomMul: ResponsiveWidget.size(context, 0.7, 0.2),
-              cardHeightBottomMul: ResponsiveWidget.size(context, 0.61, 0.51),
-              cardHeightMiddleMul: ResponsiveWidget.size(context, 0.62, 0.52),
-              cardHeightTopMul: ResponsiveWidget.size(context, 0.67, 0.57),
-              cardController: _cardSectionController,
-              context: context,
-              items: [
-                SwipeCard(
-                    image: 'assets/man1.jpg',
-                    title: 'Daniel Levato, 22',
-                    description: 'Sr. UX Designer'),
-                SwipeCard(
-                    image: 'assets/women1.jpg',
-                    title: 'Freya Bartley, 34',
-                    description: 'Small business owner'),
-                SwipeCard(
-                    image: 'assets/women2.png',
-                    title: 'Shriya Williams, 28',
-                    description: 'Team Manager')
-              ],
-              onCardSwiped: (dir, index, widget) {
-                if (dir == Direction.right) {
-                  Random random = Random();
-                  int number = random.nextInt(20);
-                  if (number >= 10) {
-                    // Navigator.of(context).push(ItsAMatchScreen.route());
-                    _cardSectionController.triggerSwipeRight();
-                  } else {
-                    _cardSectionController.triggerSwipeRight();
-                  }
-                }
-
-                _cardSectionController.addItem(SwipeCard(
-                    image: 'assets/women2.png',
-                    title: 'Shriya Williams,28',
-                    description: 'Team Manager'));
-              },
-              enableSwipeUp: false,
-              enableSwipeDown: false,
-            ),
-            //Buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                //TODO: Switch Red and green button; switch direction of arrow
-                CircularGlowButton(
-                  width: ResponsiveWidget.size(
-                      context, _size.width * 0.16, _size.width * 0.10),
-                  height: ResponsiveWidget.size(
-                      context, _size.width * 0.16, _size.width * 0.10),
-                  iconSize: ResponsiveWidget.size(
-                      context, _size.width * 0.09, _size.width * 0.045),
-                  iconColor: Constants.neon_red,
-                  icon: Icon(CupertinoIcons.clear),
-                  onPress: () {
-                    _cardSectionController.triggerSwipeLeft();
-                  },
-                ),
-                CircularGlowButton(
-                  width: ResponsiveWidget.size(
-                      context, _size.width * 0.16, _size.width * 0.10),
-                  height: ResponsiveWidget.size(
-                      context, _size.width * 0.16, _size.width * 0.10),
-                  iconSize: ResponsiveWidget.size(
-                      context, _size.width * 0.09, _size.width * 0.045),
-                  iconColor: Constants.neon_green,
-                  icon: Icon(CupertinoIcons.heart),
-                  onPress: () {
-                    int number = random.nextInt(20);
-                    if (number >= 10) {
-                      // Navigator.of(context).push(ItsAMatchScreen.route());
-                      _cardSectionController.triggerSwipeRight();
-                    } else {
-                      _cardSectionController.triggerSwipeRight();
-                    }
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
+        body: _buildSwiper(context),
       ),
+    );
+  }
+
+  Widget _buildSwiper(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final theme = Theme.of(context);
+    return BlocListener<SwipeBloc, SwipeState>(
+      bloc: _swipeBloc,
+      listener: (context, state) {
+        state.maybeWhen(failed: (exception) => print(exception), orElse: () {});
+      },
+      child: BlocBuilder<FindMatchesBloc, FindMatchesState>(
+          bloc: _findMatchesBloc,
+          builder: (context, state) {
+            return state.maybeWhen(
+                loading: () => Loader(),
+                failed: (exception) {
+                  return exception.maybeWhen(noMoreUserAvailable: () {
+                    return NoMoreUsers();
+                  }, orElse: () {
+                    return Text(
+                      'Unknown error',
+                      style: theme.textTheme.headline3
+                          ?.copyWith(color: Colors.white),
+                    );
+                  });
+                },
+                success: (users) {
+                  return Center(
+                    child: Container(
+                        width: size.width,
+                        height: size.height * 0.9,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SpacerV.m(context),
+                              Listener(
+                                onPointerMove: (PointerMoveEvent _event) {
+                                  if (_event.delta.dy > 0) {
+                                    setState(() {
+                                      _leftDirection = 1;
+                                      _rightDirection = null;
+                                    });
+                                  }
+                                  if (_event.delta.dx > 0) {
+                                    setState(() {
+                                      _rightDirection = 2;
+                                      _leftDirection = null;
+                                    });
+                                  }
+                                },
+                                child: TCard(
+                                  size: Size(size.width, size.height * 0.7),
+                                  cards: users.asSwipeCards(),
+                                  controller: _controller,
+                                  onForward: (index, info) {
+                                    if (info.direction == SwipDirection.Left) {
+                                      setState(() {
+                                        _current = index;
+                                        _leftDirection = 0;
+                                        _rightDirection = 0;
+                                        if (index == users.length) {
+                                          _swipeBloc.add(SwipeEvent.swipeLeft(
+                                              users[_current - 1],
+                                              users[_current - 1].createdAt));
+                                        } else {
+                                          print(index);
+                                          _swipeBloc.add(SwipeEvent.swipeLeft(
+                                              users[_current - 1],
+                                              users[_current].createdAt));
+                                        }
+                                      });
+                                    }
+                                    if (info.direction == SwipDirection.Right) {
+                                      setState(() {
+                                        _current = index;
+                                        _leftDirection = 0;
+                                        _rightDirection = 0;
+                                        if (index == users.length) {
+                                          _swipeBloc.add(SwipeEvent.swipeRight(
+                                              context,
+                                              users[_current - 1],
+                                              users[_current - 1].createdAt));
+                                        } else {
+                                          _swipeBloc.add(SwipeEvent.swipeRight(
+                                              context,
+                                              users[_current - 1],
+                                              users[_current].createdAt));
+                                        }
+                                      });
+                                    }
+                                  },
+                                  onEnd: () {
+                                    //TODO: Either load more documents or notify the user they are out of trust, and should pledge more
+                                    _findMatchesBloc.add(
+                                        FindMatchesEvent.loadMoreMatches(
+                                            users[_current - 1].createdAt,
+                                            Cursor.startAfter));
+                                    _current = 0;
+                                  },
+                                ),
+                              ),
+                              _buildButtons(context, users)
+                            ],
+                          ),
+                        )),
+                  );
+                },
+                orElse: () {
+                  return Container();
+                });
+          }),
+    );
+  }
+
+  Widget _buildButtons(BuildContext context, List<TruYouUser> users) {
+    print(users.length);
+    final _size = MediaQuery.of(context).size;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        //TODO: Switch Red and green button; switch direction of arrow
+        CircularGlowButton(
+          width: ResponsiveWidget.size(
+              context, _size.width * 0.16, _size.width * 0.10),
+          height: ResponsiveWidget.size(
+              context, _size.width * 0.16, _size.width * 0.10),
+          iconSize: ResponsiveWidget.size(
+              context, _size.width * 0.09, _size.width * 0.045),
+          iconColor: Constants.neon_red,
+          icon: Icon(CupertinoIcons.clear),
+          onPress: () {
+            setState(() {
+              _current = _current += 1;
+              _leftDirection = 0;
+              _rightDirection = 0;
+              if (_current == users.length) {
+                _swipeBloc.add(SwipeEvent.swipeLeft(
+                    users[_current - 1], users[_current - 1].createdAt));
+              } else {
+                print(_current);
+                _swipeBloc.add(SwipeEvent.swipeLeft(
+                    users[_current - 1], users[_current].createdAt));
+              }
+            });
+            _controller.forward(direction: SwipDirection.Left);
+          },
+        ),
+        CircularGlowButton(
+          width: ResponsiveWidget.size(
+              context, _size.width * 0.16, _size.width * 0.10),
+          height: ResponsiveWidget.size(
+              context, _size.width * 0.16, _size.width * 0.10),
+          iconSize: ResponsiveWidget.size(
+              context, _size.width * 0.09, _size.width * 0.045),
+          iconColor: Constants.neon_green,
+          icon: Icon(CupertinoIcons.heart),
+          onPress: () {
+            setState(() {
+              _current = _current += 1;
+              _leftDirection = 0;
+              _rightDirection = 0;
+              if (_current == users.length) {
+                _swipeBloc.add(SwipeEvent.swipeRight(context,
+                    users[_current - 1], users[_current - 1].createdAt));
+              } else {
+                print(users.length);
+                print(_current);
+                _swipeBloc.add(SwipeEvent.swipeRight(
+                    context, users[_current - 1], users[_current].createdAt));
+              }
+            });
+            _controller.forward(direction: SwipDirection.Right);
+          },
+        ),
+      ],
     );
   }
 }

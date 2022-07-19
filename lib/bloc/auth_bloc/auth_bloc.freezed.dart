@@ -29,7 +29,7 @@ class _$AuthEventTearOff {
   }
 
   _SignUpButtonPressed signUpButtonPressed(
-      AuthUser user, List<File> photos, String password) {
+      TruYouUser user, List<File> photos, String password) {
     return _SignUpButtonPressed(
       user,
       photos,
@@ -58,7 +58,8 @@ mixin _$AuthEvent {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -68,7 +69,7 @@ mixin _$AuthEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -78,7 +79,7 @@ mixin _$AuthEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -173,7 +174,8 @@ class _$_AppStarted implements _AppStarted {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -186,7 +188,7 @@ class _$_AppStarted implements _AppStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -199,7 +201,7 @@ class _$_AppStarted implements _AppStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -335,7 +337,8 @@ class _$_SignInButtonPressed implements _SignInButtonPressed {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -348,7 +351,7 @@ class _$_SignInButtonPressed implements _SignInButtonPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -361,7 +364,7 @@ class _$_SignInButtonPressed implements _SignInButtonPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -430,9 +433,9 @@ abstract class _$SignUpButtonPressedCopyWith<$Res> {
   factory _$SignUpButtonPressedCopyWith(_SignUpButtonPressed value,
           $Res Function(_SignUpButtonPressed) then) =
       __$SignUpButtonPressedCopyWithImpl<$Res>;
-  $Res call({AuthUser user, List<File> photos, String password});
+  $Res call({TruYouUser user, List<File> photos, String password});
 
-  $AuthUserCopyWith<$Res> get user;
+  $TruYouUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -456,7 +459,7 @@ class __$SignUpButtonPressedCopyWithImpl<$Res>
       user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as AuthUser,
+              as TruYouUser,
       photos == freezed
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -469,8 +472,8 @@ class __$SignUpButtonPressedCopyWithImpl<$Res>
   }
 
   @override
-  $AuthUserCopyWith<$Res> get user {
-    return $AuthUserCopyWith<$Res>(_value.user, (value) {
+  $TruYouUserCopyWith<$Res> get user {
+    return $TruYouUserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -482,7 +485,7 @@ class _$_SignUpButtonPressed implements _SignUpButtonPressed {
   const _$_SignUpButtonPressed(this.user, this.photos, this.password);
 
   @override
-  final AuthUser user;
+  final TruYouUser user;
   @override
   final List<File> photos;
   @override
@@ -522,7 +525,8 @@ class _$_SignUpButtonPressed implements _SignUpButtonPressed {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -535,7 +539,7 @@ class _$_SignUpButtonPressed implements _SignUpButtonPressed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -548,7 +552,7 @@ class _$_SignUpButtonPressed implements _SignUpButtonPressed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -603,10 +607,10 @@ class _$_SignUpButtonPressed implements _SignUpButtonPressed {
 
 abstract class _SignUpButtonPressed implements AuthEvent {
   const factory _SignUpButtonPressed(
-          AuthUser user, List<File> photos, String password) =
+          TruYouUser user, List<File> photos, String password) =
       _$_SignUpButtonPressed;
 
-  AuthUser get user;
+  TruYouUser get user;
   List<File> get photos;
   String get password;
   @JsonKey(ignore: true)
@@ -681,7 +685,8 @@ class _$_ResetPassword implements _ResetPassword {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -694,7 +699,7 @@ class _$_ResetPassword implements _ResetPassword {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -707,7 +712,7 @@ class _$_ResetPassword implements _ResetPassword {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -812,7 +817,8 @@ class _$_UserLogOut implements _UserLogOut {
     required TResult Function() appStarted,
     required TResult Function(String email, String password)
         signInButtonPressed,
-    required TResult Function(AuthUser user, List<File> photos, String password)
+    required TResult Function(
+            TruYouUser user, List<File> photos, String password)
         signUpButtonPressed,
     required TResult Function(String email) resetPassword,
     required TResult Function() userLogOut,
@@ -825,7 +831,7 @@ class _$_UserLogOut implements _UserLogOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,
@@ -838,7 +844,7 @@ class _$_UserLogOut implements _UserLogOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
     TResult Function(String email, String password)? signInButtonPressed,
-    TResult Function(AuthUser user, List<File> photos, String password)?
+    TResult Function(TruYouUser user, List<File> photos, String password)?
         signUpButtonPressed,
     TResult Function(String email)? resetPassword,
     TResult Function()? userLogOut,

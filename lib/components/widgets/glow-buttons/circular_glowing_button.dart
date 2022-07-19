@@ -9,6 +9,7 @@ class CircularGlowButton extends StatelessWidget {
   final Icon icon;
   final Color iconColor;
   final Function onPress;
+  final EdgeInsets? padding;
   const CircularGlowButton(
       {Key? key,
       required this.width,
@@ -16,15 +17,17 @@ class CircularGlowButton extends StatelessWidget {
       required this.iconSize,
       required this.icon,
       required this.iconColor,
-      required this.onPress})
+      required this.onPress,
+      this.padding})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: _size.height * 0.04, horizontal: _size.height * 0.02),
+      padding: padding ??
+          EdgeInsets.symmetric(
+              vertical: _size.height * 0.04, horizontal: _size.height * 0.02),
       child: GestureDetector(
         onTap: () {
           onPress.call();

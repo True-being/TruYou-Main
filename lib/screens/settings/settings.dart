@@ -54,7 +54,7 @@ class _SettingsState extends State<Settings> {
                 _buildGeneralInfoTitle(theme),
                 SpacerV.s(context),
                 _buildGeneralInfoCard(
-                    theme, 'joesoap@gmail.com', '(+1) 904-423-2334'),
+                    theme, 'joesoap@gmail.com'),
                 SpacerV.m(context),
                 _buildAdvancedInfoTitle(theme),
                 SpacerV.s(context),
@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildGeneralInfoCard(
-      ThemeData theme, String email, String phoneNumber) {
+      ThemeData theme, String email) {
     var _size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: p(context, 8.0)),
@@ -126,8 +126,6 @@ class _SettingsState extends State<Settings> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildGeneralInfo(theme, Constants.EMAIL, email),
-            SpacerV.m(context),
-            _buildGeneralInfo(theme, Constants.PHONE_NUMBER, phoneNumber),
           ],
         ),
       ),
