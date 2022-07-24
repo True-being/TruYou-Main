@@ -24,6 +24,7 @@ abstract class TruYouUser with _$TruYouUser {
     required String? job,
     required String? companyName,
     required GeoPoint? location,
+    required String? generalLocation,
     required List<String>? images,
     required String? gender,
     required String? sexualOrientation,
@@ -56,6 +57,8 @@ abstract class TruYouUser with _$TruYouUser {
         job: user['job'],
         companyName: user['companyName'],
         location: user['location'],
+        //TODO: Change to fit update once users are created with general location
+        generalLocation: user['generalLocation'] ?? '',
         images:
             (user['images'] as List).map((image) => image.toString()).toList(),
         gender: user['gender'],
@@ -84,6 +87,7 @@ extension TruYouUserToJson on TruYouUser {
       'aboutMe': this.aboutMe,
       'lifeStyle': this.lifeStyle,
       'job': this.job,
+      'generalLocation': this.generalLocation,
       'companyName': this.companyName,
       'location': this.location,
       'gender': this.gender,

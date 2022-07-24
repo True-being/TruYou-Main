@@ -98,7 +98,7 @@ class Notifications extends StatelessWidget {
                     fontSize: 19,
                     fontWeight: FontWeight.w500),
               ),
-              CSwitch(active: active)
+              // CSwitch(active: active)
             ],
           ),
         ),

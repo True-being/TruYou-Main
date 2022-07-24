@@ -11,6 +11,7 @@ import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
 import 'package:truyou/components/components.dart';
 import 'package:location/location.dart' as location;
 import 'package:truyou/components/utils/exceptions/exception_handler.dart';
+import 'package:truyou/components/utils/geo_helper/geo_helper.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/components/widgets/loader.dart';
 import 'package:truyou/models/truyou_user/truyou_user_model.dart';
@@ -197,7 +198,7 @@ class _CreateAccountDetailsScreenState
     }
   }
 
-  void _onPressedFindMatches() {
+  void _onPressedFindMatches() async {
     //Validates textfields
     if (_formKey.currentState!.validate()) {
       //Checks is user has enabled there location
@@ -229,6 +230,11 @@ class _CreateAccountDetailsScreenState
             //TODO:Check if user has stacked trust on backend
             //If true, add user to database and navigate to home screen
             //If false, navigate to matching pledge
+            final _location = GeoPoint(
+                _currentLocation!.latitude, _currentLocation!.longitude);
+            final _generalLocation =
+                await GeoHelper.findAddressFromLocation(_location);
+
             final _user = widget.user.copyWith(
                 documentSnapshot: null,
                 algoWalletAddress: _walletAddressController.text,
@@ -237,12 +243,12 @@ class _CreateAccountDetailsScreenState
                 job: _jobTitleController.text,
                 isWalletVerified: _hasVerifiedWallet,
                 companyName: _companyNameController.text,
-                location: GeoPoint(
-                    _currentLocation!.latitude, _currentLocation!.longitude),
+                location: _location,
                 gender: _gender,
+                generalLocation: _generalLocation,
                 sexualOrientation: _sexualOrientation,
                 genderPreference: _genderPreference,
-                sexualityPreference: _sexualOrientationPreference,
+                sexualityPreference: _sexualOrientation,
                 lowerAgePreference: _lowerAgePreference,
                 upperAgePreference: _upperAgePreference,
                 radiusDistance: _radiusDistance,
@@ -638,16 +644,6 @@ class _CreateAccountDetailsScreenState
                             onValueChanged: (String? val) {
                               setState(() {
                                 _sexualOrientation = val;
-                              });
-                            },
-                            items: Constants.sexual_orientation),
-                        CustomDropDown(
-                            defaultValue: Constants.sexual_orientation[0],
-                            title: Constants.I_PREFER,
-                            hintText: Constants.SEXUAL_ORIENTATION,
-                            onValueChanged: (String? val) {
-                              setState(() {
-                                _sexualOrientationPreference = val;
                               });
                             },
                             items: Constants.sexual_orientation),

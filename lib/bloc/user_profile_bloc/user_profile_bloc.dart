@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:truyou/components/utils/exceptions/exception_handler.dart';
 import 'package:truyou/components/utils/exceptions/failure_type.dart';
+import 'package:truyou/components/utils/geo_helper/geo_helper.dart';
 import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/user_repository.dart';
 
@@ -16,21 +18,33 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   UserProfileBloc({required this.userRepository})
       : super(const UserProfileState.initial()) {
     on<_LoadMyProfile>(_loadMyProfile);
+    on<_LoadedProfile>(_loadedProfile);
   }
+
+  late StreamSubscription _subscription;
 
   Future<void> _loadMyProfile(
       _LoadMyProfile event, Emitter<UserProfileState> emit) async {
     emit(UserProfileState.loading());
     try {
-      final user = await userRepository.getUserInfo();
-      //TODO: Add error dialogs
-      //TODO: Add getAddress from lat and lon
-      // final location= await Geocoder2.getDataFromCoordinates(latitude: user.location!.latitude, longitude: user.location!.longitude, googleMapApiKey: FlutterConfig.get('GOOGLE_MAPS_API_KEY'));
-      // print(location.city);
-      // print(location.country);
-      emit(UserProfileState.success(user, 'New York, USA'));
+      _subscription = userRepository
+          .getUserInfoAsStream()
+          .listen((user) => add(UserProfileEvent.loadedProfile(user)));
     } catch (_e) {
       emit(UserProfileState.failed(ExceptionHandler.catchErrors(_e)));
     }
+  }
+
+  Future<void> _loadedProfile(
+      _LoadedProfile event, Emitter<UserProfileState> emit) async {
+    final address =
+        await GeoHelper.findAddressFromLocation(event.user.location);
+    emit(UserProfileState.success(event.user, address));
+  }
+
+  @override
+  Future<void> close() {
+    _subscription.cancel();
+    return super.close();
   }
 }

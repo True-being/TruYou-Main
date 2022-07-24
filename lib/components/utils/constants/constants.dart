@@ -19,6 +19,7 @@ class Constants {
   static const Color track_color = Color(0xff272763);
 
   //Strings(Language translation use)
+  static const String NO_MATCHES_CURRENTLY = 'You currently have no matches.';
   static const String NO_MORE_USERS_MESSAGE =
       'No users left under your filter parameters';
   static const String I_AM_LOOKING_FOR = 'I am looking for...';
@@ -221,7 +222,7 @@ class Constants {
   static const String PLEASE_ENTER_AN_OTP_CODE = 'Please enter an OTP code';
   static const String NO_OTP_CODE = 'No OTP code entered';
   static const String FIND_MATCHES = 'Find Matches';
-  static const String I_AM_A = 'I am A...';
+  static const String I_AM_A = 'I identify as...';
   static const String SEXUAL_ORIENTATION = 'Sexual orientation';
   static const String MY_SEXUAL_ORIENTATION_IS = 'My sexual orientation is...';
   static const String GENDER = 'Gender';
@@ -325,12 +326,12 @@ class Constants {
   static const String ABOUT_YOUR_LIFESTYLE = 'about your lifestyle';
 
   //Constant lists
-  static const List<String?> genders = <String?>['Female', 'Male', 'Other'];
+  static const List<String?> genders = <String?>['Female', 'Male', 'Everyone'];
   static const List<String?> sexual_orientation = <String?>[
     'Straight',
     'Gay',
-    'Bi',
-    'Trans',
+    'Bisexual',
+    'Transgender',
     'Other'
   ];
   static const List<String> months = <String>[

@@ -35,7 +35,7 @@ class GeoHelper {
     return sortedUsers;
   }
 
-  static Future<String> _findAddressFromLocation(GeoPoint? location) async {
+  static Future<String> findAddressFromLocation(GeoPoint? location) async {
     final address =
         await placemarkFromCoordinates(location!.latitude, location.longitude);
     return '${address.first.locality}, ${address.first.country}';
@@ -46,7 +46,7 @@ class GeoHelper {
     var addresses = <String>[];
 
     for (var user in users) {
-      addresses.add(await _findAddressFromLocation(user.location));
+      addresses.add(await findAddressFromLocation(user.location));
     }
 
     return addresses;

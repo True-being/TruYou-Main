@@ -1,0 +1,294 @@
+Date : 2022-07-23 23:49:58
+Directory : c:\Flutter Projects\truyou
+Total : 180 files,  29159 codes, 1230 comments, 2404 blanks, all 32793 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |        148 |     22,063 |      1,161 |      2,302 |     25,526 |
+| JSON       |          9 |      6,620 |          0 |          5 |      6,625 |
+| XML        |          9 |        133 |         51 |         16 |        200 |
+| Groovy     |          3 |         81 |          3 |         20 |        104 |
+| HTML       |          1 |         79 |         14 |          6 |         99 |
+| JavaScript |          2 |         78 |          0 |         26 |        104 |
+| YAML       |          1 |         67 |          0 |         12 |         79 |
+| Markdown   |          2 |         13 |          0 |          9 |         22 |
+| Swift      |          1 |         12 |          0 |          2 |         14 |
+| Properties |          2 |          8 |          1 |          2 |         11 |
+| Kotlin     |          1 |          4 |          0 |          3 |          7 |
+| C++        |          1 |          1 |          0 |          1 |          2 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                               | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                  |        180 |     29,159 |      1,230 |      2,404 |     32,793 |
+| android                                                                                            |         14 |        204 |         53 |         39 |        296 |
+| android\app                                                                                        |         10 |        163 |         52 |         28 |        243 |
+| android\app\src                                                                                    |          8 |         76 |         49 |         17 |        142 |
+| android\app\src\debug                                                                              |          1 |          4 |          3 |          1 |          8 |
+| android\app\src\main                                                                               |          6 |         68 |         43 |         15 |        126 |
+| android\app\src\main\kotlin                                                                        |          1 |          4 |          0 |          3 |          7 |
+| android\app\src\main\kotlin\com                                                                    |          1 |          4 |          0 |          3 |          7 |
+| android\app\src\main\kotlin\com\example                                                            |          1 |          4 |          0 |          3 |          7 |
+| android\app\src\main\kotlin\com\example\truyou                                                     |          1 |          4 |          0 |          3 |          7 |
+| android\app\src\main\res                                                                           |          4 |         26 |         32 |          6 |         64 |
+| android\app\src\main\res\drawable                                                                  |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\drawable-v21                                                              |          1 |          4 |          7 |          2 |         13 |
+| android\app\src\main\res\values                                                                    |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\main\res\values-night                                                              |          1 |          9 |          9 |          1 |         19 |
+| android\app\src\profile                                                                            |          1 |          4 |          3 |          1 |          8 |
+| android\gradle                                                                                     |          1 |          5 |          1 |          1 |          7 |
+| android\gradle\wrapper                                                                             |          1 |          5 |          1 |          1 |          7 |
+| functions                                                                                          |          4 |      4,677 |          0 |         27 |      4,704 |
+| ios                                                                                                |          8 |        229 |          2 |          9 |        240 |
+| ios\Runner                                                                                         |          7 |        222 |          2 |          9 |        233 |
+| ios\Runner\Assets.xcassets                                                                         |          3 |        148 |          0 |          4 |        152 |
+| ios\Runner\Assets.xcassets\AppIcon.appiconset                                                      |          1 |        122 |          0 |          1 |        123 |
+| ios\Runner\Assets.xcassets\LaunchImage.imageset                                                    |          2 |         26 |          0 |          3 |         29 |
+| ios\Runner\Base.lproj                                                                              |          2 |         61 |          2 |          2 |         65 |
+| lib                                                                                                |        144 |     21,659 |      1,129 |      2,241 |     25,029 |
+| lib\bloc                                                                                           |         32 |      7,839 |        312 |      1,203 |      9,354 |
+| lib\bloc\auth_bloc                                                                                 |          4 |      1,565 |         58 |        213 |      1,836 |
+| lib\bloc\find_matches_bloc                                                                         |          4 |        779 |         33 |        123 |        935 |
+| lib\bloc\gender_age_bloc                                                                           |          4 |        848 |         37 |        135 |      1,020 |
+| lib\bloc\location_bloc                                                                             |          4 |      1,034 |         40 |        159 |      1,233 |
+| lib\bloc\my_matches_bloc                                                                           |          4 |        919 |         36 |        145 |      1,100 |
+| lib\bloc\swipe_bloc                                                                                |          4 |      1,100 |         39 |        163 |      1,302 |
+| lib\bloc\unmatch_bloc                                                                              |          4 |        722 |         33 |        122 |        877 |
+| lib\bloc\user_profile_bloc                                                                         |          4 |        872 |         36 |        143 |      1,051 |
+| lib\components                                                                                     |         68 |      6,666 |        351 |        584 |      7,601 |
+| lib\components\utils                                                                               |         38 |      4,363 |        251 |        449 |      5,063 |
+| lib\components\utils\auto-route-tester                                                             |          2 |        132 |         12 |         31 |        175 |
+| lib\components\utils\auto-validate-tester                                                          |          1 |         45 |         10 |          7 |         62 |
+| lib\components\utils\constants                                                                     |          3 |        911 |        139 |         80 |      1,130 |
+| lib\components\utils\date-helper                                                                   |          1 |         28 |          5 |          6 |         39 |
+| lib\components\utils\exceptions                                                                    |          4 |      2,894 |         54 |        247 |      3,195 |
+| lib\components\utils\formatters                                                                    |         10 |         65 |          3 |         21 |         89 |
+| lib\components\utils\geo_helper                                                                    |          1 |         54 |          0 |         11 |         65 |
+| lib\components\utils\injector                                                                      |          1 |         29 |          3 |          3 |         35 |
+| lib\components\utils\media-query                                                                   |          1 |         35 |         19 |         13 |         67 |
+| lib\components\utils\responsive-widget                                                             |          1 |         16 |          3 |          4 |         23 |
+| lib\components\utils\styles                                                                        |          1 |         25 |          0 |          4 |         29 |
+| lib\components\utils\validators                                                                    |         11 |        119 |          3 |         21 |        143 |
+| lib\components\widgets                                                                             |         29 |      2,301 |        100 |        134 |      2,535 |
+| lib\components\widgets\dialogs                                                                     |          1 |        833 |         64 |         14 |        911 |
+| lib\components\widgets\glow-buttons                                                                |          3 |        210 |          4 |         15 |        229 |
+| lib\models                                                                                         |          2 |        759 |         15 |         34 |        808 |
+| lib\models\truyou_user                                                                             |          2 |        759 |         15 |         34 |        808 |
+| lib\repository                                                                                     |          4 |        360 |         49 |         73 |        482 |
+| lib\screens                                                                                        |         34 |      5,916 |        379 |        329 |      6,624 |
+| lib\screens\chats                                                                                  |          4 |        259 |          7 |         27 |        293 |
+| lib\screens\chats\messages                                                                         |          3 |        145 |          4 |         14 |        163 |
+| lib\screens\create-account-screens                                                                 |          2 |      1,039 |         75 |         41 |      1,155 |
+| lib\screens\find-matches                                                                           |          3 |        260 |         56 |         19 |        335 |
+| lib\screens\find-matches\error_screens                                                             |          1 |         16 |          0 |          3 |         19 |
+| lib\screens\gift-screens                                                                           |          3 |        384 |          3 |         19 |        406 |
+| lib\screens\gift-screens\send-gift-screens                                                         |          2 |        240 |          3 |         12 |        255 |
+| lib\screens\go-social                                                                              |          3 |        472 |          2 |         29 |        503 |
+| lib\screens\go-social\roles                                                                        |          2 |        346 |          1 |         21 |        368 |
+| lib\screens\loading-screens                                                                        |          1 |         89 |          4 |         10 |        103 |
+| lib\screens\match-pledging                                                                         |          1 |        361 |         16 |         12 |        389 |
+| lib\screens\my-matches                                                                             |          1 |         77 |         57 |          9 |        143 |
+| lib\screens\partnerships                                                                           |          1 |         17 |          0 |          3 |         20 |
+| lib\screens\premium-features                                                                       |          1 |        411 |          2 |         19 |        432 |
+| lib\screens\profile                                                                                |          2 |        586 |        104 |         16 |        706 |
+| lib\screens\settings                                                                               |          5 |        932 |         14 |         73 |      1,019 |
+| lib\screens\sign-in-options                                                                        |          5 |        893 |         35 |         43 |        971 |
+| lib\screens\sign-in-options\number-sign-in                                                         |          2 |        400 |         17 |         18 |        435 |
+| lib\services                                                                                       |          2 |         43 |          5 |         11 |         59 |
+| test                                                                                               |          4 |        404 |         32 |         61 |        497 |
+| test\bloc-tests                                                                                    |          1 |        112 |          1 |         29 |        142 |
+| test\unit-tests                                                                                    |          1 |        276 |         30 |         24 |        330 |
+| test\widget-tests                                                                                  |          2 |         16 |          1 |          8 |         25 |
+| web                                                                                                |          2 |        102 |         14 |          7 |        123 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                           | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Flutter Projects\truyou\README.md                                                               | Markdown   |         10 |          0 |          7 |         17 |
+| c:\Flutter Projects\truyou\android\app\build.gradle                                                | Groovy     |         48 |          3 |         11 |         62 |
+| c:\Flutter Projects\truyou\android\app\google-services.json                                        | JSON       |         39 |          0 |          0 |         39 |
+| c:\Flutter Projects\truyou\android\app\src\debug\AndroidManifest.xml                               | XML        |          4 |          3 |          1 |          8 |
+| c:\Flutter Projects\truyou\android\app\src\main\AndroidManifest.xml                                | XML        |         38 |         11 |          6 |         55 |
+| c:\Flutter Projects\truyou\android\app\src\main\kotlin\com\example\truyou\MainActivity.kt          | Kotlin     |          4 |          0 |          3 |          7 |
+| c:\Flutter Projects\truyou\android\app\src\main\res\drawable-v21\launch_background.xml             | XML        |          4 |          7 |          2 |         13 |
+| c:\Flutter Projects\truyou\android\app\src\main\res\drawable\launch_background.xml                 | XML        |          4 |          7 |          2 |         13 |
+| c:\Flutter Projects\truyou\android\app\src\main\res\values-night\styles.xml                        | XML        |          9 |          9 |          1 |         19 |
+| c:\Flutter Projects\truyou\android\app\src\main\res\values\styles.xml                              | XML        |          9 |          9 |          1 |         19 |
+| c:\Flutter Projects\truyou\android\app\src\profile\AndroidManifest.xml                             | XML        |          4 |          3 |          1 |          8 |
+| c:\Flutter Projects\truyou\android\build.gradle                                                    | Groovy     |         25 |          0 |          5 |         30 |
+| c:\Flutter Projects\truyou\android\gradle.properties                                               | Properties |          3 |          0 |          1 |          4 |
+| c:\Flutter Projects\truyou\android\gradle\wrapper\gradle-wrapper.properties                        | Properties |          5 |          1 |          1 |          7 |
+| c:\Flutter Projects\truyou\android\settings.gradle                                                 | Groovy     |          8 |          0 |          4 |         12 |
+| c:\Flutter Projects\truyou\firebase.json                                                           | JSON       |          6 |          0 |          0 |          6 |
+| c:\Flutter Projects\truyou\functions\.eslintrc.cjs                                                 | JavaScript |         14 |          0 |          1 |         15 |
+| c:\Flutter Projects\truyou\functions\index.js                                                      | JavaScript |         64 |          0 |         25 |         89 |
+| c:\Flutter Projects\truyou\functions\package-lock.json                                             | JSON       |      4,573 |          0 |          1 |      4,574 |
+| c:\Flutter Projects\truyou\functions\package.json                                                  | JSON       |         26 |          0 |          0 |         26 |
+| c:\Flutter Projects\truyou\ios\Runner\AppDelegate.swift                                            | Swift      |         12 |          0 |          2 |         14 |
+| c:\Flutter Projects\truyou\ios\Runner\Assets.xcassets\AppIcon.appiconset\Contents.json             | JSON       |        122 |          0 |          1 |        123 |
+| c:\Flutter Projects\truyou\ios\Runner\Assets.xcassets\LaunchImage.imageset\Contents.json           | JSON       |         23 |          0 |          1 |         24 |
+| c:\Flutter Projects\truyou\ios\Runner\Assets.xcassets\LaunchImage.imageset\README.md               | Markdown   |          3 |          0 |          2 |          5 |
+| c:\Flutter Projects\truyou\ios\Runner\Base.lproj\LaunchScreen.storyboard                           | XML        |         36 |          1 |          1 |         38 |
+| c:\Flutter Projects\truyou\ios\Runner\Base.lproj\Main.storyboard                                   | XML        |         25 |          1 |          1 |         27 |
+| c:\Flutter Projects\truyou\ios\Runner\Runner-Bridging-Header.h                                     | C++        |          1 |          0 |          1 |          2 |
+| c:\Flutter Projects\truyou\ios\firebase_app_id_file.json                                           | JSON       |          7 |          0 |          0 |          7 |
+| c:\Flutter Projects\truyou\lib\bloc\auth_bloc\auth_bloc.dart                                       | Dart       |         98 |          2 |         13 |        113 |
+| c:\Flutter Projects\truyou\lib\bloc\auth_bloc\auth_bloc.freezed.dart                               | Dart       |      1,452 |         48 |        197 |      1,697 |
+| c:\Flutter Projects\truyou\lib\bloc\auth_bloc\auth_event.dart                                      | Dart       |          4 |          8 |          1 |         13 |
+| c:\Flutter Projects\truyou\lib\bloc\auth_bloc\auth_state.dart                                      | Dart       |         11 |          0 |          2 |         13 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_bloc.dart                       | Dart       |         36 |          0 |          5 |         41 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_bloc.freezed.dart               | Dart       |        729 |         33 |        114 |        876 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_event.dart                      | Dart       |          6 |          0 |          2 |          8 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_state.dart                      | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_bloc.dart                           | Dart       |         13 |          1 |          4 |         18 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_bloc.freezed.dart                   | Dart       |        819 |         36 |        127 |        982 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_event.dart                          | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_state.dart                          | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_bloc.dart                               | Dart       |         49 |          1 |          8 |         58 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_bloc.freezed.dart                       | Dart       |        967 |         39 |        147 |      1,153 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_event.dart                              | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_state.dart                              | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_bloc.dart                           | Dart       |         44 |          0 |         10 |         54 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_bloc.freezed.dart                   | Dart       |        858 |         36 |        131 |      1,025 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_event.dart                          | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_state.dart                          | Dart       |          9 |          0 |          2 |         11 |
+| c:\Flutter Projects\truyou\lib\bloc\swipe_bloc\swipe_bloc.dart                                     | Dart       |         38 |          0 |          6 |         44 |
+| c:\Flutter Projects\truyou\lib\bloc\swipe_bloc\swipe_bloc.freezed.dart                             | Dart       |      1,045 |         39 |        154 |      1,238 |
+| c:\Flutter Projects\truyou\lib\bloc\swipe_bloc\swipe_event.dart                                    | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\swipe_bloc\swipe_state.dart                                    | Dart       |          9 |          0 |          1 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_bloc.dart                                 | Dart       |         25 |          0 |          5 |         30 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_bloc.freezed.dart                         | Dart       |        684 |         33 |        113 |        830 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_event.dart                                | Dart       |          5 |          0 |          2 |          7 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_state.dart                                | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_bloc.dart                       | Dart       |         42 |          0 |          9 |         51 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_bloc.freezed.dart               | Dart       |        815 |         36 |        131 |        982 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_event.dart                      | Dart       |          7 |          0 |          2 |          9 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_state.dart                      | Dart       |          8 |          0 |          1 |          9 |
+| c:\Flutter Projects\truyou\lib\components\components.dart                                          | Dart       |          2 |          0 |          1 |          3 |
+| c:\Flutter Projects\truyou\lib\components\utils\auto-route-tester\auto_drawer_route_tester.dart    | Dart       |         49 |          3 |         19 |         71 |
+| c:\Flutter Projects\truyou\lib\components\utils\auto-route-tester\auto_route_tester.dart           | Dart       |         83 |          9 |         12 |        104 |
+| c:\Flutter Projects\truyou\lib\components\utils\auto-validate-tester\auto_validate_tester.dart     | Dart       |         45 |         10 |          7 |         62 |
+| c:\Flutter Projects\truyou\lib\components\utils\constants\constants.dart                           | Dart       |        341 |          5 |          6 |        352 |
+| c:\Flutter Projects\truyou\lib\components\utils\constants\constants_export.dart                    | Dart       |          2 |          0 |          1 |          3 |
+| c:\Flutter Projects\truyou\lib\components\utils\constants\keys.dart                                | Dart       |        568 |        134 |         73 |        775 |
+| c:\Flutter Projects\truyou\lib\components\utils\date-helper\date_helper.dart                       | Dart       |         28 |          5 |          6 |         39 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\exception_handler.dart                  | Dart       |        102 |          0 |          4 |        106 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\exceptions.dart                         | Dart       |          1 |          0 |          1 |          2 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\failure_type.dart                       | Dart       |         25 |          0 |          3 |         28 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\failure_type.freezed.dart               | Dart       |      2,766 |         54 |        239 |      3,059 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\formatter.dart                          | Dart       |          9 |          0 |          1 |         10 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\long_text_formatter.dart                | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\match_pledging_formatter.dart           | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\password_formatter.dart                 | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\phone_number_formatter.dart             | Dart       |         10 |          0 |          3 |         13 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\search_formatter.dart                   | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\short_text_formatter.dart               | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\space_remover_formatter.dart            | Dart       |         18 |          3 |          3 |         24 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\stake_trust_formatter.dart              | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\formatters\wallet_formatter.dart                   | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\lib\components\utils\geo_helper\geo_helper.dart                         | Dart       |         54 |          0 |         11 |         65 |
+| c:\Flutter Projects\truyou\lib\components\utils\injector\injection_container.dart                  | Dart       |         29 |          3 |          3 |         35 |
+| c:\Flutter Projects\truyou\lib\components\utils\media-query\media_query.dart                       | Dart       |         35 |         19 |         13 |         67 |
+| c:\Flutter Projects\truyou\lib\components\utils\responsive-widget\responsive_widget.dart           | Dart       |         16 |          3 |          4 |         23 |
+| c:\Flutter Projects\truyou\lib\components\utils\styles\app_theme.dart                              | Dart       |         25 |          0 |          4 |         29 |
+| c:\Flutter Projects\truyou\lib\components\utils\utils.dart                                         | Dart       |         10 |          0 |          1 |         11 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\email_validator.dart                    | Dart       |         10 |          3 |          2 |         15 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\long_text_validator.dart                | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\name_validator.dart                     | Dart       |         20 |          0 |          2 |         22 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\otp_validator.dart                      | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\password_validator.dart                 | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\phone_number_validator.dart             | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\search_validator.dart                   | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\short_text_validator.dart               | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\trust_validator.dart                    | Dart       |         12 |          0 |          2 |         14 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\validator.dart                          | Dart       |          9 |          0 |          1 |         10 |
+| c:\Flutter Projects\truyou\lib\components\utils\validators\wallet_validator.dart                   | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\components\widgets\back_button.dart                                 | Dart       |         18 |          0 |          3 |         21 |
+| c:\Flutter Projects\truyou\lib\components\widgets\chat_item.dart                                   | Dart       |        107 |          7 |          9 |        123 |
+| c:\Flutter Projects\truyou\lib\components\widgets\color_chip.dart                                  | Dart       |         15 |          0 |          3 |         18 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_app_bar.dart                              | Dart       |         22 |          1 |          2 |         25 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_drawer.dart                               | Dart       |        100 |          0 |          6 |        106 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_drop_down.dart                            | Dart       |         98 |          4 |          6 |        108 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_switch.dart                               | Dart       |         32 |          0 |          5 |         37 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_textfield.dart                            | Dart       |        108 |          5 |          4 |        117 |
+| c:\Flutter Projects\truyou\lib\components\widgets\dialogs\custom_dialog.dart                       | Dart       |        833 |         64 |         14 |        911 |
+| c:\Flutter Projects\truyou\lib\components\widgets\divider.dart                                     | Dart       |         14 |          1 |          4 |         19 |
+| c:\Flutter Projects\truyou\lib\components\widgets\drawer_item.dart                                 | Dart       |         45 |          0 |          4 |         49 |
+| c:\Flutter Projects\truyou\lib\components\widgets\gift_card.dart                                   | Dart       |         62 |          0 |          4 |         66 |
+| c:\Flutter Projects\truyou\lib\components\widgets\glow-buttons\circular_glowing_button.dart        | Dart       |         59 |          1 |          3 |         63 |
+| c:\Flutter Projects\truyou\lib\components\widgets\glow-buttons\glowing_button.dart                 | Dart       |         79 |          1 |          7 |         87 |
+| c:\Flutter Projects\truyou\lib\components\widgets\glow-buttons\outlined_glowing_button.dart        | Dart       |         72 |          2 |          5 |         79 |
+| c:\Flutter Projects\truyou\lib\components\widgets\gradient_chat_profile_picture.dart               | Dart       |         43 |          4 |          6 |         53 |
+| c:\Flutter Projects\truyou\lib\components\widgets\gradient_text.dart                               | Dart       |         31 |          2 |          4 |         37 |
+| c:\Flutter Projects\truyou\lib\components\widgets\loader.dart                                      | Dart       |         51 |          0 |          7 |         58 |
+| c:\Flutter Projects\truyou\lib\components\widgets\logo.dart                                        | Dart       |         15 |          1 |          4 |         20 |
+| c:\Flutter Projects\truyou\lib\components\widgets\match_animation.dart                             | Dart       |         16 |          0 |          3 |         19 |
+| c:\Flutter Projects\truyou\lib\components\widgets\my_matches_card.dart                             | Dart       |        105 |          0 |          4 |        109 |
+| c:\Flutter Projects\truyou\lib\components\widgets\notification_card.dart                           | Dart       |         73 |          1 |          3 |         77 |
+| c:\Flutter Projects\truyou\lib\components\widgets\photo_card.dart                                  | Dart       |         58 |          3 |          4 |         65 |
+| c:\Flutter Projects\truyou\lib\components\widgets\pledge_card.dart                                 | Dart       |         32 |          0 |          3 |         35 |
+| c:\Flutter Projects\truyou\lib\components\widgets\role_card.dart                                   | Dart       |         54 |          0 |          4 |         58 |
+| c:\Flutter Projects\truyou\lib\components\widgets\save_button.dart                                 | Dart       |         29 |          0 |          4 |         33 |
+| c:\Flutter Projects\truyou\lib\components\widgets\swipe_card.dart                                  | Dart       |         85 |          3 |          4 |         92 |
+| c:\Flutter Projects\truyou\lib\components\widgets\user_profile_card.dart                           | Dart       |         33 |          0 |          4 |         37 |
+| c:\Flutter Projects\truyou\lib\components\widgets\widgets.dart                                     | Dart       |         12 |          0 |          1 |         13 |
+| c:\Flutter Projects\truyou\lib\firebase_options.dart                                               | Dart       |         60 |         12 |          5 |         77 |
+| c:\Flutter Projects\truyou\lib\main.dart                                                           | Dart       |         16 |          6 |          2 |         24 |
+| c:\Flutter Projects\truyou\lib\models\truyou_user\truyou_user_model.dart                           | Dart       |        109 |          0 |          7 |        116 |
+| c:\Flutter Projects\truyou\lib\models\truyou_user\truyou_user_model.freezed.dart                   | Dart       |        650 |         15 |         27 |        692 |
+| c:\Flutter Projects\truyou\lib\repository\cloud_function_repository.dart                           | Dart       |         37 |          5 |          7 |         49 |
+| c:\Flutter Projects\truyou\lib\repository\firebase_repository.dart                                 | Dart       |        227 |         15 |         36 |        278 |
+| c:\Flutter Projects\truyou\lib\repository\user_repository.dart                                     | Dart       |         66 |         27 |         24 |        117 |
+| c:\Flutter Projects\truyou\lib\repository\wallet_repository.dart                                   | Dart       |         30 |          2 |          6 |         38 |
+| c:\Flutter Projects\truyou\lib\screens\app_root.dart                                               | Dart       |        128 |          4 |          8 |        140 |
+| c:\Flutter Projects\truyou\lib\screens\chats\chat_viewer.dart                                      | Dart       |        114 |          3 |         13 |        130 |
+| c:\Flutter Projects\truyou\lib\screens\chats\messages\chats.dart                                   | Dart       |         51 |          1 |          5 |         57 |
+| c:\Flutter Projects\truyou\lib\screens\chats\messages\notifications.dart                           | Dart       |         23 |          1 |          4 |         28 |
+| c:\Flutter Projects\truyou\lib\screens\chats\messages\tab_view.dart                                | Dart       |         71 |          2 |          5 |         78 |
+| c:\Flutter Projects\truyou\lib\screens\create-account-screens\create_account_details.dart          | Dart       |        578 |         57 |         29 |        664 |
+| c:\Flutter Projects\truyou\lib\screens\create-account-screens\create_account_general.dart          | Dart       |        461 |         18 |         12 |        491 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\error_screens\no_more_users.dart               | Dart       |         16 |          0 |          3 |         19 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\find_matches.dart                              | Dart       |        201 |         56 |         11 |        268 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\its_a_match_screen.dart                        | Dart       |         43 |          0 |          5 |         48 |
+| c:\Flutter Projects\truyou\lib\screens\gift-screens\choose_gift_screen.dart                        | Dart       |        144 |          0 |          7 |        151 |
+| c:\Flutter Projects\truyou\lib\screens\gift-screens\send-gift-screens\nft_gift.dart                | Dart       |        119 |          1 |          6 |        126 |
+| c:\Flutter Projects\truyou\lib\screens\gift-screens\send-gift-screens\token_gift.dart              | Dart       |        121 |          2 |          6 |        129 |
+| c:\Flutter Projects\truyou\lib\screens\go-social\go_social.dart                                    | Dart       |        126 |          1 |          8 |        135 |
+| c:\Flutter Projects\truyou\lib\screens\go-social\roles\purchase_role.dart                          | Dart       |        141 |          1 |         10 |        152 |
+| c:\Flutter Projects\truyou\lib\screens\go-social\roles\social_swag.dart                            | Dart       |        205 |          0 |         11 |        216 |
+| c:\Flutter Projects\truyou\lib\screens\loading-screens\loading_screen.dart                         | Dart       |         89 |          4 |         10 |        103 |
+| c:\Flutter Projects\truyou\lib\screens\match-pledging\match_pledging_screen.dart                   | Dart       |        361 |         16 |         12 |        389 |
+| c:\Flutter Projects\truyou\lib\screens\my-matches\my_matches.dart                                  | Dart       |         77 |         57 |          9 |        143 |
+| c:\Flutter Projects\truyou\lib\screens\partnerships\partnerships.dart                              | Dart       |         17 |          0 |          3 |         20 |
+| c:\Flutter Projects\truyou\lib\screens\premium-features\premium_features.dart                      | Dart       |        411 |          2 |         19 |        432 |
+| c:\Flutter Projects\truyou\lib\screens\profile\my_profile.dart                                     | Dart       |        317 |         53 |          9 |        379 |
+| c:\Flutter Projects\truyou\lib\screens\profile\user_profile.dart                                   | Dart       |        269 |         51 |          7 |        327 |
+| c:\Flutter Projects\truyou\lib\screens\screens.dart                                                | Dart       |          8 |          0 |          1 |          9 |
+| c:\Flutter Projects\truyou\lib\screens\settings\connected_accounts.dart                            | Dart       |         87 |          2 |          7 |         96 |
+| c:\Flutter Projects\truyou\lib\screens\settings\location_settings.dart                             | Dart       |        287 |          6 |         24 |        317 |
+| c:\Flutter Projects\truyou\lib\screens\settings\notifications.dart                                 | Dart       |         99 |          4 |          7 |        110 |
+| c:\Flutter Projects\truyou\lib\screens\settings\search_of.dart                                     | Dart       |        193 |          1 |         19 |        213 |
+| c:\Flutter Projects\truyou\lib\screens\settings\settings.dart                                      | Dart       |        266 |          1 |         16 |        283 |
+| c:\Flutter Projects\truyou\lib\screens\sign-in-options\email_sign_in_screen.dart                   | Dart       |        202 |          7 |         10 |        219 |
+| c:\Flutter Projects\truyou\lib\screens\sign-in-options\forgot_password.dart                        | Dart       |        140 |          5 |          9 |        154 |
+| c:\Flutter Projects\truyou\lib\screens\sign-in-options\number-sign-in\number_sign_in.dart          | Dart       |        211 |          8 |          9 |        228 |
+| c:\Flutter Projects\truyou\lib\screens\sign-in-options\number-sign-in\otp_verification_screen.dart | Dart       |        189 |          9 |          9 |        207 |
+| c:\Flutter Projects\truyou\lib\screens\sign-in-options\welcome_screen.dart                         | Dart       |        151 |          6 |          6 |        163 |
+| c:\Flutter Projects\truyou\lib\services\image_picker_service.dart                                  | Dart       |         30 |          5 |          6 |         41 |
+| c:\Flutter Projects\truyou\lib\services\provider_service.dart                                      | Dart       |         13 |          0 |          5 |         18 |
+| c:\Flutter Projects\truyou\package-lock.json                                                       | JSON       |      1,801 |          0 |          1 |      1,802 |
+| c:\Flutter Projects\truyou\pubspec.yaml                                                            | YAML       |         67 |          0 |         12 |         79 |
+| c:\Flutter Projects\truyou\test\bloc-tests\auth_bloc_test.dart                                     | Dart       |        112 |          1 |         29 |        142 |
+| c:\Flutter Projects\truyou\test\unit-tests\unit_test.dart                                          | Dart       |        276 |         30 |         24 |        330 |
+| c:\Flutter Projects\truyou\test\widget-tests\auto_test.dart                                        | Dart       |         12 |          1 |          6 |         19 |
+| c:\Flutter Projects\truyou\test\widget-tests\widget_test.dart                                      | Dart       |          4 |          0 |          2 |          6 |
+| c:\Flutter Projects\truyou\web\index.html                                                          | HTML       |         79 |         14 |          6 |         99 |
+| c:\Flutter Projects\truyou\web\manifest.json                                                       | JSON       |         23 |          0 |          1 |         24 |
+| Total                                                                                              |            |     29,159 |      1,230 |      2,404 |     32,793 |
++----------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

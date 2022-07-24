@@ -1,17 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:truyou/bloc/auth_bloc/auth_bloc.dart';
+import 'package:truyou/bloc/user_profile_bloc/user_profile_bloc.dart';
 import 'package:truyou/components/components.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
+import 'package:truyou/components/widgets/loader.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/screens/screens.dart';
-import 'package:truyou/screens/settings/connected_accounts.dart';
 import 'package:truyou/screens/settings/location_settings.dart';
 import 'package:truyou/screens/settings/notifications.dart';
 import 'package:truyou/screens/settings/search_of.dart';
 
 class Settings extends StatefulWidget {
-  const Settings({Key? key}) : super(key: key);
+  final Function(int) navigateTo;
+
+  const Settings({Key? key, required this.navigateTo}) : super(key: key);
 
   @override
   State<Settings> createState() => _SettingsState();
@@ -19,10 +25,18 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   final _authBloc = getit<AuthBloc>();
+  final _userProfileBloc = getit<UserProfileBloc>();
+
+  @override
+  void initState() {
+    _userProfileBloc.add(UserProfileEvent.loadMyProfile());
+    super.initState();
+  }
 
   @override
   void dispose() {
     _authBloc.close();
+    _userProfileBloc.close();
     super.dispose();
   }
 
@@ -42,31 +56,43 @@ class _SettingsState extends State<Settings> {
             orElse: () {},
           );
         },
-        child: SingleChildScrollView(
-          physics:
-              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          child: Padding(
-            padding: EdgeInsets.all(p(context, 28.0)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildGeneralInfoTitle(theme),
-                SpacerV.s(context),
-                _buildGeneralInfoCard(
-                    theme, 'joesoap@gmail.com'),
-                SpacerV.m(context),
-                _buildAdvancedInfoTitle(theme),
-                SpacerV.s(context),
-                _buildAdvancedInfoCards(theme, context),
-                SpacerV.m(context),
-                _buildMoreInfoTitle(theme),
-                SpacerV.s(context),
-                _buildMoreCards(theme, _authBloc)
-              ],
-            ),
-          ),
-        ),
+        child: BlocBuilder<UserProfileBloc, UserProfileState>(
+            bloc: _userProfileBloc,
+            builder: (context, state) {
+              return state.maybeWhen(
+                loading: () => Center(child: Loader()),
+                success: (user, location) {
+                  return SingleChildScrollView(
+                    physics: BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
+                    child: Padding(
+                      padding: EdgeInsets.all(p(context, 28.0)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildGeneralInfoTitle(theme),
+                          SpacerV.s(context),
+                          _buildGeneralInfoCard(theme, user.email),
+                          SpacerV.m(context),
+                          _buildAdvancedInfoTitle(theme),
+                          SpacerV.s(context),
+                          _buildAdvancedInfoCards(
+                              theme, context, user, location),
+                          SpacerV.m(context),
+                          _buildMoreInfoTitle(theme),
+                          SpacerV.s(context),
+                          _buildMoreCards(theme, _authBloc)
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                orElse: () {
+                  return Container();
+                },
+              );
+            }),
       ),
     );
   }
@@ -101,8 +127,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget _buildGeneralInfoCard(
-      ThemeData theme, String email) {
+  Widget _buildGeneralInfoCard(ThemeData theme, String email) {
     var _size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: p(context, 8.0)),
@@ -132,23 +157,24 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget _buildAdvancedInfoCards(ThemeData theme, BuildContext context) {
+  Widget _buildAdvancedInfoCards(
+      ThemeData theme, BuildContext context, TruYouUser user, String location) {
     return Column(
       children: [
-        _buildSettingCard(theme, Keys.connectedAccountsSettingsButton,
-            Constants.CONNECTED_ACCOUNTS, () {
-          Navigator.push(context, ConnectedAccounts.route());
-        }, true),
-        _buildSettingCard(
-            theme, null, Constants.PREMIUM_FEATURES, () {}, false),
-        _buildSettingCard(theme, null, Constants.GO_SOCIAL, () {}, false),
+        _buildSettingCard(theme, null, Constants.PREMIUM_FEATURES, () {
+          //TODO: Check if user has pro first
+          widget.navigateTo(4);
+        }, false),
+        _buildSettingCard(theme, null, Constants.GO_SOCIAL, () {
+          widget.navigateTo(3);
+        }, false),
         _buildSettingCard(
             theme, Keys.locationSettingsSettingButton, Constants.LOCATION, () {
-          Navigator.push(context, LocationSettings.route());
+          Navigator.push(context, LocationSettings.route(user, location));
         }, true),
         _buildSettingCard(
             theme, Keys.inSearchOfSettingsButton, Constants.IN_SEARCH_OF, () {
-          Navigator.push(context, SearchOf.route());
+          Navigator.push(context, SearchOf.route(user));
         }, true),
         _buildSettingCard(
             theme, Keys.notificationsSettingsButton, Constants.NOTIFICATIONS,

@@ -74,6 +74,7 @@ class _CreateAccountGeneralScreenState
                     lifeStyle: null,
                     job: null,
                     companyName: null,
+                    generalLocation: null,
                     location: null,
                     gender: null,
                     sexualOrientation: null,

@@ -3,16 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:truyou/components/utils/exceptions/exceptions.dart';
 import 'package:truyou/components/utils/geo_helper/geo_helper.dart';
 import 'package:truyou/components/utils/injector/injection_container.dart';
+import 'package:truyou/components/utils/tuple/tuple.dart';
 import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/repository/cloud_function_repository.dart';
 import 'package:truyou/repository/user_repository.dart';
 import 'package:truyou/screens/find-matches/find_matches.dart';
 import 'package:truyou/screens/find-matches/its_a_match_screen.dart';
-
-//TODO: Merge matches, misses, confirmedMatches, confirmedMisses into one collection to reduces reads
-//TODO: On every user check if their UID lies in the SWIPES COLLECTION
-//TODO: Change last date functionality to last UID
-//TODO: Create a get all matches query. This will return a list of UID's. Get all the associated user documents to these UID's
 
 class FirebaseRepository {
   final FirebaseFirestore _instance = FirebaseFirestore.instance;
@@ -38,23 +34,21 @@ class FirebaseRepository {
     if (userInfo.isRadiusDistanceSelected!) {
       radiusDistance = userInfo.radiusDistance!;
     } else {
-      radiusDistance = 1000;
+      radiusDistance = 100;
     }
 
     var users = <TruYouUser>[];
 
-    final queryBase = _instance
+    var queryBase = _instance
         .collection('users')
-        .where('gender', isEqualTo: userInfo.genderPreference)
         .where('sexualOrientation', isEqualTo: userInfo.sexualityPreference);
 
+    if (userInfo.genderPreference != 'Everyone') {
+      queryBase =
+          queryBase.where('gender', isEqualTo: userInfo.genderPreference);
+    }
+
     Query<Map<String, dynamic>> lastUIDQuery;
-
-    //////////////////////////////////////////////////////////////////////////////////////////
-
-    //TODO: Check issue with last date when next users are called for
-
-    //Sets parameters for the query
     if (lastDate != null) {
       print(lastDate);
       Query<Map<String, dynamic>> startAtQuery = queryBase
@@ -71,14 +65,17 @@ class FirebaseRepository {
       } else {
         switch (cursor) {
           case Cursor.startAt:
+            print('STARTED AT');
             lastUIDQuery = startAtQuery;
             break;
           case Cursor.startAfter:
+            print('STARTED AFTER');
             lastUIDQuery = startAfterQuery;
             break;
         }
       }
     } else {
+      print('INSIDE INITIAL');
       lastUIDQuery = queryBase
           .orderBy('createdAt', descending: false)
           .limit(_queryDocLimit);
@@ -198,50 +195,98 @@ class FirebaseRepository {
     }
   }
 
-  Future<List<TruYouUser>> loadMoreMatches(
+  Future<Tuple2<DocumentSnapshot, List<TruYouUser>>> loadMoreMatches(
+      DocumentSnapshot? documentSnapshot,
       List<TruYouUser> previousUsers) async {
     final user = _userRepository.getCurrentUser();
-    final documentSnapshot =
-        previousUsers.isNotEmpty ? previousUsers.last.documentSnapshot : null;
 
     var matches = <TruYouUser>[];
-
-    matches.addAll(previousUsers);
 
     final query = _instance
         .collection('users')
         .doc(user?.uid)
         .collection('swipes')
         .where('type', isEqualTo: 'confirmedMatch')
-        .limit(10);
+        .limit(6);
 
-    final querySnapshot = documentSnapshot != null
+    final matchesQuery = documentSnapshot != null
         ? await query.startAfterDocument(documentSnapshot).get()
         : await query.get();
 
-    print(querySnapshot.docs.length);
+    if (matchesQuery.docs.isEmpty)
+      return Tuple2(documentSnapshot, previousUsers);
 
-    for (var doc in querySnapshot.docs) {
+    final ref = matchesQuery.docs.last;
+
+    matches.addAll(previousUsers);
+
+    for (var doc in matchesQuery.docs) {
       final userData =
           await _instance.collection('users').doc(doc.data()['uid']).get();
       final truYouUser = TruYouUser.fromJson(userData, userData.data());
       matches.add(truYouUser);
     }
 
-    return matches;
+    return Tuple2(ref, matches);
+  }
+
+  Future<void> unmatch(TruYouUser matchedUser) async {
+    final user = _userRepository.getCurrentUser();
+    final matchedUserUID = matchedUser.documentSnapshot?.id;
+    return await _cloudFunctionRepository.unmatch(user?.uid, matchedUserUID);
+  }
+
+  Future<void> updateLocation(GeoPoint location) async {
+    final user = _userRepository.getCurrentUser();
+    return await _instance.collection('users').doc(user?.uid).update(
+        {'location': location, 'lastDate': null, 'hasCompletedUsers': false});
+  }
+
+  Future<void> updateMatchingDistance(int distance) async {
+    final user = _userRepository.getCurrentUser();
+    return await _instance.collection('users').doc(user?.uid).update({
+      'radiusDistance': distance,
+      'lastDate': null,
+      'hasCompletedUsers': false
+    });
+  }
+
+  Future<void> updateRadiusDistanceSelected(
+      bool isRadiusDistanceSelected) async {
+    final user = _userRepository.getCurrentUser();
+    return await _instance.collection('users').doc(user?.uid).update({
+      'isRadiusDistanceSelected': isRadiusDistanceSelected,
+      'lastDate': null,
+      'hasCompletedUsers': false
+    });
   }
 
   Future<void> updateLastDate(DateTime? lastDate) async {
-    print('UPDATING USER LAST UID');
     final firebaseUser = _userRepository.getCurrentUser();
-    try {
-      _instance
-          .collection('users')
-          .doc(firebaseUser?.uid)
-          .update({'lastDate': lastDate});
-    } catch (e) {
-      print(e);
-    }
+    return await _instance
+        .collection('users')
+        .doc(firebaseUser?.uid)
+        .update({'lastDate': lastDate});
+  }
+
+  Future<void> updateGenderPreference(String genderPreference) async {
+    final firebaseUser = _userRepository.getCurrentUser();
+    return await _instance.collection('users').doc(firebaseUser?.uid).update({
+      'genderPreference': genderPreference,
+      'lastDate': null,
+      'hasCompletedUsers': false
+    });
+  }
+
+  Future<void> updateAgePreferences(
+      DateTime lowerAge, DateTime upperAge) async {
+    final firebaseUser = _userRepository.getCurrentUser();
+    return await _instance.collection('users').doc(firebaseUser?.uid).update({
+      'lowerAgePreference': lowerAge,
+      'upperAgePreference': upperAge,
+      'lastDate': null,
+      'hasCompletedUsers': false
+    });
   }
 
   Future<bool> hasSeenUserBefore(String? uid) async {

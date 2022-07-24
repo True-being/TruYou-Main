@@ -33,6 +33,7 @@ class _$TruYouUserTearOff {
       required String? job,
       required String? companyName,
       required GeoPoint? location,
+      required String? generalLocation,
       required List<String>? images,
       required String? gender,
       required String? sexualOrientation,
@@ -58,6 +59,7 @@ class _$TruYouUserTearOff {
       job: job,
       companyName: companyName,
       location: location,
+      generalLocation: generalLocation,
       images: images,
       gender: gender,
       sexualOrientation: sexualOrientation,
@@ -92,6 +94,7 @@ mixin _$TruYouUser {
   String? get job => throw _privateConstructorUsedError;
   String? get companyName => throw _privateConstructorUsedError;
   GeoPoint? get location => throw _privateConstructorUsedError;
+  String? get generalLocation => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get sexualOrientation => throw _privateConstructorUsedError;
@@ -128,6 +131,7 @@ abstract class $TruYouUserCopyWith<$Res> {
       String? job,
       String? companyName,
       GeoPoint? location,
+      String? generalLocation,
       List<String>? images,
       String? gender,
       String? sexualOrientation,
@@ -164,6 +168,7 @@ class _$TruYouUserCopyWithImpl<$Res> implements $TruYouUserCopyWith<$Res> {
     Object? job = freezed,
     Object? companyName = freezed,
     Object? location = freezed,
+    Object? generalLocation = freezed,
     Object? images = freezed,
     Object? gender = freezed,
     Object? sexualOrientation = freezed,
@@ -235,6 +240,10 @@ class _$TruYouUserCopyWithImpl<$Res> implements $TruYouUserCopyWith<$Res> {
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as GeoPoint?,
+      generalLocation: generalLocation == freezed
+          ? _value.generalLocation
+          : generalLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -297,6 +306,7 @@ abstract class _$TruYouUserCopyWith<$Res> implements $TruYouUserCopyWith<$Res> {
       String? job,
       String? companyName,
       GeoPoint? location,
+      String? generalLocation,
       List<String>? images,
       String? gender,
       String? sexualOrientation,
@@ -335,6 +345,7 @@ class __$TruYouUserCopyWithImpl<$Res> extends _$TruYouUserCopyWithImpl<$Res>
     Object? job = freezed,
     Object? companyName = freezed,
     Object? location = freezed,
+    Object? generalLocation = freezed,
     Object? images = freezed,
     Object? gender = freezed,
     Object? sexualOrientation = freezed,
@@ -406,6 +417,10 @@ class __$TruYouUserCopyWithImpl<$Res> extends _$TruYouUserCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as GeoPoint?,
+      generalLocation: generalLocation == freezed
+          ? _value.generalLocation
+          : generalLocation // ignore: cast_nullable_to_non_nullable
+              as String?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -465,6 +480,7 @@ class _$_TruYouUser extends _TruYouUser {
       required this.job,
       required this.companyName,
       required this.location,
+      required this.generalLocation,
       required this.images,
       required this.gender,
       required this.sexualOrientation,
@@ -507,6 +523,8 @@ class _$_TruYouUser extends _TruYouUser {
   @override
   final GeoPoint? location;
   @override
+  final String? generalLocation;
+  @override
   final List<String>? images;
   @override
   final String? gender;
@@ -527,7 +545,7 @@ class _$_TruYouUser extends _TruYouUser {
 
   @override
   String toString() {
-    return 'TruYouUser(documentSnapshot: $documentSnapshot, firstName: $firstName, lastName: $lastName, email: $email, createdAt: $createdAt, lastDate: $lastDate, isWalletVerified: $isWalletVerified, hasCompletedUsers: $hasCompletedUsers, birthDate: $birthDate, algoWalletAddress: $algoWalletAddress, aboutMe: $aboutMe, lifeStyle: $lifeStyle, job: $job, companyName: $companyName, location: $location, images: $images, gender: $gender, sexualOrientation: $sexualOrientation, genderPreference: $genderPreference, sexualityPreference: $sexualityPreference, lowerAgePreference: $lowerAgePreference, upperAgePreference: $upperAgePreference, radiusDistance: $radiusDistance, isRadiusDistanceSelected: $isRadiusDistanceSelected)';
+    return 'TruYouUser(documentSnapshot: $documentSnapshot, firstName: $firstName, lastName: $lastName, email: $email, createdAt: $createdAt, lastDate: $lastDate, isWalletVerified: $isWalletVerified, hasCompletedUsers: $hasCompletedUsers, birthDate: $birthDate, algoWalletAddress: $algoWalletAddress, aboutMe: $aboutMe, lifeStyle: $lifeStyle, job: $job, companyName: $companyName, location: $location, generalLocation: $generalLocation, images: $images, gender: $gender, sexualOrientation: $sexualOrientation, genderPreference: $genderPreference, sexualityPreference: $sexualityPreference, lowerAgePreference: $lowerAgePreference, upperAgePreference: $upperAgePreference, radiusDistance: $radiusDistance, isRadiusDistanceSelected: $isRadiusDistanceSelected)';
   }
 
   @override
@@ -555,6 +573,8 @@ class _$_TruYouUser extends _TruYouUser {
             const DeepCollectionEquality()
                 .equals(other.companyName, companyName) &&
             const DeepCollectionEquality().equals(other.location, location) &&
+            const DeepCollectionEquality()
+                .equals(other.generalLocation, generalLocation) &&
             const DeepCollectionEquality().equals(other.images, images) &&
             const DeepCollectionEquality().equals(other.gender, gender) &&
             const DeepCollectionEquality()
@@ -591,6 +611,7 @@ class _$_TruYouUser extends _TruYouUser {
         const DeepCollectionEquality().hash(job),
         const DeepCollectionEquality().hash(companyName),
         const DeepCollectionEquality().hash(location),
+        const DeepCollectionEquality().hash(generalLocation),
         const DeepCollectionEquality().hash(images),
         const DeepCollectionEquality().hash(gender),
         const DeepCollectionEquality().hash(sexualOrientation),
@@ -625,6 +646,7 @@ abstract class _TruYouUser extends TruYouUser {
       required String? job,
       required String? companyName,
       required GeoPoint? location,
+      required String? generalLocation,
       required List<String>? images,
       required String? gender,
       required String? sexualOrientation,
@@ -666,6 +688,8 @@ abstract class _TruYouUser extends TruYouUser {
   String? get companyName;
   @override
   GeoPoint? get location;
+  @override
+  String? get generalLocation;
   @override
   List<String>? get images;
   @override

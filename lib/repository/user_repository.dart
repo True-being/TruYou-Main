@@ -80,12 +80,23 @@ class UserRepository {
   }
 
   ///Gets users info
-  Future<TruYouUser> getUserInfo()async{
+  Future<TruYouUser> getUserInfo() async {
     final user = getCurrentUser();
 
-    final document = await _firestoreInstance.collection('users').doc(user?.uid).get();
+    final document =
+        await _firestoreInstance.collection('users').doc(user?.uid).get();
 
     return TruYouUser.fromJson(document, document.data()!);
+  }
+
+  ///Gets users info as stream
+  Stream<TruYouUser> getUserInfoAsStream() async* {
+    final user = getCurrentUser();
+
+    final userInfoStream =
+        _firestoreInstance.collection('users').doc(user?.uid).snapshots();
+
+    yield* userInfoStream.map((doc) => TruYouUser.fromJson(doc, doc.data()));
   }
 
   ///Gets the current user

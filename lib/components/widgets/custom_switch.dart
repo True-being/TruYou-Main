@@ -4,10 +4,14 @@ import 'package:truyou/components/components.dart';
 
 class CSwitch extends StatelessWidget {
   final Function(bool) active;
+  final bool initialValue;
 
-  CSwitch({Key? key, required this.active}) : super(key: key);
+  late var status;
 
-  var status = false;
+  CSwitch({Key? key, required this.active, required this.initialValue})
+      : super(key: key) {
+    status = initialValue;
+  }
 
   @override
   Widget build(BuildContext context) {

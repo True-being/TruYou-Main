@@ -35,4 +35,11 @@ class DateHelper {
   static int getAge(DateTime birthDate) {
     return (DateTime.now().difference(birthDate).inDays ~/ 365).toInt();
   }
+
+  ///Returns the date from age
+  static DateTime ageToDate(int age) {
+    final currentDate = DateTime.now();
+    final date = currentDate.subtract(Duration(days: (age * 365).toInt()));
+    return DateTime(date.year, 01, 01);
+  }
 }

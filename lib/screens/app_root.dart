@@ -7,13 +7,11 @@ import 'package:truyou/screens/chats/messages/tab_view.dart';
 import 'package:truyou/screens/find-matches/find_matches.dart';
 import 'package:truyou/screens/go-social/go_social.dart';
 import 'package:truyou/screens/my-matches/my_matches.dart';
-import 'package:truyou/screens/partnerships/partnerships.dart';
 import 'package:truyou/screens/premium-features/premium_features.dart';
 import 'package:truyou/screens/profile/my_profile.dart';
 import 'package:truyou/screens/settings/settings.dart';
 
-class AppRoot extends StatelessWidget {
-  //TODO: Check if user has staked, if not lock all screen accept Go social and find matches
+class AppRoot extends StatefulWidget {
   const AppRoot({Key? key}) : super(key: key);
 
   static MaterialPageRoute route() {
@@ -23,21 +21,27 @@ class AppRoot extends StatelessWidget {
   }
 
   @override
+  State<AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<AppRoot> {
+  @override
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
     return SimpleHiddenDrawer(
       menu: CustomDrawer(),
       //Viewport percentage
       slidePercent: 60.0,
+      initPositionSelected: 1,
       screenSelectedBuilder: (position, controller) {
         Widget screenCurrent;
 
         switch (position) {
           case 0:
-            screenCurrent = FindMatches();
+            screenCurrent = MyProfile();
             break;
           case 1:
-            screenCurrent = MyProfile();
+            screenCurrent = FindMatches();
             break;
           case 2:
             screenCurrent = MyMatches();
@@ -49,10 +53,11 @@ class AppRoot extends StatelessWidget {
             screenCurrent = PremiumFeatures();
             break;
           case 5:
-            screenCurrent = Partnerships();
-            break;
-          case 6:
-            screenCurrent = Settings();
+            screenCurrent = Settings(
+              navigateTo: (int index) {
+                controller.setSelectedMenuPosition(index, openMenu: false);
+              },
+            );
             break;
           default:
             screenCurrent = Container();
@@ -61,14 +66,17 @@ class AppRoot extends StatelessWidget {
 
         return Scaffold(
           backgroundColor: Constants.background_color,
-          extendBodyBehindAppBar: position == 1 ? true : false,
+          extendBodyBehindAppBar: position == 0 ? true : false,
           appBar: AppBar(
             backgroundColor:
-                position == 1 ? Colors.transparent : Constants.background_color,
+                position == 0 ? Colors.transparent : Constants.background_color,
             elevation: 0.0,
             leading: IconButton(
                 key: Key(Keys.findMatchesMenuButton),
-                icon: Icon(Icons.menu),
+                icon: Icon(
+                  Icons.menu,
+                  size: _size.width * 0.08,
+                ),
                 onPressed: () {
                   controller.toggle();
                 }),
@@ -76,13 +84,13 @@ class AppRoot extends StatelessWidget {
               titleSwapper(position),
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: _size.width * 0.055,
+                  fontSize: _size.width * 0.06,
                   fontWeight: FontWeight.w500),
             ),
             centerTitle: true,
             actions: [
               //Displays chat bubble on home screen
-              position == 0
+              position == 1
                   ? IconButton(
                       key: Key(Keys.findMatchesChatBubbleButton),
                       onPressed: () {
@@ -122,9 +130,6 @@ String titleSwapper(int position) {
       title = Constants.PREMIUM_FEATURES;
       break;
     case 5:
-      title = Constants.PARTNERSHIPS;
-      break;
-    case 6:
       title = Constants.SETTINGS;
       break;
     default:

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:truyou/bloc/gender_age_bloc/gender_age_bloc.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/components/widgets/custom_app_bar.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 
 import '../../components/components.dart';
 
@@ -19,14 +22,42 @@ extension GenderString on Gender {
         return 'Everyone';
     }
   }
+
+  String genderToDatabaseString() {
+    switch (this) {
+      case Gender.men:
+        return 'Male';
+      case Gender.women:
+        return 'Female';
+      case Gender.everyone:
+        return 'Everyone';
+    }
+  }
+}
+
+extension GenderFromString on String {
+  Gender genderFromString() {
+    switch (this) {
+      case 'Male':
+        return Gender.men;
+      case 'Female':
+        return Gender.women;
+      case 'Everyone':
+        return Gender.everyone;
+      default:
+        return Gender.everyone;
+    }
+  }
 }
 
 class SearchOf extends StatefulWidget {
-  const SearchOf({Key? key}) : super(key: key);
+  final TruYouUser user;
 
-  static MaterialPageRoute route() {
+  const SearchOf({Key? key, required this.user}) : super(key: key);
+
+  static MaterialPageRoute route(TruYouUser user) {
     return MaterialPageRoute(
-        builder: (context) => SearchOf(),
+        builder: (context) => SearchOf(user: user),
         settings: const RouteSettings(name: Routes.inSearchOf));
   }
 
@@ -35,8 +66,23 @@ class SearchOf extends StatefulWidget {
 }
 
 class _SearchOfState extends State<SearchOf> {
-  Gender gender = Gender.men;
-  SfRangeValues _values = SfRangeValues(18.0, 35.0);
+  final _genderAgeBloc = getit<GenderAgeBloc>();
+
+  late Gender gender;
+  late SfRangeValues _values;
+
+  @override
+  void initState() {
+    _setAgeValues();
+    gender = widget.user.genderPreference!.genderFromString();
+    super.initState();
+  }
+
+  Future<void> _setAgeValues() async {
+    final lowerAge = DateHelper.getAge(widget.user.lowerAgePreference!);
+    final upperAge = DateHelper.getAge(widget.user.upperAgePreference!);
+    _values = SfRangeValues(lowerAge, upperAge);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +125,6 @@ class _SearchOfState extends State<SearchOf> {
           ],
         ),
       ),
-      persistentFooterButtons: [
-        SaveButton(onPressed: () {
-          //TODO: Save gender preference and age span
-        })
-      ],
     );
   }
 
@@ -136,6 +177,13 @@ class _SearchOfState extends State<SearchOf> {
         activeColor: Constants.thumb_color,
         inactiveColor: Constants.track_color,
         tooltipShape: SfPaddleTooltipShape(),
+        onChangeEnd: (values) {
+          if (values.start is double && values.end is double) {
+            _genderAgeBloc.add(GenderAgeEvent.updateAgePreferences(
+                DateHelper.ageToDate(values.start.toInt()),
+                DateHelper.ageToDate(values.end.toInt())));
+          }
+        },
         onChanged: (SfRangeValues values) {
           setState(() {
             _values = values;
@@ -154,6 +202,8 @@ class _SearchOfState extends State<SearchOf> {
           setState(() {
             gender = type;
           });
+          _genderAgeBloc.add(GenderAgeEvent.updateGenderPreference(
+              type.genderToDatabaseString()));
         },
         child: Container(
           width: size.width,

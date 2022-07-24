@@ -1,10 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foil/foil.dart';
+import 'package:truyou/bloc/my_matches_bloc/my_matches_bloc.dart';
+import 'package:truyou/bloc/unmatch_bloc/unmatch_bloc.dart';
 import 'dart:io' show Platform;
 
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/components/utils/validators/trust_validator.dart';
+import 'package:truyou/components/widgets/loader.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 import 'package:truyou/screens/chats/chat_viewer.dart';
 import 'package:truyou/screens/gift-screens/choose_gift_screen.dart';
 import 'package:truyou/screens/profile/user_profile.dart';
@@ -161,7 +167,8 @@ class CustomDialog {
   ///2) Start Conversation -> Navigates you to a chat with the user
   ///3) Send a Gift -> Navigates to "Choose a gift page"
   ///4) Unmatch -> Unmatches with the currently matched user
-  static void showMatchOptionDialog(BuildContext context, String receipient) {
+  static void showMatchOptionDialog(
+      BuildContext context, TruYouUser user, VoidCallback callback) {
     Size size = MediaQuery.of(context).size;
     showDialog(
       routeSettings: RouteSettings(name: Routes.matchOptionDialog),
@@ -226,7 +233,7 @@ class CustomDialog {
                         Navigator.of(context).pop();
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ChooseGiftScreen(
-                                  receipient: receipient,
+                                  receipient: user.firstName,
                                 )));
                       }),
                   Stack(
@@ -278,10 +285,8 @@ class CustomDialog {
                       buttonWidth: size.width * 0.6,
                       buttonHeight: size.height * 0.07,
                       onPress: () {
-                        //TODO:Get users profile
-                        //TODO:Unmatch with user and pop
                         Navigator.of(context).pop();
-                        CustomDialog.showUnmatchDialog(context, 'Michael');
+                        CustomDialog.showUnmatchDialog(context, user, callback);
                       }),
                 ],
               ),
@@ -384,7 +389,10 @@ class CustomDialog {
 
   ///Unmatch dialog
   ///Confirms is the user wants to unmatch with another user
-  static void showUnmatchDialog(BuildContext context, String user) {
+  static void showUnmatchDialog(
+      BuildContext context, TruYouUser user, VoidCallback callback) {
+    final _loadingKey = GlobalKey<State>();
+    final _unmatchBloc = getit<UnmatchBloc>();
     Size size = MediaQuery.of(context).size;
     showDialog(
       routeSettings: RouteSettings(name: Routes.unmatchUserDialog),
@@ -402,7 +410,7 @@ class CustomDialog {
                 padding: EdgeInsets.symmetric(
                     vertical: size.width * 0.04, horizontal: size.width * 0.02),
                 child: Text(
-                  Constants.UNMATCH_MESSAGE(user),
+                  Constants.UNMATCH_MESSAGE(user.firstName),
                   key: Key(Keys.confirmUnmatchDialogMessage),
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -413,7 +421,6 @@ class CustomDialog {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //NoconfirmUnmatchDialogMessage
                   Flexible(
                     child: OutlinedGlowButton(
                         widget: Text(
@@ -428,17 +435,30 @@ class CustomDialog {
                         }),
                   ),
                   //Yes
-                  OutlinedGlowButton(
-                      widget: Text(
-                        Constants.YES,
-                        style: TextStyle(
-                            color: Colors.white, fontSize: size.width * 0.05),
-                      ),
-                      buttonWidth: size.width * 0.23,
-                      buttonHeight: size.height * 0.07,
-                      onPress: () {
-                        //TODO:UNMATCH users
-                      }),
+                  BlocListener<UnmatchBloc, UnmatchState>(
+                    bloc: _unmatchBloc,
+                    listener: (context, state) {
+                      state.maybeWhen(
+                          success: () {
+                            OverlayLoader.pop(_loadingKey);
+                            callback.call();
+                          },
+                          orElse: () {});
+                    },
+                    child: OutlinedGlowButton(
+                        widget: Text(
+                          Constants.YES,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: size.width * 0.05),
+                        ),
+                        buttonWidth: size.width * 0.23,
+                        buttonHeight: size.height * 0.07,
+                        onPress: () {
+                          _unmatchBloc.add(UnmatchEvent.unmatch(user));
+                          Navigator.pop(context);
+                          OverlayLoader.showLoadingDialog(context, _loadingKey);
+                        }),
+                  ),
                 ],
               )
             ]);

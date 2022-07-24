@@ -59,7 +59,7 @@ class _FindMatchesState extends State<FindMatches> {
   }
 
   Widget _buildSwiper(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final _size = MediaQuery.of(context).size;
     final theme = Theme.of(context);
     return BlocListener<SwipeBloc, SwipeState>(
       bloc: _swipeBloc,
@@ -85,8 +85,8 @@ class _FindMatchesState extends State<FindMatches> {
                 success: (users) {
                   return Center(
                     child: Container(
-                        width: size.width,
-                        height: size.height * 0.9,
+                        width: _size.width,
+                        height: _size.height * 0.9,
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,44 +108,39 @@ class _FindMatchesState extends State<FindMatches> {
                                   }
                                 },
                                 child: TCard(
-                                  size: Size(size.width, size.height * 0.7),
+                                  size: Size(_size.width, _size.height * 0.7),
                                   cards: users.asSwipeCards(),
                                   controller: _controller,
                                   onForward: (index, info) {
                                     if (info.direction == SwipDirection.Left) {
-                                      setState(() {
-                                        _current = index;
-                                        _leftDirection = 0;
-                                        _rightDirection = 0;
-                                        if (index == users.length) {
-                                          _swipeBloc.add(SwipeEvent.swipeLeft(
-                                              users[_current - 1],
-                                              users[_current - 1].createdAt));
-                                        } else {
-                                          print(index);
-                                          _swipeBloc.add(SwipeEvent.swipeLeft(
-                                              users[_current - 1],
-                                              users[_current].createdAt));
-                                        }
-                                      });
+                                      _current = index;
+                                      _leftDirection = 0;
+                                      _rightDirection = 0;
+                                      if (index == users.length) {
+                                        _swipeBloc.add(SwipeEvent.swipeLeft(
+                                            users[_current - 1],
+                                            users[_current - 1].createdAt));
+                                      } else {
+                                        _swipeBloc.add(SwipeEvent.swipeLeft(
+                                            users[_current - 1],
+                                            users[_current].createdAt));
+                                      }
                                     }
                                     if (info.direction == SwipDirection.Right) {
-                                      setState(() {
-                                        _current = index;
-                                        _leftDirection = 0;
-                                        _rightDirection = 0;
-                                        if (index == users.length) {
-                                          _swipeBloc.add(SwipeEvent.swipeRight(
-                                              context,
-                                              users[_current - 1],
-                                              users[_current - 1].createdAt));
-                                        } else {
-                                          _swipeBloc.add(SwipeEvent.swipeRight(
-                                              context,
-                                              users[_current - 1],
-                                              users[_current].createdAt));
-                                        }
-                                      });
+                                      _current = index;
+                                      _leftDirection = 0;
+                                      _rightDirection = 0;
+                                      if (index == users.length) {
+                                        _swipeBloc.add(SwipeEvent.swipeRight(
+                                            context,
+                                            users[_current - 1],
+                                            users[_current - 1].createdAt));
+                                      } else {
+                                        _swipeBloc.add(SwipeEvent.swipeRight(
+                                            context,
+                                            users[_current - 1],
+                                            users[_current].createdAt));
+                                      }
                                     }
                                   },
                                   onEnd: () {
@@ -158,7 +153,49 @@ class _FindMatchesState extends State<FindMatches> {
                                   },
                                 ),
                               ),
-                              _buildButtons(context, users)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircularGlowButton(
+                                    width: ResponsiveWidget.size(context,
+                                        _size.width * 0.16, _size.width * 0.10),
+                                    height: ResponsiveWidget.size(context,
+                                        _size.width * 0.16, _size.width * 0.10),
+                                    iconSize: ResponsiveWidget.size(
+                                        context,
+                                        _size.width * 0.09,
+                                        _size.width * 0.045),
+                                    iconColor: Constants.neon_red,
+                                    icon: Icon(CupertinoIcons.clear),
+                                    onPress: () {
+                                      _current = _controller.index;
+                                      _leftDirection = 0;
+                                      _rightDirection = 0;
+                                      _controller.forward(
+                                          direction: SwipDirection.Left);
+                                    },
+                                  ),
+                                  CircularGlowButton(
+                                    width: ResponsiveWidget.size(context,
+                                        _size.width * 0.16, _size.width * 0.10),
+                                    height: ResponsiveWidget.size(context,
+                                        _size.width * 0.16, _size.width * 0.10),
+                                    iconSize: ResponsiveWidget.size(
+                                        context,
+                                        _size.width * 0.09,
+                                        _size.width * 0.045),
+                                    iconColor: Constants.neon_green,
+                                    icon: Icon(CupertinoIcons.heart),
+                                    onPress: () {
+                                      _current = _controller.index;
+                                      _leftDirection = 0;
+                                      _rightDirection = 0;
+                                      _controller.forward(
+                                          direction: SwipDirection.Right);
+                                    },
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         )),
@@ -171,67 +208,59 @@ class _FindMatchesState extends State<FindMatches> {
     );
   }
 
-  Widget _buildButtons(BuildContext context, List<TruYouUser> users) {
-    print(users.length);
-    final _size = MediaQuery.of(context).size;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        //TODO: Switch Red and green button; switch direction of arrow
-        CircularGlowButton(
-          width: ResponsiveWidget.size(
-              context, _size.width * 0.16, _size.width * 0.10),
-          height: ResponsiveWidget.size(
-              context, _size.width * 0.16, _size.width * 0.10),
-          iconSize: ResponsiveWidget.size(
-              context, _size.width * 0.09, _size.width * 0.045),
-          iconColor: Constants.neon_red,
-          icon: Icon(CupertinoIcons.clear),
-          onPress: () {
-            setState(() {
-              _current = _current += 1;
-              _leftDirection = 0;
-              _rightDirection = 0;
-              if (_current == users.length) {
-                _swipeBloc.add(SwipeEvent.swipeLeft(
-                    users[_current - 1], users[_current - 1].createdAt));
-              } else {
-                print(_current);
-                _swipeBloc.add(SwipeEvent.swipeLeft(
-                    users[_current - 1], users[_current].createdAt));
-              }
-            });
-            _controller.forward(direction: SwipDirection.Left);
-          },
-        ),
-        CircularGlowButton(
-          width: ResponsiveWidget.size(
-              context, _size.width * 0.16, _size.width * 0.10),
-          height: ResponsiveWidget.size(
-              context, _size.width * 0.16, _size.width * 0.10),
-          iconSize: ResponsiveWidget.size(
-              context, _size.width * 0.09, _size.width * 0.045),
-          iconColor: Constants.neon_green,
-          icon: Icon(CupertinoIcons.heart),
-          onPress: () {
-            setState(() {
-              _current = _current += 1;
-              _leftDirection = 0;
-              _rightDirection = 0;
-              if (_current == users.length) {
-                _swipeBloc.add(SwipeEvent.swipeRight(context,
-                    users[_current - 1], users[_current - 1].createdAt));
-              } else {
-                print(users.length);
-                print(_current);
-                _swipeBloc.add(SwipeEvent.swipeRight(
-                    context, users[_current - 1], users[_current].createdAt));
-              }
-            });
-            _controller.forward(direction: SwipDirection.Right);
-          },
-        ),
-      ],
-    );
-  }
+//   Widget _buildButtons(BuildContext context, List<TruYouUser> users) {
+//     final _size = MediaQuery.of(context).size;
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         CircularGlowButton(
+//           width: ResponsiveWidget.size(
+//               context, _size.width * 0.16, _size.width * 0.10),
+//           height: ResponsiveWidget.size(
+//               context, _size.width * 0.16, _size.width * 0.10),
+//           iconSize: ResponsiveWidget.size(
+//               context, _size.width * 0.09, _size.width * 0.045),
+//           iconColor: Constants.neon_red,
+//           icon: Icon(CupertinoIcons.clear),
+//           onPress: () {
+//             _current++;
+//             _leftDirection = 0;
+//             _rightDirection = 0;
+//             if (_current == users.length) {
+//               _swipeBloc.add(SwipeEvent.swipeLeft(
+//                   users[_current - 1], users[_current - 1].createdAt));
+//             } else {
+//               print(_current);
+//               _swipeBloc.add(SwipeEvent.swipeLeft(
+//                   users[_current - 1], users[_current].createdAt));
+//             }
+//             _controller.forward(direction: SwipDirection.Left);
+//           },
+//         ),
+//         CircularGlowButton(
+//           width: ResponsiveWidget.size(
+//               context, _size.width * 0.16, _size.width * 0.10),
+//           height: ResponsiveWidget.size(
+//               context, _size.width * 0.16, _size.width * 0.10),
+//           iconSize: ResponsiveWidget.size(
+//               context, _size.width * 0.09, _size.width * 0.045),
+//           iconColor: Constants.neon_green,
+//           icon: Icon(CupertinoIcons.heart),
+//           onPress: () {
+//             _current++;
+//             _leftDirection = 0;
+//             _rightDirection = 0;
+//             if (_current == users.length) {
+//               _swipeBloc.add(SwipeEvent.swipeRight(
+//                   context, users[_current - 1], users[_current - 1].createdAt));
+//             } else {
+//               _swipeBloc.add(SwipeEvent.swipeRight(
+//                   context, users[_current - 1], users[_current].createdAt));
+//             }
+//             _controller.forward(direction: SwipDirection.Right);
+//           },
+//         ),
+//       ],
+//     );
+//   }
 }

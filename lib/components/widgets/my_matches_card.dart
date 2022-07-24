@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 
 class MyMatchesCard extends StatefulWidget {
-  final String imageURL;
-  final String name;
-  final String age;
+  final TruYouUser user;
   final String location;
-  final String? aboutMe;
+  final VoidCallback callback;
   const MyMatchesCard(
       {Key? key,
-      required this.imageURL,
-      required this.name,
-      required this.age,
+      required this.user,
       required this.location,
-      required this.aboutMe})
+      required this.callback})
       : super(key: key);
 
   @override
@@ -28,13 +25,15 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
       padding: EdgeInsets.all(_size.width * 0.025),
       child: GestureDetector(
         onTap: () {
-          CustomDialog.showMatchOptionDialog(context, widget.name);
+          CustomDialog.showMatchOptionDialog(
+              context, widget.user, widget.callback);
         },
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15.0),
               image: DecorationImage(
-                  image: new NetworkImage(widget.imageURL), fit: BoxFit.cover)),
+                  image: new NetworkImage(widget.user.images!.first),
+                  fit: BoxFit.cover)),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
@@ -46,7 +45,9 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: _size.width * 0.01),
                     child: Text(
-                      widget.name + ', ' + widget.age,
+                      widget.user.firstName +
+                          ', ' +
+                          DateHelper.getAge(widget.user.birthDate).toString(),
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Colors.white,
@@ -86,7 +87,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: _size.width * 0.01),
                     child: Text(
-                      widget.aboutMe ?? '',
+                      widget.user.aboutMe ?? '',
                       maxLines: 1,
                       textAlign: TextAlign.left,
                       style: TextStyle(

@@ -20,6 +20,12 @@ class _$UserProfileEventTearOff {
   _LoadMyProfile loadMyProfile() {
     return const _LoadMyProfile();
   }
+
+  _LoadedProfile loadedProfile(TruYouUser user) {
+    return _LoadedProfile(
+      user,
+    );
+  }
 }
 
 /// @nodoc
@@ -30,32 +36,38 @@ mixin _$UserProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadMyProfile,
+    required TResult Function(TruYouUser user) loadedProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMyProfile value) loadMyProfile,
+    required TResult Function(_LoadedProfile value) loadedProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +132,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadMyProfile,
+    required TResult Function(TruYouUser user) loadedProfile,
   }) {
     return loadMyProfile();
   }
@@ -128,6 +141,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
   }) {
     return loadMyProfile?.call();
   }
@@ -136,6 +150,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
     required TResult orElse(),
   }) {
     if (loadMyProfile != null) {
@@ -148,6 +163,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadMyProfile value) loadMyProfile,
+    required TResult Function(_LoadedProfile value) loadedProfile,
   }) {
     return loadMyProfile(this);
   }
@@ -156,6 +172,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
   }) {
     return loadMyProfile?.call(this);
   }
@@ -164,6 +181,7 @@ class _$_LoadMyProfile implements _LoadMyProfile {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
     required TResult orElse(),
   }) {
     if (loadMyProfile != null) {
@@ -175,6 +193,149 @@ class _$_LoadMyProfile implements _LoadMyProfile {
 
 abstract class _LoadMyProfile implements UserProfileEvent {
   const factory _LoadMyProfile() = _$_LoadMyProfile;
+}
+
+/// @nodoc
+abstract class _$LoadedProfileCopyWith<$Res> {
+  factory _$LoadedProfileCopyWith(
+          _LoadedProfile value, $Res Function(_LoadedProfile) then) =
+      __$LoadedProfileCopyWithImpl<$Res>;
+  $Res call({TruYouUser user});
+
+  $TruYouUserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$LoadedProfileCopyWithImpl<$Res>
+    extends _$UserProfileEventCopyWithImpl<$Res>
+    implements _$LoadedProfileCopyWith<$Res> {
+  __$LoadedProfileCopyWithImpl(
+      _LoadedProfile _value, $Res Function(_LoadedProfile) _then)
+      : super(_value, (v) => _then(v as _LoadedProfile));
+
+  @override
+  _LoadedProfile get _value => super._value as _LoadedProfile;
+
+  @override
+  $Res call({
+    Object? user = freezed,
+  }) {
+    return _then(_LoadedProfile(
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as TruYouUser,
+    ));
+  }
+
+  @override
+  $TruYouUserCopyWith<$Res> get user {
+    return $TruYouUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_LoadedProfile implements _LoadedProfile {
+  const _$_LoadedProfile(this.user);
+
+  @override
+  final TruYouUser user;
+
+  @override
+  String toString() {
+    return 'UserProfileEvent.loadedProfile(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _LoadedProfile &&
+            const DeepCollectionEquality().equals(other.user, user));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadedProfileCopyWith<_LoadedProfile> get copyWith =>
+      __$LoadedProfileCopyWithImpl<_LoadedProfile>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadMyProfile,
+    required TResult Function(TruYouUser user) loadedProfile,
+  }) {
+    return loadedProfile(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
+  }) {
+    return loadedProfile?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadMyProfile,
+    TResult Function(TruYouUser user)? loadedProfile,
+    required TResult orElse(),
+  }) {
+    if (loadedProfile != null) {
+      return loadedProfile(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadMyProfile value) loadMyProfile,
+    required TResult Function(_LoadedProfile value) loadedProfile,
+  }) {
+    return loadedProfile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
+  }) {
+    return loadedProfile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadMyProfile value)? loadMyProfile,
+    TResult Function(_LoadedProfile value)? loadedProfile,
+    required TResult orElse(),
+  }) {
+    if (loadedProfile != null) {
+      return loadedProfile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadedProfile implements UserProfileEvent {
+  const factory _LoadedProfile(TruYouUser user) = _$_LoadedProfile;
+
+  TruYouUser get user;
+  @JsonKey(ignore: true)
+  _$LoadedProfileCopyWith<_LoadedProfile> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -25,6 +25,7 @@ exports.doesAddressAlreadyExist = functions.https.onCall(async(data, _context) =
 });
 
 exports.confirmedMatch = functions.https.onCall(async(data, _context) => {
+
     const userUID = data.userUID;
     const swipedUserUID = data.swipedUserUID;
 
@@ -68,4 +69,21 @@ exports.confirmedMiss = functions.https.onCall(async(data, _context) => {
         uid: userUID,
         'type': 'confirmedMiss'
     });
+});
+
+exports.unmatch = functions.https.onCall(async(data, _context) => {
+    const userUID = data.userUID;
+    const matchedUserUID = data.matchedUserUID;
+
+    let userUnmatchQuery = await db.collection('users').doc(userUID).collection('swipes').where('uid', '==', matchedUserUID).where('type', '==', 'confirmedMatch').limit(1).get();
+    let matchedUserUnmatchQuery = await db.collection('users').doc(matchedUserUID).collection('swipes').where('uid', '==', userUID).where('type', '==', 'confirmedMatch').limit(1).get();
+
+    userUnmatchQuery.forEach(async function(doc) {
+        await db.collection('users').doc(userUID).collection('swipes').doc("" + doc.id).update({ 'type': 'confirmedMiss' });
+    });
+
+    matchedUserUnmatchQuery.forEach(async function(doc) {
+        await db.collection('users').doc(matchedUserUID).collection('swipes').doc("" + doc.id).update({ 'type': 'confirmedMiss' });
+    })
+
 });

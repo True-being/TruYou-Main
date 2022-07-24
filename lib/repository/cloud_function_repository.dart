@@ -21,16 +21,28 @@ class CloudFunctionRepository {
   }
 
   ///Add users to each others confirmed matches
-  Future<void> confirmedMatch(String? userUID, String? swipedUserUID)async{
+  Future<void> confirmedMatch(String? userUID, String? swipedUserUID) async {
     final callable = functions.httpsCallable('confirmedMatch');
-    await callable.call(<String,dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
+    await callable.call(
+        <String, dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
     return;
   }
 
   ///Add users to each other confirmed misses
-  Future<void> confirmedMiss(String? userUID, String? swipedUserUID)async{
+  Future<void> confirmedMiss(String? userUID, String? swipedUserUID) async {
     final callable = functions.httpsCallable('confirmedMiss');
-    await callable.call(<String,dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
+    await callable.call(
+        <String, dynamic>{'userUID': userUID, 'swipedUserUID': swipedUserUID});
+    return;
+  }
+
+  ///Unmatches users from one another
+  Future<void> unmatch(String? userUID, String? matchedUserUID) async {
+    final callable = functions.httpsCallable('unmatch');
+    await callable.call(<String, dynamic>{
+      'userUID': userUID,
+      'matchedUserUID': matchedUserUID
+    });
     return;
   }
 }

@@ -17,7 +17,23 @@ class Loader extends StatelessWidget {
   }
 }
 
-class OverlayLoader{
+class TransparentLoader extends StatelessWidget {
+  const TransparentLoader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Container(
+      width: 100,
+      height: 100,
+      child: RiveAnimation.asset(
+        'assets/loading_animation_trans.riv',
+      ),
+    ));
+  }
+}
+
+class OverlayLoader {
   static Future<void> showLoadingDialog(
       BuildContext context, GlobalKey<State> key) async {
     return showDialog<void>(
@@ -29,11 +45,11 @@ class OverlayLoader{
               child: SimpleDialog(
                   key: key,
                   backgroundColor: Colors.transparent,
-                  children: <Widget>[Center(child: Loader())]));
+                  children: <Widget>[Center(child: TransparentLoader())]));
         });
   }
 
-  static void pop(GlobalKey<State>key){
+  static void pop(GlobalKey<State> key) {
     if (key.currentContext != null) {
       return Navigator.of(key.currentContext!).pop();
     }

@@ -54,15 +54,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     height: _size.height * 0.03,
                   ),
                   DrawerItem(
-                      title: Constants.FIND_MATCHES,
-                      icon: Icon(CupertinoIcons.search),
+                      key: Key(Keys.drawerMyProfileButton),
+                      title: Constants.MY_PROFILE,
+                      icon: Icon(CupertinoIcons.profile_circled),
                       onPressed: () {
                         controller.setSelectedMenuPosition(0);
                       }),
                   DrawerItem(
-                      key: Key(Keys.drawerMyProfileButton),
-                      title: Constants.MY_PROFILE,
-                      icon: Icon(CupertinoIcons.profile_circled),
+                      title: Constants.FIND_MATCHES,
+                      icon: Icon(CupertinoIcons.search),
                       onPressed: () {
                         controller.setSelectedMenuPosition(1);
                       }),
@@ -88,18 +88,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         controller.setSelectedMenuPosition(4);
                       }),
                   DrawerItem(
-                      key: Key(Keys.drawerPartnershipsButton),
-                      title: Constants.PARTNERSHIPS,
-                      icon: Icon(Icons.handshake_rounded),
-                      onPressed: () {
-                        controller.setSelectedMenuPosition(5);
-                      }),
-                  DrawerItem(
                       key: Key(Keys.drawerSettingsButton),
                       title: Constants.SETTINGS,
                       icon: Icon(CupertinoIcons.settings),
                       onPressed: () {
-                        controller.setSelectedMenuPosition(6);
+                        controller.setSelectedMenuPosition(5);
                       }),
                 ],
               ),

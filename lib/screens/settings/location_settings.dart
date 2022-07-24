@@ -1,18 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:location/location.dart' as location;
 import 'package:google_static_maps_controller/google_static_maps_controller.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:truyou/bloc/location_bloc/location_bloc.dart';
 import 'package:truyou/components/components.dart';
+import 'package:truyou/components/utils/injector/injection_container.dart';
 import 'package:truyou/components/widgets/custom_app_bar.dart';
 import 'package:truyou/components/widgets/custom_switch.dart';
+import 'package:truyou/models/truyou_user/truyou_user_model.dart';
 
 class LocationSettings extends StatefulWidget {
-  const LocationSettings({Key? key}) : super(key: key);
+  final TruYouUser user;
+  final String location;
 
-  static MaterialPageRoute route() {
+  const LocationSettings({Key? key, required this.user, required this.location})
+      : super(key: key);
+
+  static MaterialPageRoute route(TruYouUser user, String location) {
     return MaterialPageRoute(
-        builder: (context) => LocationSettings(),
+        builder: (context) => LocationSettings(user: user, location: location),
         settings: const RouteSettings(name: Routes.locationSettings));
   }
 
@@ -21,36 +30,60 @@ class LocationSettings extends StatefulWidget {
 }
 
 class _LocationSettingsState extends State<LocationSettings> {
+  final _locationBloc = getit<LocationBloc>();
+
   Location? _currentLocation;
   //The controller of the static map
   StaticMapController? _controller;
   //Slider value
   double _sliderValue = 1;
 
-  void _allowLocationPermission() async {
+  void _updateLocation(bool isInit) async {
     var status = await Permission.location.request();
     //Checks if permission was granted
     if (status.isGranted) {
-      location.Location _locationIstance = location.Location();
-      //Gets the users current location
-      location.LocationData _location = await _locationIstance.getLocation();
-      setState(() {
-        //Sets the users current location
-        _currentLocation = Location(_location.latitude!, _location.longitude!);
-        //Updates the screen with market
-        _controller = StaticMapController(
-            googleApiKey: FlutterConfig.get('GOOGLE_MAPS_API_KEY'),
-            width: 400,
-            height: 400,
-            zoom: 10,
-            center: Location(_location.latitude!, _location.longitude!),
-            markers: [
-              Marker(
-                  locations: [_currentLocation!],
-                  color: Colors.red,
-                  size: MarkerSize.mid)
-            ]);
-      });
+      if (isInit) {
+        setState(() {
+          _currentLocation = Location(
+              widget.user.location!.latitude, widget.user.location!.longitude);
+
+          _controller = StaticMapController(
+              googleApiKey: FlutterConfig.get('GOOGLE_MAPS_API_KEY'),
+              width: 400,
+              height: 400,
+              zoom: 10,
+              center: _currentLocation,
+              markers: [
+                Marker(
+                    locations: [_currentLocation!],
+                    color: Colors.red,
+                    size: MarkerSize.mid)
+              ]);
+        });
+      } else {
+        location.Location _locationIstance = location.Location();
+        location.LocationData _location = await _locationIstance.getLocation();
+
+        setState(() {
+          _currentLocation =
+              Location(_location.latitude!, _location.longitude!);
+          _controller = StaticMapController(
+              googleApiKey: FlutterConfig.get('GOOGLE_MAPS_API_KEY'),
+              width: 400,
+              height: 400,
+              zoom: 10,
+              center: _currentLocation,
+              markers: [
+                Marker(
+                    locations: [_currentLocation!],
+                    color: Colors.red,
+                    size: MarkerSize.mid)
+              ]);
+        });
+
+        _locationBloc.add(LocationEvent.updateLocation(
+            GeoPoint(_location.latitude!, _location.longitude!)));
+      }
     }
   }
 
@@ -67,8 +100,16 @@ class _LocationSettingsState extends State<LocationSettings> {
       center: _currentLocation,
     );
 
-    _allowLocationPermission();
+    _sliderValue = widget.user.radiusDistance!.toDouble();
+
+    _updateLocation(true);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _locationBloc.close();
+    super.dispose();
   }
 
   @override
@@ -78,46 +119,60 @@ class _LocationSettingsState extends State<LocationSettings> {
       backgroundColor: Constants.background_color,
       appBar: customAppBar(context, Keys.locationSettingsBackButton,
           Constants.LOCATION_SETTINGS),
-      body: Column(
-        children: [
-          CDivider(),
-          Padding(
-            padding: EdgeInsets.all(p(context, 16.0)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildMyLocationTitle(theme),
-                SpacerV.c(context, 2.0),
-                _buildMyLocationSubTitle(theme, 'Brooklyn, New York'),
-                SpacerV.s(context),
-                _buildMatchingDistanceButton(context),
-                SpacerV.s(context),
-                _buildMapImage(context),
-                SpacerV.s(context),
-              ],
+      body: BlocListener<LocationBloc, LocationState>(
+        bloc: _locationBloc,
+        listener: (context, state) {
+          state.maybeWhen(
+              failed: (exception) {
+                CustomDialog.showErrorDialog(context, exception.toString());
+              },
+              orElse: () {});
+        },
+        child: Column(
+          children: [
+            CDivider(),
+            Padding(
+              padding: EdgeInsets.all(p(context, 16.0)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildMyLocationTitle(theme),
+                  SpacerV.c(context, 2.0),
+                  _buildMyLocationSubTitle(theme, widget.location),
+                  SpacerV.s(context),
+                  _buildMatchingDistanceButton(context),
+                  SpacerV.s(context),
+                  _buildMapImage(context),
+                  SpacerV.s(context),
+                ],
+              ),
             ),
-          ),
-          CDivider(),
-          Padding(
-            padding: EdgeInsets.all(p(context, 16.0)),
-            child: _buildMileSlider(theme, context),
-          ),
-          CDivider(),
-          Padding(
-            padding: EdgeInsets.all(p(context, 16.0)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildOnlyShowPeopleTitle(theme),
-                CSwitch(active: (bool val) {
-                  print(val);
-                })
-              ],
+            CDivider(),
+            Padding(
+              padding: EdgeInsets.all(p(context, 16.0)),
+              child: _buildMileSlider(theme, context, _locationBloc),
             ),
-          ),
-          CDivider()
-        ],
+            CDivider(),
+            Padding(
+              padding: EdgeInsets.all(p(context, 16.0)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildOnlyShowPeopleTitle(theme),
+                  CSwitch(
+                      initialValue:
+                          widget.user.isRadiusDistanceSelected ?? false,
+                      active: (bool val) {
+                        _locationBloc.add(
+                            LocationEvent.updateRadiusDistanceSelected(val));
+                      })
+                ],
+              ),
+            ),
+            CDivider()
+          ],
+        ),
       ),
     );
   }
@@ -200,7 +255,8 @@ class _LocationSettingsState extends State<LocationSettings> {
     );
   }
 
-  Widget _buildMileSlider(ThemeData theme, BuildContext context) {
+  Widget _buildMileSlider(
+      ThemeData theme, BuildContext context, LocationBloc locationBloc) {
     return StatefulBuilder(builder: (context, setstate) {
       return Column(
         children: [
@@ -220,12 +276,16 @@ class _LocationSettingsState extends State<LocationSettings> {
                 trackHeight: 6,
                 thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15)),
             child: Slider(
-              min: 1.0,
+              min: 5.0,
               max: 1000.0,
               thumbColor: Constants.thumb_color,
               activeColor: Constants.track_color,
               inactiveColor: Constants.track_color,
               value: _sliderValue,
+              onChangeEnd: (value) {
+                locationBloc
+                    .add(LocationEvent.updateMatchingDistance(value.toInt()));
+              },
               onChanged: (value) {
                 setstate(() {
                   _sliderValue = value;
@@ -250,7 +310,7 @@ class _LocationSettingsState extends State<LocationSettings> {
         horizontalPadding: p(context, 4.0),
         verticalPadding: p(context, 4.0),
         onPress: () {
-          //TODO: Save current distance
+          _updateLocation(false);
         });
   }
 }

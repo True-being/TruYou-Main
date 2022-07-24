@@ -1,0 +1,110 @@
+Date : 2022-07-23 23:49:58
+Directory : c:\Flutter Projects\truyou
+Total : 56 files,  4169 codes, 206 comments, 661 blanks, all 5036 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Dart       |         54 |      4,152 |        206 |        655 |      5,013 |
+| JavaScript |          1 |         16 |          0 |          6 |         22 |
+| YAML       |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                        | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                           |         56 |      4,169 |        206 |        661 |      5,036 |
+| functions                                                                                   |          1 |         16 |          0 |          6 |         22 |
+| lib                                                                                         |         54 |      4,152 |        206 |        655 |      5,013 |
+| lib\bloc                                                                                    |         23 |      3,648 |        144 |        586 |      4,378 |
+| lib\bloc\find_matches_bloc                                                                  |          3 |        -30 |          0 |          0 |        -30 |
+| lib\bloc\gender_age_bloc                                                                    |          4 |        848 |         37 |        135 |      1,020 |
+| lib\bloc\location_bloc                                                                      |          4 |      1,034 |         40 |        159 |      1,233 |
+| lib\bloc\my_matches_bloc                                                                    |          4 |        919 |         36 |        145 |      1,100 |
+| lib\bloc\swipe_bloc                                                                         |          1 |          1 |          0 |          0 |          1 |
+| lib\bloc\unmatch_bloc                                                                       |          4 |        722 |         33 |        122 |        877 |
+| lib\bloc\user_profile_bloc                                                                  |          3 |        154 |         -2 |         25 |        177 |
+| lib\components                                                                              |         15 |        387 |        -18 |         34 |        403 |
+| lib\components\utils                                                                        |          8 |        357 |        -14 |         28 |        371 |
+| lib\components\utils\constants                                                              |          2 |         28 |        -16 |          0 |         12 |
+| lib\components\utils\exceptions                                                             |          4 |        269 |          2 |         17 |        288 |
+| lib\components\utils\geo_helper                                                             |          1 |         54 |          0 |         11 |         65 |
+| lib\components\utils\injector                                                               |          1 |          6 |          0 |          0 |          6 |
+| lib\components\widgets                                                                      |          7 |         30 |         -4 |          6 |         32 |
+| lib\components\widgets\dialogs                                                              |          1 |         25 |         -4 |          0 |         21 |
+| lib\components\widgets\glow-buttons                                                         |          1 |          3 |          0 |          0 |          3 |
+| lib\models                                                                                  |          2 |         28 |          0 |          0 |         28 |
+| lib\models\truyou_user                                                                      |          2 |         28 |          0 |          0 |         28 |
+| lib\repository                                                                              |          3 |         86 |        -11 |         18 |         93 |
+| lib\screens                                                                                 |         11 |          3 |         91 |         17 |        111 |
+| lib\screens\create-account-screens                                                          |          2 |         -9 |          0 |          0 |         -9 |
+| lib\screens\find-matches                                                                    |          3 |        -51 |         42 |          0 |         -9 |
+| lib\screens\find-matches\error_screens                                                      |          1 |         16 |          0 |          3 |         19 |
+| lib\screens\my-matches                                                                      |          1 |        -48 |         52 |          3 |          7 |
+| lib\screens\settings                                                                        |          4 |        106 |         -2 |         13 |        117 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                    | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Flutter Projects\truyou\functions\index.js                                               | JavaScript |         16 |          0 |          6 |         22 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_bloc.dart                | Dart       |          4 |          0 |          0 |          4 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_bloc.freezed.dart        | Dart       |        -33 |          0 |          0 |        -33 |
+| c:\Flutter Projects\truyou\lib\bloc\find_matches_bloc\find_matches_event.dart               | Dart       |         -1 |          0 |          0 |         -1 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_bloc.dart                    | Dart       |         13 |          1 |          4 |         18 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_bloc.freezed.dart            | Dart       |        819 |         36 |        127 |        982 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_event.dart                   | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\gender_age_bloc\gender_age_state.dart                   | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_bloc.dart                        | Dart       |         49 |          1 |          8 |         58 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_bloc.freezed.dart                | Dart       |        967 |         39 |        147 |      1,153 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_event.dart                       | Dart       |         10 |          0 |          2 |         12 |
+| c:\Flutter Projects\truyou\lib\bloc\location_bloc\location_state.dart                       | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_bloc.dart                    | Dart       |         44 |          0 |         10 |         54 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_bloc.freezed.dart            | Dart       |        858 |         36 |        131 |      1,025 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_event.dart                   | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\my_matches_bloc\my_matches_state.dart                   | Dart       |          9 |          0 |          2 |         11 |
+| c:\Flutter Projects\truyou\lib\bloc\swipe_bloc\swipe_bloc.freezed.dart                      | Dart       |          1 |          0 |          0 |          1 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_bloc.dart                          | Dart       |         25 |          0 |          5 |         30 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_bloc.freezed.dart                  | Dart       |        684 |         33 |        113 |        830 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_event.dart                         | Dart       |          5 |          0 |          2 |          7 |
+| c:\Flutter Projects\truyou\lib\bloc\unmatch_bloc\unmatch_state.dart                         | Dart       |          8 |          0 |          2 |         10 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_bloc.dart                | Dart       |         16 |         -5 |          2 |         13 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_bloc.freezed.dart        | Dart       |        136 |          3 |         22 |        161 |
+| c:\Flutter Projects\truyou\lib\bloc\user_profile_bloc\user_profile_event.dart               | Dart       |          2 |          0 |          1 |          3 |
+| c:\Flutter Projects\truyou\lib\components\utils\constants\constants.dart                    | Dart       |          3 |          0 |          0 |          3 |
+| c:\Flutter Projects\truyou\lib\components\utils\constants\keys.dart                         | Dart       |         25 |        -16 |          0 |          9 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\exception_handler.dart           | Dart       |          0 |         -1 |          0 |         -1 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\exceptions.dart                  | Dart       |          1 |          0 |          1 |          2 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\failure_type.dart                | Dart       |          1 |          0 |          0 |          1 |
+| c:\Flutter Projects\truyou\lib\components\utils\exceptions\failure_type.freezed.dart        | Dart       |        267 |          3 |         16 |        286 |
+| c:\Flutter Projects\truyou\lib\components\utils\geo_helper\geo_helper.dart                  | Dart       |         54 |          0 |         11 |         65 |
+| c:\Flutter Projects\truyou\lib\components\utils\injector\injection_container.dart           | Dart       |          6 |          0 |          0 |          6 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_drawer.dart                        | Dart       |         -7 |          0 |          0 |         -7 |
+| c:\Flutter Projects\truyou\lib\components\widgets\custom_switch.dart                        | Dart       |          4 |          0 |          0 |          4 |
+| c:\Flutter Projects\truyou\lib\components\widgets\dialogs\custom_dialog.dart                | Dart       |         25 |         -4 |          0 |         21 |
+| c:\Flutter Projects\truyou\lib\components\widgets\glow-buttons\circular_glowing_button.dart | Dart       |          3 |          0 |          0 |          3 |
+| c:\Flutter Projects\truyou\lib\components\widgets\loader.dart                               | Dart       |         14 |          0 |          2 |         16 |
+| c:\Flutter Projects\truyou\lib\components\widgets\match_animation.dart                      | Dart       |         16 |          0 |          3 |         19 |
+| c:\Flutter Projects\truyou\lib\components\widgets\my_matches_card.dart                      | Dart       |        -25 |          0 |          1 |        -24 |
+| c:\Flutter Projects\truyou\lib\models\truyou_user\truyou_user_model.dart                    | Dart       |          4 |          0 |          0 |          4 |
+| c:\Flutter Projects\truyou\lib\models\truyou_user\truyou_user_model.freezed.dart            | Dart       |         24 |          0 |          0 |         24 |
+| c:\Flutter Projects\truyou\lib\repository\cloud_function_repository.dart                    | Dart       |         10 |          1 |          1 |         12 |
+| c:\Flutter Projects\truyou\lib\repository\firebase_repository.dart                          | Dart       |         69 |        -13 |         14 |         70 |
+| c:\Flutter Projects\truyou\lib\repository\user_repository.dart                              | Dart       |          7 |          1 |          3 |         11 |
+| c:\Flutter Projects\truyou\lib\screens\app_root.dart                                        | Dart       |          5 |         -1 |          1 |          5 |
+| c:\Flutter Projects\truyou\lib\screens\create-account-screens\create_account_details.dart   | Dart       |        -10 |          0 |          0 |        -10 |
+| c:\Flutter Projects\truyou\lib\screens\create-account-screens\create_account_general.dart   | Dart       |          1 |          0 |          0 |          1 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\error_screens\no_more_users.dart        | Dart       |         16 |          0 |          3 |         19 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\find_matches.dart                       | Dart       |         19 |         45 |         -2 |         62 |
+| c:\Flutter Projects\truyou\lib\screens\find-matches\its_a_match_screen.dart                 | Dart       |        -86 |         -3 |         -1 |        -90 |
+| c:\Flutter Projects\truyou\lib\screens\my-matches\my_matches.dart                           | Dart       |        -48 |         52 |          3 |          7 |
+| c:\Flutter Projects\truyou\lib\screens\settings\location_settings.dart                      | Dart       |         57 |         -4 |          7 |         60 |
+| c:\Flutter Projects\truyou\lib\screens\settings\notifications.dart                          | Dart       |         -1 |          1 |          0 |          0 |
+| c:\Flutter Projects\truyou\lib\screens\settings\search_of.dart                              | Dart       |         27 |          0 |          4 |         31 |
+| c:\Flutter Projects\truyou\lib\screens\settings\settings.dart                               | Dart       |         23 |          1 |          2 |         26 |
+| c:\Flutter Projects\truyou\pubspec.yaml                                                     | YAML       |          1 |          0 |          0 |          1 |
+| Total                                                                                       |            |      4,169 |        206 |        661 |      5,036 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$MyMatchesEventTearOff {
   const _$MyMatchesEventTearOff();
 
-  _LoadMoreMatches loadMoreMatches(List<TruYouUser> previousUsers) {
+  _LoadMoreMatches loadMoreMatches(DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> previousUsers) {
     return _LoadMoreMatches(
+      documentSnapshot,
       previousUsers,
     );
   }
@@ -29,21 +31,29 @@ const $MyMatchesEvent = _$MyMatchesEventTearOff();
 
 /// @nodoc
 mixin _$MyMatchesEvent {
+  DocumentSnapshot<Object?>? get documentSnapshot =>
+      throw _privateConstructorUsedError;
   List<TruYouUser> get previousUsers => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<TruYouUser> previousUsers) loadMoreMatches,
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)
+        loadMoreMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<TruYouUser> previousUsers)? loadMoreMatches,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)?
+        loadMoreMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<TruYouUser> previousUsers)? loadMoreMatches,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)?
+        loadMoreMatches,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,7 +84,9 @@ abstract class $MyMatchesEventCopyWith<$Res> {
   factory $MyMatchesEventCopyWith(
           MyMatchesEvent value, $Res Function(MyMatchesEvent) then) =
       _$MyMatchesEventCopyWithImpl<$Res>;
-  $Res call({List<TruYouUser> previousUsers});
+  $Res call(
+      {DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> previousUsers});
 }
 
 /// @nodoc
@@ -88,9 +100,14 @@ class _$MyMatchesEventCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? documentSnapshot = freezed,
     Object? previousUsers = freezed,
   }) {
     return _then(_value.copyWith(
+      documentSnapshot: documentSnapshot == freezed
+          ? _value.documentSnapshot
+          : documentSnapshot // ignore: cast_nullable_to_non_nullable
+              as DocumentSnapshot<Object?>?,
       previousUsers: previousUsers == freezed
           ? _value.previousUsers
           : previousUsers // ignore: cast_nullable_to_non_nullable
@@ -106,7 +123,9 @@ abstract class _$LoadMoreMatchesCopyWith<$Res>
           _LoadMoreMatches value, $Res Function(_LoadMoreMatches) then) =
       __$LoadMoreMatchesCopyWithImpl<$Res>;
   @override
-  $Res call({List<TruYouUser> previousUsers});
+  $Res call(
+      {DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> previousUsers});
 }
 
 /// @nodoc
@@ -122,9 +141,14 @@ class __$LoadMoreMatchesCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? documentSnapshot = freezed,
     Object? previousUsers = freezed,
   }) {
     return _then(_LoadMoreMatches(
+      documentSnapshot == freezed
+          ? _value.documentSnapshot
+          : documentSnapshot // ignore: cast_nullable_to_non_nullable
+              as DocumentSnapshot<Object?>?,
       previousUsers == freezed
           ? _value.previousUsers
           : previousUsers // ignore: cast_nullable_to_non_nullable
@@ -136,14 +160,16 @@ class __$LoadMoreMatchesCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadMoreMatches implements _LoadMoreMatches {
-  const _$_LoadMoreMatches(this.previousUsers);
+  const _$_LoadMoreMatches(this.documentSnapshot, this.previousUsers);
 
+  @override
+  final DocumentSnapshot<Object?>? documentSnapshot;
   @override
   final List<TruYouUser> previousUsers;
 
   @override
   String toString() {
-    return 'MyMatchesEvent.loadMoreMatches(previousUsers: $previousUsers)';
+    return 'MyMatchesEvent.loadMoreMatches(documentSnapshot: $documentSnapshot, previousUsers: $previousUsers)';
   }
 
   @override
@@ -152,12 +178,16 @@ class _$_LoadMoreMatches implements _LoadMoreMatches {
         (other.runtimeType == runtimeType &&
             other is _LoadMoreMatches &&
             const DeepCollectionEquality()
+                .equals(other.documentSnapshot, documentSnapshot) &&
+            const DeepCollectionEquality()
                 .equals(other.previousUsers, previousUsers));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(previousUsers));
+      runtimeType,
+      const DeepCollectionEquality().hash(documentSnapshot),
+      const DeepCollectionEquality().hash(previousUsers));
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +197,33 @@ class _$_LoadMoreMatches implements _LoadMoreMatches {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<TruYouUser> previousUsers) loadMoreMatches,
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)
+        loadMoreMatches,
   }) {
-    return loadMoreMatches(previousUsers);
+    return loadMoreMatches(documentSnapshot, previousUsers);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<TruYouUser> previousUsers)? loadMoreMatches,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)?
+        loadMoreMatches,
   }) {
-    return loadMoreMatches?.call(previousUsers);
+    return loadMoreMatches?.call(documentSnapshot, previousUsers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<TruYouUser> previousUsers)? loadMoreMatches,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> previousUsers)?
+        loadMoreMatches,
     required TResult orElse(),
   }) {
     if (loadMoreMatches != null) {
-      return loadMoreMatches(previousUsers);
+      return loadMoreMatches(documentSnapshot, previousUsers);
     }
     return orElse();
   }
@@ -222,9 +258,11 @@ class _$_LoadMoreMatches implements _LoadMoreMatches {
 }
 
 abstract class _LoadMoreMatches implements MyMatchesEvent {
-  const factory _LoadMoreMatches(List<TruYouUser> previousUsers) =
-      _$_LoadMoreMatches;
+  const factory _LoadMoreMatches(DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> previousUsers) = _$_LoadMoreMatches;
 
+  @override
+  DocumentSnapshot<Object?>? get documentSnapshot;
   @override
   List<TruYouUser> get previousUsers;
   @override
@@ -245,8 +283,10 @@ class _$MyMatchesStateTearOff {
     return const _Loading();
   }
 
-  _Success success(List<TruYouUser> users, List<String> locations) {
+  _Success success(DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> users, List<String> locations) {
     return _Success(
+      documentSnapshot,
       users,
       locations,
     );
@@ -268,7 +308,8 @@ mixin _$MyMatchesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TruYouUser> users, List<String> locations)
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)
         success,
     required TResult Function(FailureType exception) failed,
   }) =>
@@ -277,7 +318,9 @@ mixin _$MyMatchesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
   }) =>
       throw _privateConstructorUsedError;
@@ -285,7 +328,9 @@ mixin _$MyMatchesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
     required TResult orElse(),
   }) =>
@@ -374,7 +419,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TruYouUser> users, List<String> locations)
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)
         success,
     required TResult Function(FailureType exception) failed,
   }) {
@@ -386,7 +432,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
   }) {
     return initial?.call();
@@ -397,7 +445,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
     required TResult orElse(),
   }) {
@@ -489,7 +539,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TruYouUser> users, List<String> locations)
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)
         success,
     required TResult Function(FailureType exception) failed,
   }) {
@@ -501,7 +552,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
   }) {
     return loading?.call();
@@ -512,7 +565,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
     required TResult orElse(),
   }) {
@@ -568,7 +623,10 @@ abstract class _Loading implements MyMatchesState {
 abstract class _$SuccessCopyWith<$Res> {
   factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
       __$SuccessCopyWithImpl<$Res>;
-  $Res call({List<TruYouUser> users, List<String> locations});
+  $Res call(
+      {DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> users,
+      List<String> locations});
 }
 
 /// @nodoc
@@ -582,10 +640,15 @@ class __$SuccessCopyWithImpl<$Res> extends _$MyMatchesStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? documentSnapshot = freezed,
     Object? users = freezed,
     Object? locations = freezed,
   }) {
     return _then(_Success(
+      documentSnapshot == freezed
+          ? _value.documentSnapshot
+          : documentSnapshot // ignore: cast_nullable_to_non_nullable
+              as DocumentSnapshot<Object?>?,
       users == freezed
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -601,8 +664,10 @@ class __$SuccessCopyWithImpl<$Res> extends _$MyMatchesStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(this.users, this.locations);
+  const _$_Success(this.documentSnapshot, this.users, this.locations);
 
+  @override
+  final DocumentSnapshot<Object?>? documentSnapshot;
   @override
   final List<TruYouUser> users;
   @override
@@ -610,7 +675,7 @@ class _$_Success implements _Success {
 
   @override
   String toString() {
-    return 'MyMatchesState.success(users: $users, locations: $locations)';
+    return 'MyMatchesState.success(documentSnapshot: $documentSnapshot, users: $users, locations: $locations)';
   }
 
   @override
@@ -618,6 +683,8 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Success &&
+            const DeepCollectionEquality()
+                .equals(other.documentSnapshot, documentSnapshot) &&
             const DeepCollectionEquality().equals(other.users, users) &&
             const DeepCollectionEquality().equals(other.locations, locations));
   }
@@ -625,6 +692,7 @@ class _$_Success implements _Success {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(documentSnapshot),
       const DeepCollectionEquality().hash(users),
       const DeepCollectionEquality().hash(locations));
 
@@ -638,11 +706,12 @@ class _$_Success implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TruYouUser> users, List<String> locations)
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)
         success,
     required TResult Function(FailureType exception) failed,
   }) {
-    return success(users, locations);
+    return success(documentSnapshot, users, locations);
   }
 
   @override
@@ -650,10 +719,12 @@ class _$_Success implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
   }) {
-    return success?.call(users, locations);
+    return success?.call(documentSnapshot, users, locations);
   }
 
   @override
@@ -661,12 +732,14 @@ class _$_Success implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(users, locations);
+      return success(documentSnapshot, users, locations);
     }
     return orElse();
   }
@@ -710,9 +783,10 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements MyMatchesState {
-  const factory _Success(List<TruYouUser> users, List<String> locations) =
-      _$_Success;
+  const factory _Success(DocumentSnapshot<Object?>? documentSnapshot,
+      List<TruYouUser> users, List<String> locations) = _$_Success;
 
+  DocumentSnapshot<Object?>? get documentSnapshot;
   List<TruYouUser> get users;
   List<String> get locations;
   @JsonKey(ignore: true)
@@ -793,7 +867,8 @@ class _$_Failed implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<TruYouUser> users, List<String> locations)
+    required TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)
         success,
     required TResult Function(FailureType exception) failed,
   }) {
@@ -805,7 +880,9 @@ class _$_Failed implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
   }) {
     return failed?.call(exception);
@@ -816,7 +893,9 @@ class _$_Failed implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<TruYouUser> users, List<String> locations)? success,
+    TResult Function(DocumentSnapshot<Object?>? documentSnapshot,
+            List<TruYouUser> users, List<String> locations)?
+        success,
     TResult Function(FailureType exception)? failed,
     required TResult orElse(),
   }) {

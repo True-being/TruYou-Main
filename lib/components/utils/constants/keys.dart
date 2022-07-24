@@ -594,7 +594,7 @@ class Routes {
 
     //*Navigate to connected accounts
     AutoRoute(
-        screen: const Settings(),
+        screen: Settings(navigateTo: (_) {}),
         process: [],
         activatorKey: Keys.connectedAccountsSettingsButton,
         destination: connectedAccounts,
@@ -612,7 +612,7 @@ class Routes {
 
     //*Navigate to In Search Of
     AutoRoute(
-        screen: const Settings(),
+        screen: Settings(navigateTo: (_) {}),
         process: [],
         activatorKey: Keys.inSearchOfSettingsButton,
         destination: inSearchOf,
@@ -621,7 +621,7 @@ class Routes {
 
     //*Pop from In Search of
     AutoRoute(
-        screen: const SearchOf(),
+        screen: SearchOf(user: _mockUser),
         process: [],
         activatorKey: Keys.inSearchOfBackButton,
         destination: home,
@@ -630,7 +630,7 @@ class Routes {
 
     //*Navigate to notifications
     AutoRoute(
-        screen: const Settings(),
+        screen: Settings(navigateTo: (_) {}),
         process: [],
         activatorKey: Keys.notificationsSettingsButton,
         destination: notifications,
@@ -747,19 +747,29 @@ class TextFieldKey {
       {required this.key, required this.enter, required this.validators});
 }
 
-// final _mockUser = TruYouUser(
-//     images: [],
-//     documentSnapshot: null,
-//     isWalletVerified: true,
-//     firstName: 'Mark',
-//     lastName: 'Zuckerburg',
-//     email: 'ZuckMuck@gmail.com',
-//     companyName: 'Feta',
-//     aboutMe: 'wjghkjwehgkwhjkeghwegjwkle wjhegwhejlghwehjglwk helj',
-//     algoWalletAddress: 'hewghH3UIHG2G942GHU249GH2849G22948GH',
-//     birthDate: DateTime(1000, 01, 01),
-//     gender: 'Other',
-//     job: 'Stealing data',
-//     lifeStyle: 'wjgkhwrglwlrjg lwrjlgkjwkrljgkljwlrjglwlkrgj',
-//     location: firestore.GeoPoint(29, 30),
-//     sexualOrientation: 'ROBOTS');
+final _mockUser = TruYouUser(
+    genderPreference: 'Female',
+    hasCompletedUsers: false,
+    isRadiusDistanceSelected: false,
+    lastDate: null,
+    lowerAgePreference: DateTime.now(),
+    upperAgePreference: DateTime.now(),
+    radiusDistance: 10,
+    sexualityPreference: 'Straight',
+    images: [],
+    generalLocation: 'Buffalo, USA',
+    documentSnapshot: null,
+    isWalletVerified: true,
+    firstName: 'Mark',
+    lastName: 'Zuckerburg',
+    email: 'ZuckMuck@gmail.com',
+    companyName: 'Feta',
+    aboutMe: 'wjghkjwehgkwhjkeghwegjwkle wjhegwhejlghwehjglwk helj',
+    algoWalletAddress: 'hewghH3UIHG2G942GHU249GH2849G22948GH',
+    birthDate: DateTime(1000, 01, 01),
+    gender: 'Other',
+    job: 'Stealing data',
+    lifeStyle: 'wjgkhwrglwlrjg lwrjlgkjwkrljgkljwlrjglwlkrgj',
+    location: firestore.GeoPoint(29, 30),
+    sexualOrientation: 'ROBOTS',
+    createdAt: DateTime.now());
